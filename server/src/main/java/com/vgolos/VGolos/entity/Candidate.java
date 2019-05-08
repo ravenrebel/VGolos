@@ -1,10 +1,22 @@
 package com.vgolos.VGolos.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "candidates")
 public class Candidate {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int number;
+    @ManyToOne
+    @JoinColumn(name = "citizen_id", referencedColumnName = "id",
+            nullable = false)
     private Citizen citizen;
+    @ManyToOne
+    @JoinColumn(name = "election_id", referencedColumnName = "id",
+            nullable = false)
     private Election election;
+
 
     public Long getId() {
         return id;
@@ -12,14 +24,6 @@ public class Candidate {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
     }
 
     public Citizen getCitizen() {

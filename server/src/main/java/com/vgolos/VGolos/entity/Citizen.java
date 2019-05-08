@@ -1,23 +1,25 @@
 package com.vgolos.VGolos.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
+@Entity
+@Table(name = "citizens")
 public class Citizen extends Account {
-    private Long id;
+    @Column(nullable = false, length = 30)
     private String firstName;
+    @Column(nullable = false, length = 35)
     private String lastName;
+    @Column
     private String fathersName;
+    @Column(nullable = false)
     private Date dateOfBirth;
-    private int idn;
-    private String city;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(unique = true, nullable = false)
+    private Long idn;
+    @Column(nullable = false)
+    private String region;
 
     public String getFirstName() {
         return firstName;
@@ -51,20 +53,24 @@ public class Citizen extends Account {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getIdn() {
+    public Long getIdn() {
         return idn;
     }
 
-    public void setIdn(int idn) {
+    public void setIdn(Long idn) {
         this.idn = idn;
     }
 
-    public String getCity() {
-        return city;
+    public String getRegion() {
+        return region;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
+    @Override
+    public boolean isCitizen() {
+        return true;
+    }
 }

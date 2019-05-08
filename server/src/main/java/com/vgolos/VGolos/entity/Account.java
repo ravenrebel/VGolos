@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "accounts")
 public class Account {
     @Id
@@ -17,11 +18,10 @@ public class Account {
     @Column(name = "password", length = 65, nullable = false)
     private String password;
 
-    @ElementCollection
-    @JoinTable(name = "accounts_roles", joinColumns = @JoinColumn(name = "account"))
+    @NotNull
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+    private Role role;
 
     public Long getId() {
         return id;
@@ -47,12 +47,15 @@ public class Account {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
+    public boolean isCitizen() {
+        return false;
+    }
 }

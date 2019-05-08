@@ -1,16 +1,35 @@
 package com.vgolos.VGolos.entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@Table(name = "elections")
 public class Election {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, length = 100)
     private String name;
+    @Column
     private int year;
+    @Column(nullable = false)
     private int tour;
+    @Column
+    @Temporal(TemporalType.TIME)
     private Date beginningOfVoting;
+    @Column
+    @Temporal(TemporalType.TIME)
     private Date endOfVoting;
+    @OneToMany(mappedBy = "election")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Candidate> candidates;
+    @OneToMany(mappedBy = "election")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Vote> votes;
 
     public Long getId() {

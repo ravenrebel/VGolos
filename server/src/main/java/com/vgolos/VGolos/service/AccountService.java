@@ -28,16 +28,13 @@ public class AccountService {
 
     public Account createAccount(Account account) {
         account.setId(-1L);
-        account.setRoles(new HashSet<>());
         Account createdAccount = accountRepository.save(account);
         return createdAccount;
     }
 
     public Account update(Account account) {
         Account existingAccount = accountRepository.findById(account.getId()).get();
-        if (account.getRoles() != null ) {
-            existingAccount.setRoles(account.getRoles());
-        }
+            existingAccount.setRole(account.getRole());
         return accountRepository.save(existingAccount);
     }
 
