@@ -16,8 +16,8 @@ public class Citizen extends Account {
     private String fathersName;
     @Column(nullable = false)
     private Date dateOfBirth;
-    @Column(unique = true, nullable = false)
-    private Long idn;
+    @Column(unique = true, nullable = false, length = 10)
+    private String idn;
     @Column(nullable = false)
     private String region;
 
@@ -53,11 +53,11 @@ public class Citizen extends Account {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Long getIdn() {
+    public String getIdn() {
         return idn;
     }
 
-    public void setIdn(Long idn) {
+    public void setIdn(String idn) {
         this.idn = idn;
     }
 
