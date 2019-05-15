@@ -1,0 +1,7 @@
+<div *ngFor="let account of accounts">
+  <p>
+    login - {{account.login}}<br>
+    password - {{account.password}}
+  </p>
+  <button (click)="delete(account.id)">delete</button>
+</div>
