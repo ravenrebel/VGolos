@@ -26,6 +26,14 @@ public class AccountService {
         return accountRepository.findByLogin(login).get();
     }
 
+    public Account findById(Long id) {
+        return accountRepository.findById(id).get();
+    }
+
+    public boolean loginExists(String login) {
+        return accountRepository.existsByLogin(login);
+    }
+
     public Account createAccount(Account account) {
         account.setId(-1L);
         Account createdAccount = accountRepository.save(account);
