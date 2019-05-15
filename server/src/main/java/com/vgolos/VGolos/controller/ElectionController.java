@@ -48,5 +48,11 @@ public class ElectionController {
         List<Election> elections = electionService.search(name);
         return new ResponseEntity<>(elections, HttpStatus.OK);
     }
+
+    @GetMapping("/update")
+    public ResponseEntity<Election> update(@RequestBody Election election) {
+        return new ResponseEntity<>(electionService.update(election),
+                HttpStatus.OK);
+    }
 }
 
