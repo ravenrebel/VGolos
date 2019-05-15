@@ -1,6 +1,7 @@
 package com.vgolos.VGolos.repository;
 
 import com.vgolos.VGolos.entity.Account;
+import com.vgolos.VGolos.entity.Citizen;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
