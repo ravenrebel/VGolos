@@ -1,24 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginCred } from 'src/app/model/login-cred';
+import { SignUpForm } from 'src/app/model/authentication/signup-form.model';
 import { CustomeAuthService } from 'src/app/service/custome-auth.service';
-import { SignInForm } from 'src/app/model/authentication/signin-form.model';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sign-in-page',
-  templateUrl: './sign-in-page.component.html',
-  styleUrls: ['./sign-in-page.component.css']
+  selector: 'app-sign-up-page',
+  templateUrl: './sign-up-page.component.html',
+  styleUrls: ['./sign-up-page.component.css']
 })
-export class SignInPageComponent implements OnInit {
+export class SignUpPageComponent implements OnInit {
 
-  creds: SignInForm = new SignInForm();
+  creds: SignUpForm = new SignUpForm();
 
   constructor(
     private authService: CustomeAuthService,
     private tokenStorage: TokenStorageService,
     private router: Router
-  ) { }
+    ) { }
 
   ngOnInit() {
     if (this.authService.checkLoggedUser()) {
@@ -27,7 +26,7 @@ export class SignInPageComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.authService.attemptAuth(this.creds).subscribe(
+    this.authService.signUp(this.creds).subscribe(
       data => {
         this.tokenStorage.saveToken(data);
         this.authService.getCurrentUser().subscribe(
@@ -41,4 +40,5 @@ export class SignInPageComponent implements OnInit {
       }
     );
   }
+
 }

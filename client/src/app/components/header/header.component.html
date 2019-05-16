@@ -1,0 +1,3 @@
+<button *ngIf="signedIn" (click)="logout()">Log Out</button>
+<button *ngIf="!signedIn" (click)="signIn()">Sign In</button>
+<a [routerLink]="['accounts']">accounts</a>
