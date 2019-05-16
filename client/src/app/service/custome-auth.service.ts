@@ -9,6 +9,7 @@ import {
   LOGOUT_URL, FORGOT_PASSWORD_URL, RESET_PASSWORD_URL
 } from '../constants/index.js';
 import { Account } from '../model/account';
+import { SignupCitizenForm } from '../model/authentication/signup-citizen-form';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,9 @@ export class CustomeAuthService {
     });
   }
 
-
+  signUpCitizen(citizen: SignupCitizenForm) {
+    return this.http.post(SIGNUP_URL + '/citizen', citizen, { responseType: 'text' });
+  }
 
   signUp(info: SignUpForm): Observable<any> {
     return this.http.post(SIGNUP_URL, info, { responseType: 'text' });

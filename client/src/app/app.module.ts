@@ -9,6 +9,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { httpInterceptorProviders } from './service/auth-interceptor.service';
 import { HeaderComponent } from './components/header/header.component';
 import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.component';
+import { SignUpCitizenPageComponent } from './components/sign-up-citizen-page/sign-up-citizen-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.comp
     SignInPageComponent,
     AccountsComponent,
     HeaderComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
+    SignUpCitizenPageComponent
   ],
   imports: [
     BrowserModule,
