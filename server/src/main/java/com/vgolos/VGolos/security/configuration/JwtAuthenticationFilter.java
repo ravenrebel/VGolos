@@ -28,27 +28,26 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain)
-                                        throws ServletException, IOException {
-
+            throws ServletException, IOException {
         String jwt = getJwtFromRequest(request);
 
-            if (!StringUtils.hasText(jwt)) {
-                filterChain.doFilter(request, response);
-                return;
-            } else if (tokenProvider.validateToken(jwt)) {
-                try {
-                    refreshSession(request, jwt);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    throw new ServletException("Could not set user"
-                            + " authentication in security context while "
-                            + "checking authentication token! Try to log out "
-                            + "and log in again.");
-                }
-            } else {
-                throw new ServletException("Authentication token not valid! " +
-                        "Try to log out and log in again.");
+        if (!StringUtils.hasText(jwt)) {
+            filterChain.doFilter(request, response);
+            return;
+        } else if (tokenProvider.validateToken(jwt)) {
+            try {
+                refreshSession(request, jwt);
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new ServletException("Could not set user"
+                        + " authentication in security context while "
+                        + "checking authentication token! Try to log out "
+                        + "and log in again.");
             }
+        } else {
+            throw new ServletException("Authentication token not valid! " +
+                    "Try to log out and log in again.");
+        }
 
         filterChain.doFilter(request, response);
     }

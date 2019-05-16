@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class HttpSessionConfig {
     @Bean
     public WebServerFactoryCustomizer<TomcatServletWebServerFactory>
-                                            cookieProcessorCustomizer() {
+    cookieProcessorCustomizer() {
         return (serverFactory) -> serverFactory.addContextCustomizers(
                 (context) -> context.setCookieProcessor(
                         new LegacyCookieProcessor())

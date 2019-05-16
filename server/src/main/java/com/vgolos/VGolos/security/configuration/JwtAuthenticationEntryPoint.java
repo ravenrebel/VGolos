@@ -20,5 +20,5 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
         throw new ServletException("Unauthorized error. " +
                 "Message - " + e.getMessage());
-        }
+    }
 }

@@ -19,7 +19,7 @@ public class LogoutSuccessHandlerImpl extends
             throws IOException, ServletException {
 
         response.setHeader(AuthenticationConstant
-                        .AUTHENTICATION_TOKEN_HEADER, "Invalid");
+                .AUTHENTICATION_TOKEN_HEADER, "Invalid");
         super.onLogoutSuccess(request, response, authentication);
     }
 }
