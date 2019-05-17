@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()">
+  First Name <input name="firstName" [(ngModel)]="creds.firstName" placeholder="First Name" ><br>
+  Last Name <input name="lastName" [(ngModel)]="creds.lastName" placeholder="Last Name" ><br>
+  Fathers Name <input name="fathersName" [(ngModel)]="creds.fathersName" placeholder="Fathers Name" ><br>
+  Region <input name="region" [(ngModel)]="creds.region" placeholder="Region"><br>
+  IDN <input name="idn" [(ngModel)]="creds.idn" placeholder="IDN" ><br>
+  Birthday <input name="dateOfBirth" type="date" [(ngModel)]="creds.dateOfBirth" placeholder="Birthday" ><br>
+  Password <input name="password" type="password" [(ngModel)]="creds.password" placeholder="password"><br>
+  <input type="submit" value="submit">
+</form>
+<a [routerLink]="['/signin']">Sign In</a>
+<a [routerLink]="['/signup']">Sign Up as User</a>

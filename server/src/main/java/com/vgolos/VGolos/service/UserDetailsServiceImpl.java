@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
              throw new UsernameNotFoundException("User with login '"
                      + login + "' not found.");
         }
-        return UserDetailsImpl.createAccount(account, account.getRole());
+        return UserDetailsImpl.create(account, account.getRole());
     }
 
     @Transactional
@@ -36,6 +36,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             );
         }
 
-        return UserDetailsImpl.createAccount(account, account.getRole());
+        return UserDetailsImpl.create(account, account.getRole());
     }
 }

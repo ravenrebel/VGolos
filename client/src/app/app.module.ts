@@ -6,12 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { SignInPageComponent } from './components/sign-in-page/sign-in-page.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { HttpClientModule }    from '@angular/common/http';
+import { httpInterceptorProviders } from './service/auth-interceptor.service';
+import { HeaderComponent } from './components/header/header.component';
+import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.component';
+import { SignUpCitizenPageComponent } from './components/sign-up-citizen-page/sign-up-citizen-page.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInPageComponent,
-    AccountsComponent
+    AccountsComponent,
+    HeaderComponent,
+    SignUpPageComponent,
+    SignUpCitizenPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +28,9 @@ import { HttpClientModule }    from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

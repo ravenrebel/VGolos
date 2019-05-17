@@ -21,7 +21,7 @@ public class Account {
     @NotNull
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role = Role.USER;
 
     public Long getId() {
         return id;

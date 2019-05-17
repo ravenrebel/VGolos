@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginCred } from 'src/app/model/login-cred';
+import { SignupCitizenForm } from 'src/app/model/authentication/signup-citizen-form';
 import { CustomeAuthService } from 'src/app/service/custome-auth.service';
-import { SignInForm } from 'src/app/model/authentication/signin-form.model';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sign-in-page',
-  templateUrl: './sign-in-page.component.html',
-  styleUrls: ['./sign-in-page.component.css']
+  selector: 'app-sign-up-citizen-page',
+  templateUrl: './sign-up-citizen-page.component.html',
+  styleUrls: ['./sign-up-citizen-page.component.css']
 })
-export class SignInPageComponent implements OnInit {
+export class SignUpCitizenPageComponent implements OnInit {
 
-  creds: SignInForm = new SignInForm();
+  creds: SignupCitizenForm = new SignupCitizenForm();
 
   constructor(
     private authService: CustomeAuthService,
@@ -27,7 +26,7 @@ export class SignInPageComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.authService.attemptAuth(this.creds).subscribe(
+    this.authService.signUpCitizen(this.creds).subscribe(
       data => {
         this.tokenStorage.saveToken(data);
         this.authService.getCurrentUser().subscribe(
@@ -41,4 +40,5 @@ export class SignInPageComponent implements OnInit {
       }
     );
   }
+
 }

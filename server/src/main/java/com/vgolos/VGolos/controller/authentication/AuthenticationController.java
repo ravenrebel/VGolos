@@ -69,8 +69,8 @@ public class AuthenticationController {
 
     @PostMapping("/signup/citizen")
     public ResponseEntity<?> registerCitizen(
-            HttpServletResponse response, @Valid @RequestBody Citizen citizen) throws Exception {
-
+            HttpServletResponse response, @RequestBody Citizen citizen) throws Exception {
+        citizen.setLogin(citizen.getIdn());
         String token = authenticationService.register(citizen);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set(AuthenticationConstant

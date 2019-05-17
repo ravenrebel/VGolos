@@ -1,6 +1,8 @@
 package com.vgolos.VGolos.controller;
 
+import com.vgolos.VGolos.annotations.CurrentUser;
 import com.vgolos.VGolos.entity.Account;
+import com.vgolos.VGolos.security.configuration.UserDetailsImpl;
 import com.vgolos.VGolos.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,11 @@ public class AccountController {
     public ResponseEntity<List<Account>> findAll() {
         List<Account> accounts = accountService.findAll();
         return new ResponseEntity<>(accounts, HttpStatus.OK);
+    }
+
+    @GetMapping("/me")
+    public Account getCurrentUser(@CurrentUser UserDetailsImpl userDetailsImpl) {
+        return accountService.findById(userDetailsImpl.getId());
     }
 
     @GetMapping("/login/{login}")

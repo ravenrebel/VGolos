@@ -56,6 +56,7 @@ public class CitizenService {
 
     public Citizen createCitizen(Citizen citizen) {
         citizen.setId(-1L);
+        citizen.setLogin(citizen.getIdn());
         Citizen createdCitizen = citizenRepository.save(citizen);
         return createdCitizen;
     }

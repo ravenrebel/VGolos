@@ -33,6 +33,7 @@ public class AuthenticationServiceImpl {
         this.tokenProvider = tokenProvider;
         this.accountService = accountService;
         this.passwordEncoder = passwordEncoder;
+        this.citizenService = citizenService;
     }
 
     public String login(Account account) {
