@@ -33,11 +33,11 @@ public class VoteController {
         return new ResponseEntity<>(createdVote, HttpStatus.CREATED);
     }
 
-//    @PutMapping("/update")
-//    public ResponseEntity<Vote> update(@RequestBody Vote vote) {
-//        return new ResponseEntity<>(voteService.update(vote),
-//                HttpStatus.OK);
-//    }
+    @PutMapping("/update")
+    public ResponseEntity<Vote> update(@RequestBody Vote vote) {
+        return new ResponseEntity<>(voteService.update(vote),
+                HttpStatus.OK);
+    }
 
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id) {
@@ -45,6 +45,10 @@ public class VoteController {
     }
 
 
-
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Vote> findByLogin(@PathVariable Long id) {
+        return new ResponseEntity<>(voteService.findById(id),
+                HttpStatus.OK);
+    }
 
 }

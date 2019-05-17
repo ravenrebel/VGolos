@@ -33,11 +33,10 @@ public class VoteService {
         return createdVote;
     }
 
-//    public Vote update(Vote vote) {
-//        Vote createdVote = voteRepository.findById(vote.getId()).get();
-//
-//        return voteRepository.save(createdVote);
-//    }
+    public Vote update(Vote vote) {
+        Vote existingVote = voteRepository.findById(vote.getId()).get();
+        return voteRepository.save(existingVote);
+    }
 
     public void deleteById(Long id) {
         voteRepository.deleteById(id);
