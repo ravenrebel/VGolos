@@ -1,3 +1,13 @@
 <button *ngIf="signedIn" (click)="logout()">Log Out</button>
 <button *ngIf="!signedIn" (click)="signIn()">Sign In</button>
 <a [routerLink]="['accounts']">accounts</a>
+<div class="headerBar">
+    <ul>
+        <div class="homePage">V-Golos</div>
+        <li>Elections</li>
+        <li>Voters</li>
+        <li>Create</li>
+        <div class="singIn">Sign in</div>
+        <div class="signOut">Sign Out</div>
+    </ul>
+</div>
