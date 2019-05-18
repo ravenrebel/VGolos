@@ -46,9 +46,9 @@ public class ResultRepositoryImpl implements ResultRepository {
         List<CandidateResult> result = new ArrayList<>();
         resultList.forEach(object -> {
             CandidateResult candidateResult = new CandidateResult();
-            candidateResult.setName((String)object[0]);
-            candidateResult.setVotesCount((int)object[1]);
-            candidateResult.setPercents((float)object[2]);
+            candidateResult.setName(object[0].toString());
+            candidateResult.setVotesCount(Integer.valueOf(object[1].toString()));
+            candidateResult.setPercents(Float.valueOf(object[2].toString()));
             result.add(candidateResult);
         });
         return result;
