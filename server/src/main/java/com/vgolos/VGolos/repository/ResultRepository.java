@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ResultRepository extends JpaRepository<Election, Long> {
+public interface ResultRepository {
 
-    @Query(
+    /*@Query(
             value = "with all_votes as (select count(votes.id) as general_count, elections.id as election from votes\n" +
                     "   join elections on elections.id = votes.election_id\n" +
                     "           where election_id = :electionId\n" +
@@ -27,6 +27,6 @@ public interface ResultRepository extends JpaRepository<Election, Long> {
                     "where percents >= :minPercentage\n " +
                     "order by percents desc;",
             nativeQuery = true
-    )
+    )*/
     List<CandidateResult> getResultsByElectionIdAndMinPercentage(Long electionId, int minPercentage);
 }
