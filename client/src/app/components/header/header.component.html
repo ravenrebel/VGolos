@@ -1,13 +1,21 @@
 <button *ngIf="signedIn" (click)="logout()">Log Out</button>
 <button *ngIf="!signedIn" (click)="signIn()">Sign In</button>
 <a [routerLink]="['accounts']">accounts</a>
-<div class="headerBar">
-    <ul>
-        <div class="homePage">V-Golos</div>
-        <li>Elections</li>
-        <li>Voters</li>
-        <li>Create</li>
-        <div class="singIn">Sign in</div>
-        <div class="signOut">Sign Out</div>
-    </ul>
+<div class="container-fluid block">
+    <div class="row">
+        <div class="offset-1 offset-md-1 col-10 col-md-10 menuNavigation">
+            <div class="row text-center">
+                <div class="col-3 col-md-3"><spanHomePage><a href="">V-Golos</a></spanHomePage></div>
+                <div class="col-1 col-md-1"><span class="align-text-bottom"><a href="">Elections</a></span></div>
+                <div class="col-1 col-md-1"><span class="align-text-bottom"><a href="">Elections</a></span></div>
+                <div class="col-1 col-md-1"><a href="">Create</a></div>
+                <div class="offset-4 offset-md-4 col-2 col-md-2">
+                    <div class="row">
+                        <div class="col-4 col-md-4"><a href="">IcoIn</a></div>
+                        <div class="col-8 col-md-8"><a href="">Sign In</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

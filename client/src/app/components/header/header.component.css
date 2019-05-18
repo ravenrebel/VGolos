@@ -1,0 +1,17 @@
+
+a{
+    text-decoration: none !important;
+    color: #ffffff !important;
+
+}
+.menuNavigation{
+    background: #000000 !important;
+    color:#ffffff !important;
+    height: 100px;
+    position: fixed !important;
+    top:10px;
+}
+.span{
+    font-size:22px;
+    font-weight: bold;
+}
