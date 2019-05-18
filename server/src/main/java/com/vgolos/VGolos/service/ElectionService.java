@@ -54,4 +54,11 @@ public class ElectionService {
     public void deleteById(Long id) {
         electionRepository.deleteById(id);
     }
+
+    public boolean isFinished(Long id){
+        Election election = electionRepository.findById(id).get();
+        Date currentDate = new Date();
+        if (election.getEndOfVoting().before(currentDate) || election.getEndOfVoting().equals(currentDate)) return true;
+        else return false;
+    }
 }

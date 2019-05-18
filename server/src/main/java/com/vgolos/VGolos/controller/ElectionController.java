@@ -54,5 +54,11 @@ public class ElectionController {
         return new ResponseEntity<>(electionService.update(election),
                 HttpStatus.OK);
     }
+
+    @GetMapping("/isFinished/{id}")
+    public ResponseEntity<Boolean> isFinished(@PathVariable Long id) {
+        return new ResponseEntity<>(electionService.isFinished(id),
+                HttpStatus.OK);
+    }
 }
 
