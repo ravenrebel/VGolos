@@ -10,6 +10,7 @@ import { httpInterceptorProviders } from './service/auth-interceptor.service';
 import { HeaderComponent } from './components/header/header.component';
 import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.component';
 import { SignUpCitizenPageComponent } from './components/sign-up-citizen-page/sign-up-citizen-page.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SignUpCitizenPageComponent } from './components/sign-up-citizen-page/si
     AccountsComponent,
     HeaderComponent,
     SignUpPageComponent,
-    SignUpCitizenPageComponent
+    SignUpCitizenPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
