@@ -38,6 +38,7 @@ public class ElectionService {
         election.setCandidates(new LinkedList<>());
         election.setVotes(new LinkedList<>());
         Election createdElection = electionRepository.save(election);
+
         return createdElection;
     }
 
