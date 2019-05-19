@@ -5,6 +5,7 @@ public class CandidateResult {
     private int votesCount;
     private float percents;
 
+
     public String getName() {
         return name;
     }
@@ -28,4 +29,7 @@ public class CandidateResult {
     public void setPercents(float percents) {
         this.percents = percents;
     }
+
+
+
 }
