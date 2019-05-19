@@ -12,8 +12,8 @@ export class CandidateControllerService {
   constructor(private http: HttpClient) { }
   
   baseUrl: string = 'http://localhost:8080/candidate/';
-  findAll(): Observable<Account[]> {
-    return this.http.get<Account[]>(this.baseUrl);
+  findAll(): Observable<Candidate[]> {
+    return this.http.get<Candidate[]>(this.baseUrl);
   }
 
   create(candidate:Candidate):Observable<Candidate> {
