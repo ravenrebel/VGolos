@@ -53,4 +53,45 @@ public class ResultRepositoryImpl implements ResultRepository {
         });
         return result;
     }
+
+    @Override
+    public List<CandidateResult> getResultsByElectionIdAndWinner(Long electionId) {
+        String queryString = " with all_votes as (select count(votes.id) as general_count, candidates.id as candidate from votes\n" +
+                "       join candidates on candidates.id = votes.candidate_id\n" +
+        " group by candidate),\n" +
+        " results_one as (select first_name || ' ' || last_name || ' ' || \n" +
+        " fathers_name as candidate_name, candidate_id as  new_candidate_id\n" +
+        " from candidates join citizens on citizens.id = candidates.citizen_id \n" +
+                        " join votes on candidates.id = votes.candidate_id \n" +
+                        " join elections on elections.id = votes.election_id \n" +
+                        " where elections.id = :electionId \n" +
+                        " group by candidate_name,candidate_id), \n" +
+                        "results as (select region as region_new, count(votes.id) \n" +
+                        "as votes_count , candidate_name , new_candidate_id \n" +
+                        "from citizens \n" +
+                        "join votes on citizens.id = votes.citizen_id \n" +
+                        "join results_one on votes.candidate_id = results_one.new_candidate_id \n" +
+                        " group by candidate_name, region_new,new_candidate_id) \n" +
+                        "SELECT region_new,  \n" +
+                        " max(votes_count) as amount_of_votes, max(candidate_name) as candidate_name , \n" +
+                        "      sum(votes_count) as all_votes \n" +
+                        " FROM results GROUP BY region_new \n" +
+                        " order by all_votes desc";
+
+                        Query query = em.createNativeQuery(queryString);
+        query.setParameter("electionId", electionId);
+        List<Object[]> resultList = query.getResultList();
+        List<CandidateResult> result = new ArrayList<>();
+        resultList.forEach(object -> {
+            CandidateResult candidateResult = new CandidateResult();
+            candidateResult.setRegion(object[0].toString());
+            candidateResult.setAmountOfVotes(Integer.valueOf(object[1].toString()));
+            candidateResult.setName(String.valueOf(object[2].toString()));
+            candidateResult.setVotesCount(Integer.valueOf(object[3].toString()));
+            candidateResult.setAllVotes(Integer.valueOf(object[4].toString()));
+
+            result.add(candidateResult);
+        });
+        return result;
+    }
 }

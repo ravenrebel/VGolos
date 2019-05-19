@@ -27,4 +27,11 @@ public class ResultController {
                 .getResultsByElectionIdAndMinPercentage(electionId, minPercentage),
                 HttpStatus.OK);
     }
+    @GetMapping("elections/{electionId}")
+    ResponseEntity<List<CandidateResult>> getResultsByElectionId(
+            @PathVariable Long electionId) {
+        return new ResponseEntity<>(resultRepository
+                .getResultsByElectionIdAndWinner(electionId),
+                HttpStatus.OK);
+    }
 }

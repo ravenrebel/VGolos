@@ -4,6 +4,9 @@ public class CandidateResult {
     private String name;
     private int votesCount;
     private float percents;
+    private int allVotes;
+    private int amountOfVotes;
+    private String region;
 
     public String getName() {
         return name;
@@ -27,5 +30,29 @@ public class CandidateResult {
 
     public void setPercents(float percents) {
         this.percents = percents;
+    }
+
+    public void setAllVotes(Integer allVotes) {
+        this.allVotes = allVotes;
+    }
+
+    public Integer getAllVotes() {
+        return allVotes;
+    }
+
+    public void setAmountOfVotes(Integer amountOfVotes) {
+        this.amountOfVotes = amountOfVotes;
+    }
+
+    public Integer getAmountOfVotes() {
+        return amountOfVotes;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getRegion() {
+        return region;
     }
 }

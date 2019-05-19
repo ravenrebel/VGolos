@@ -29,4 +29,6 @@ public interface ResultRepository {
             nativeQuery = true
     )*/
     List<CandidateResult> getResultsByElectionIdAndMinPercentage(Long electionId, int minPercentage);
+    List<CandidateResult> getResultsByElectionIdAndWinner(Long electionId);
+
 }
