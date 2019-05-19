@@ -4,7 +4,7 @@ a{
     text-decoration: none !important;
     color: #AAAAAA !important;
 }
-img{
+img.invert{
     filter: invert(0.75);
 }
 button{
