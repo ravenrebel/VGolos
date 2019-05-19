@@ -149,7 +149,7 @@ public class ResultRepositoryImpl implements ResultRepository {
     {
         String queryString ="\n" +
                 "with  needed as (select   candidate_id,  \n" +
-                " avg(age(date_of_birth)) as avg_age from votes\n" +
+                " avg(TIMESTAMPDIFF (YEAR, date_of_birth, CURDATE())) as avg_age from votes\n" +
                 " join  citizens on citizens.id = votes.citizen_id\n" +
                 " where votes.election_id = :electionId \n" +
                 "    group by  candidate_id) " +
@@ -165,8 +165,8 @@ public class ResultRepositoryImpl implements ResultRepository {
         List<CandidateAvg> result = new ArrayList<>();
         resultList.forEach(object -> {
             CandidateAvg candidateAvg = new CandidateAvg();
-            candidateAvg.setName(String.valueOf(object[0].toString()));
-            candidateAvg.setAvgAge(String.valueOf(object[1].toString()));
+            candidateAvg.setName(String.valueOf(object[0]));
+            candidateAvg.setAvgAge(String.valueOf(object[1]));
             result.add(candidateAvg);
         });
         return result;

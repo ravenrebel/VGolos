@@ -32,7 +32,7 @@ public class ResultController {
     }
 
     @GetMapping("elections/{electionId}")
-    ResponseEntity<List<CandidateRegion>> getResultsByElectionId(
+    ResponseEntity<List<CandidateRegion>> getWinnerResultsByElectionId(
             @PathVariable Long electionId) {
         return new ResponseEntity<>(resultRepository
                 .getResultsByElectionIdAndWinner(electionId),
