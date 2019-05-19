@@ -1,5 +1,6 @@
 package com.vgolos.VGolos.repository;
 
+import com.vgolos.VGolos.dto.CandidateAvg;
 import com.vgolos.VGolos.dto.CandidateRegion;
 import com.vgolos.VGolos.dto.CandidateResult;
 import com.vgolos.VGolos.dto.CandidateTop;
@@ -34,6 +35,8 @@ public interface ResultRepository {
     List<CandidateResult> getResultsByElectionIdAndMinPercentage(Long electionId, int minPercentage);
     List<CandidateRegion> getResultsByElectionIdAndWinner(Long electionId);
     List<CandidateTop> getResultsByElectionIdAndAmounts(Long electionId, int regionAmount, int positionAmount);
+    List<CandidateAvg> getResultsByElection2IdForAvgAge(Long electionId);
+
 
 
 }

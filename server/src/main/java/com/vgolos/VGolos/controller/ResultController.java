@@ -1,5 +1,6 @@
 package com.vgolos.VGolos.controller;
 
+import com.vgolos.VGolos.dto.CandidateAvg;
 import com.vgolos.VGolos.dto.CandidateRegion;
 import com.vgolos.VGolos.dto.CandidateResult;
 import com.vgolos.VGolos.dto.CandidateTop;
@@ -29,6 +30,7 @@ public class ResultController {
                 .getResultsByElectionIdAndMinPercentage(electionId, minPercentage),
                 HttpStatus.OK);
     }
+
     @GetMapping("elections/{electionId}")
     ResponseEntity<List<CandidateRegion>> getResultsByElectionId(
             @PathVariable Long electionId) {
@@ -39,9 +41,17 @@ public class ResultController {
 
     @GetMapping("elections/{electionId}/{regionAmount}/{positionAmount}")
     ResponseEntity<List<CandidateTop>> getResultsByElectionId(
-            @PathVariable Long electionId, @PathVariable int regionAmount, @PathVariable int positionAmount ) {
+            @PathVariable Long electionId, @PathVariable int regionAmount, @PathVariable int positionAmount) {
         return new ResponseEntity<>(resultRepository
-                .getResultsByElectionIdAndAmounts(electionId,regionAmount, positionAmount),
+                .getResultsByElectionIdAndAmounts(electionId, regionAmount, positionAmount),
+                HttpStatus.OK);
+    }
+
+    @GetMapping("elections/avg/{electionId}")
+    ResponseEntity<List<CandidateAvg>>
+    getResultsByElection2Id(@PathVariable Long electionId) {
+        return new ResponseEntity<>(resultRepository
+                .getResultsByElection2IdForAvgAge(electionId),
                 HttpStatus.OK);
     }
 }

@@ -1,5 +1,6 @@
 package com.vgolos.VGolos.repository;
 
+import com.vgolos.VGolos.dto.CandidateAvg;
 import com.vgolos.VGolos.dto.CandidateRegion;
 import com.vgolos.VGolos.dto.CandidateResult;
 import com.vgolos.VGolos.dto.CandidateTop;
@@ -143,5 +144,33 @@ public class ResultRepositoryImpl implements ResultRepository {
         return result;
 
     }
+    @Override
+    public     List<CandidateAvg> getResultsByElection2IdForAvgAge(Long electionId)
+    {
+        String queryString ="\n" +
+                "with  needed as (select   candidate_id,  \n" +
+                " avg(age(date_of_birth)) as avg_age from votes\n" +
+                " join  citizens on citizens.id = votes.citizen_id\n" +
+                " where votes.election_id = :electionId \n" +
+                "    group by  candidate_id) " +
+                "select first_name \n" +
+                "||' ' ||last_name  as candidate_name , avg_age \n" +
+                "from candidates\n" +
+                " join citizens on citizens.id = candidates.citizen_id \n" +
+                "join needed on needed.candidate_id = candidates.id  \n" +
+                "group by  candidate_name, avg_age";
+        Query query = em.createNativeQuery(queryString);
+        query.setParameter("electionId", electionId);
+        List<Object[]> resultList = query.getResultList();
+        List<CandidateAvg> result = new ArrayList<>();
+        resultList.forEach(object -> {
+            CandidateAvg candidateAvg = new CandidateAvg();
+            candidateAvg.setName(String.valueOf(object[0].toString()));
+            candidateAvg.setAvgAge(String.valueOf(object[1].toString()));
+            result.add(candidateAvg);
+        });
+        return result;
+    }
+
 
 }
