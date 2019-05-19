@@ -16,9 +16,6 @@ public class CandidateRegion {
     }
 
 
-
-
-
     public void setAllVotes(Integer allVotes) {
         this.allVotes = allVotes;
     }

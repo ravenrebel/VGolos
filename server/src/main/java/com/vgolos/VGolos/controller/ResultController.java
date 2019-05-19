@@ -2,6 +2,7 @@ package com.vgolos.VGolos.controller;
 
 import com.vgolos.VGolos.dto.CandidateRegion;
 import com.vgolos.VGolos.dto.CandidateResult;
+import com.vgolos.VGolos.dto.CandidateTop;
 import com.vgolos.VGolos.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,6 +34,14 @@ public class ResultController {
             @PathVariable Long electionId) {
         return new ResponseEntity<>(resultRepository
                 .getResultsByElectionIdAndWinner(electionId),
+                HttpStatus.OK);
+    }
+
+    @GetMapping("elections/{electionId}/{regionAmount}/{positionAmount}")
+    ResponseEntity<List<CandidateTop>> getResultsByElectionId(
+            @PathVariable Long electionId, @PathVariable int regionAmount, @PathVariable int positionAmount ) {
+        return new ResponseEntity<>(resultRepository
+                .getResultsByElectionIdAndAmounts(electionId,regionAmount, positionAmount),
                 HttpStatus.OK);
     }
 }

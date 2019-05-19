@@ -2,6 +2,7 @@ package com.vgolos.VGolos.repository;
 
 import com.vgolos.VGolos.dto.CandidateRegion;
 import com.vgolos.VGolos.dto.CandidateResult;
+import com.vgolos.VGolos.dto.CandidateTop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -85,13 +86,62 @@ public class ResultRepositoryImpl implements ResultRepository {
         List<CandidateRegion> result = new ArrayList<>();
         resultList.forEach(object -> {
             CandidateRegion candidateRegion = new CandidateRegion();
-            candidateRegion.setRegion(object[0].toString());
+            candidateRegion.setRegion(String.valueOf(object[0].toString()));
             candidateRegion.setAmountOfVotes(Integer.valueOf(object[1].toString()));
             candidateRegion.setName(String.valueOf(object[2].toString()));
-            candidateRegion.setAllVotes(Integer.valueOf(object[4].toString()));
+            candidateRegion.setAllVotes(Integer.valueOf(object[3].toString()));
 
             result.add(candidateRegion);
         });
         return result;
     }
+    @Override
+    public List<CandidateTop> getResultsByElectionIdAndAmounts(Long electionId, int regionAmount, int positionAmount)
+    {
+        String queryString ="\n" +
+                "with all_votes as (select count(votes.id) as general_count, elections.id as election from votes\n" +
+                "join elections on elections.id = votes.election_id group by election),\t\t  \n" +
+                "results_one as (select first_name || ' ' || last_name || ' ' ||   \n" +
+                "fathers_name as candidate_name, candidate_id as  new_candidate_id from candidates \n" +
+                "join citizens on citizens.id = candidates.citizen_id\n" +
+                "join votes on candidates.id = votes.candidate_id\n" +
+                "join elections on elections.id = votes.election_id\n" +
+                "join all_votes on all_votes.election = elections.id\n" +
+                "where elections.id = :electionId and candidates.id in\n" +
+                "(select candidates.id from candidates\n" +
+                "join citizens on citizens.id = candidates.citizen_id\n" +
+                "join votes on votes.candidate_id = candidates.id\n" +
+                "join elections on elections.id = votes.election_id\n" +
+                "join all_votes on all_votes.election = elections.id\n" +
+                "where elections.id = :electionId group by candidates.id limit :positionAmount)\n" +
+                "group by candidate_name,candidate_id),\n" +
+                "results as (select region as region_new, count(votes.id) \n" +
+                "as votes_count , candidate_name , new_candidate_id from citizens  \n" +
+                "join votes on citizens.id = votes.citizen_id   \n" +
+                "join results_one on votes.candidate_id = results_one.new_candidate_id  \n" +
+                "where citizens.region in ( select region from citizens\n" +
+                "join votes on citizens.id = votes.citizen_id \n" +
+                "join elections on elections.id = votes.election_id\n" +
+                " where elections.id = :electionId group by region limit :regionAmount)\n" +
+                "group by candidate_name, region_new,new_candidate_id)\n" +
+                "select candidate_name,votes_count, region_new  from results\n" +
+                "order by region_new";
+        Query query = em.createNativeQuery(queryString);
+        query.setParameter("electionId", electionId);
+        query.setParameter("regionAmount", regionAmount);
+        query.setParameter("positionAmount", positionAmount);
+
+        List<Object[]> resultList = query.getResultList();
+        List<CandidateTop> result = new ArrayList<>();
+        resultList.forEach(object -> {
+            CandidateTop candidateResult = new CandidateTop();
+            candidateResult.setName(object[0].toString());
+            candidateResult.setVotesCount(Integer.valueOf(object[1].toString()));
+            candidateResult.setRegion(String.valueOf(object[2].toString()));
+            result.add(candidateResult);
+        });
+        return result;
+
+    }
+
 }
