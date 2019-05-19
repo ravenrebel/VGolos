@@ -2,6 +2,12 @@ package com.vgolos.VGolos.controller;
 
 import com.vgolos.VGolos.dto.*;
 import com.vgolos.VGolos.entity.Citizen;
+import com.vgolos.VGolos.dto.CandidateAvg;
+import com.vgolos.VGolos.dto.CandidateRegion;
+import com.vgolos.VGolos.dto.CandidateResult;
+import com.vgolos.VGolos.dto.CandidateTop;
+import com.vgolos.VGolos.entity.Citizen;
+import com.vgolos.VGolos.repository.CitizenRepository;
 import com.vgolos.VGolos.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,10 +21,13 @@ import java.util.List;
 @CrossOrigin
 public class ResultController {
     private ResultRepository resultRepository;
+    private CitizenRepository citizenRepository;
 
     @Autowired
-    public ResultController(ResultRepository resultRepository) {
+    public ResultController(ResultRepository resultRepository,
+                            CitizenRepository citizenRepository) {
         this.resultRepository = resultRepository;
+        this.citizenRepository = citizenRepository;
     }
 
     @GetMapping("elections/{electionId}/{minPercentage}")
@@ -60,4 +69,9 @@ public class ResultController {
                 HttpStatus.OK);
     }
 
+
+    @GetMapping("citizens/vote/{electionId}")
+    ResponseEntity<List<Citizen>> getCitizensVotedInElectionById(@PathVariable Long electionId) {
+        return new ResponseEntity<>(citizenRepository.findByVoteInElection(electionId), HttpStatus.OK);
+    }
 }
