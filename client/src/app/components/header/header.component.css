@@ -1,17 +1,35 @@
-
+*{
+    font-family: "Times New Roman", Times, serif;}
 a{
     text-decoration: none !important;
-    color: #ffffff !important;
-
+    color: #AAAAAA !important;
+}
+img{
+    filter: invert(0.75);
+}
+button{
+    border:none !important;
+    background: none !important;
+    color: #AAAAAA !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    /* box-sizing: bo   rder-box !important; */
+    /* height: ; */
+    /* width: 10px !important; */
 }
 .menuNavigation{
+    box-shadow:0 5px 5px 0 rgba(0,0,0,0.5); 
     background: #000000 !important;
-    color:#ffffff !important;
+    color:#AAAAAA !important;
     height: 100px;
     position: fixed !important;
     top:10px;
 }
-.span{
-    font-size:22px;
+.largeWord{
+    font-size:30px;
     font-weight: bold;
+}
+.italics{
+    font-style: italic;
+    font-size: 18px;
 }
