@@ -1,9 +1,7 @@
 package com.vgolos.VGolos.controller;
 
-import com.vgolos.VGolos.dto.CandidateAvg;
-import com.vgolos.VGolos.dto.CandidateRegion;
-import com.vgolos.VGolos.dto.CandidateResult;
-import com.vgolos.VGolos.dto.CandidateTop;
+import com.vgolos.VGolos.dto.*;
+import com.vgolos.VGolos.entity.Citizen;
 import com.vgolos.VGolos.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,7 +30,7 @@ public class ResultController {
     }
 
     @GetMapping("elections/{electionId}")
-    ResponseEntity<List<CandidateRegion>> getResultsByElectionId(
+    ResponseEntity<List<CandidateRegion>> getWinnerResultsByElectionId(
             @PathVariable Long electionId) {
         return new ResponseEntity<>(resultRepository
                 .getResultsByElectionIdAndWinner(electionId),
@@ -54,4 +52,12 @@ public class ResultController {
                 .getResultsByElection2IdForAvgAge(electionId),
                 HttpStatus.OK);
     }
+    @GetMapping("elections/candidates/{electionId}")
+    ResponseEntity<List<CandidateCitizen>>
+    getResultsByElectionId4(@PathVariable Long electionId) {
+        return new ResponseEntity<>(resultRepository
+                .getResultsByElectionIdForCandidatesAndCitizens(electionId),
+                HttpStatus.OK);
+    }
+
 }
