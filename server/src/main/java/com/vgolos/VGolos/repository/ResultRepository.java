@@ -1,5 +1,6 @@
 package com.vgolos.VGolos.repository;
 
+import com.vgolos.VGolos.dto.CandidateRegion;
 import com.vgolos.VGolos.dto.CandidateResult;
 import com.vgolos.VGolos.entity.Election;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -29,6 +30,6 @@ public interface ResultRepository {
             nativeQuery = true
     )*/
     List<CandidateResult> getResultsByElectionIdAndMinPercentage(Long electionId, int minPercentage);
-    List<CandidateResult> getResultsByElectionIdAndWinner(Long electionId);
+    List<CandidateRegion> getResultsByElectionIdAndWinner(Long electionId);
 
 }

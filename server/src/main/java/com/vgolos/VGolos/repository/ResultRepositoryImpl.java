@@ -1,5 +1,6 @@
 package com.vgolos.VGolos.repository;
 
+import com.vgolos.VGolos.dto.CandidateRegion;
 import com.vgolos.VGolos.dto.CandidateResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -55,7 +56,7 @@ public class ResultRepositoryImpl implements ResultRepository {
     }
 
     @Override
-    public List<CandidateResult> getResultsByElectionIdAndWinner(Long electionId) {
+    public List<CandidateRegion> getResultsByElectionIdAndWinner(Long electionId) {
         String queryString = " with all_votes as (select count(votes.id) as general_count, candidates.id as candidate from votes\n" +
                 "       join candidates on candidates.id = votes.candidate_id\n" +
         " group by candidate),\n" +
@@ -81,16 +82,15 @@ public class ResultRepositoryImpl implements ResultRepository {
                         Query query = em.createNativeQuery(queryString);
         query.setParameter("electionId", electionId);
         List<Object[]> resultList = query.getResultList();
-        List<CandidateResult> result = new ArrayList<>();
+        List<CandidateRegion> result = new ArrayList<>();
         resultList.forEach(object -> {
-            CandidateResult candidateResult = new CandidateResult();
-            candidateResult.setRegion(object[0].toString());
-            candidateResult.setAmountOfVotes(Integer.valueOf(object[1].toString()));
-            candidateResult.setName(String.valueOf(object[2].toString()));
-            candidateResult.setVotesCount(Integer.valueOf(object[3].toString()));
-            candidateResult.setAllVotes(Integer.valueOf(object[4].toString()));
+            CandidateRegion candidateRegion = new CandidateRegion();
+            candidateRegion.setRegion(object[0].toString());
+            candidateRegion.setAmountOfVotes(Integer.valueOf(object[1].toString()));
+            candidateRegion.setName(String.valueOf(object[2].toString()));
+            candidateRegion.setAllVotes(Integer.valueOf(object[4].toString()));
 
-            result.add(candidateResult);
+            result.add(candidateRegion);
         });
         return result;
     }

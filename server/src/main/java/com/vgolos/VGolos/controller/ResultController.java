@@ -1,5 +1,6 @@
 package com.vgolos.VGolos.controller;
 
+import com.vgolos.VGolos.dto.CandidateRegion;
 import com.vgolos.VGolos.dto.CandidateResult;
 import com.vgolos.VGolos.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class ResultController {
                 HttpStatus.OK);
     }
     @GetMapping("elections/{electionId}")
-    ResponseEntity<List<CandidateResult>> getResultsByElectionId(
+    ResponseEntity<List<CandidateRegion>> getResultsByElectionId(
             @PathVariable Long electionId) {
         return new ResponseEntity<>(resultRepository
                 .getResultsByElectionIdAndWinner(electionId),
