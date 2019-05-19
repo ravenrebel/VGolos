@@ -1,7 +1,11 @@
 package com.vgolos.VGolos.service;
 
+import com.vgolos.VGolos.entity.Citizen;
+import com.vgolos.VGolos.entity.Election;
 import com.vgolos.VGolos.entity.Vote;
 import com.vgolos.VGolos.repository.VoteRepository;
+import com.vgolos.VGolos.repository.ElectionRepository;
+import com.vgolos.VGolos.repository.CitizenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +16,14 @@ import java.util.List;
 public class VoteService {
 
     private VoteRepository voteRepository;
+    private ElectionRepository electionRepository;
+    private CitizenRepository citizenRepository;
 
     @Autowired
-    public VoteService(VoteRepository voteRepository) {
+    public VoteService(VoteRepository voteRepository, ElectionRepository electionRepository, CitizenRepository citizenRepository) {
         this.voteRepository = voteRepository;
+        this.electionRepository = electionRepository;
+        this.citizenRepository = citizenRepository;
     }
 
     public List<Vote> findAll() {
@@ -40,5 +48,14 @@ public class VoteService {
 
     public void deleteById(Long id) {
         voteRepository.deleteById(id);
+    }
+
+    public boolean isExisting(Long electionId, Long citizenId){
+        Election election = electionRepository.findById(electionId).get();
+        Citizen citizen = citizenRepository.findById(citizenId).get();
+        if (voteRepository.findByElectionAndCitizen(election, citizen) == null){
+            return false;
+        }
+        else return true;
     }
 }

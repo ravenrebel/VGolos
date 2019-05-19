@@ -56,4 +56,9 @@ public class VoteController {
                 HttpStatus.OK);
     }
 
+    @GetMapping("/isExisting/{electionId}/{citizenId}")
+    public ResponseEntity<Boolean> isExisting(@PathVariable Long electionId, @PathVariable Long citizenId) {
+        return new ResponseEntity<>((voteService.isExisting(electionId, citizenId)),
+                HttpStatus.OK);
+    }
 }
