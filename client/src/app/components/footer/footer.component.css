@@ -1,3 +1,13 @@
+*{
+  font-family: 'ABeeZee', sans-serif;
+  font-size:14px;
+}
 img{
   height: 30px;
+}
+.pageFooter{
+  height: 100px;
+  position: fixed;
+  width:80% !important;
+  min-height: calc(100vh - 100px) !important;
 }

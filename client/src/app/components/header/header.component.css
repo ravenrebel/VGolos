@@ -1,5 +1,6 @@
 *{
-    font-family: "Times New Roman", Times, serif;}
+    font-family: "Times New Roman", Times, serif;
+}
 a{
     text-decoration: none !important;
     color: #AAAAAA !important;
@@ -13,15 +14,15 @@ button{
     color: #AAAAAA !important;
     padding: 0 !important;
     margin: 0 !important;
-    /* box-sizing: bo   rder-box !important; */
-    /* height: ; */
-    /* width: 10px !important; */
+
 }
 .menuNavigation{
     box-shadow:0 5px 5px 0 rgba(0,0,0,0.5); 
     background: #000000 !important;
     color:#AAAAAA !important;
-    height: 100px;
+
+    width: 80% !important;
+    height: 100px !important;
     position: fixed !important;
     top:10px;
 }
