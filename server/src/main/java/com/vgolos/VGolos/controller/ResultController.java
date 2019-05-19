@@ -1,8 +1,13 @@
 package com.vgolos.VGolos.controller;
 
+import com.vgolos.VGolos.dto.*;
+import com.vgolos.VGolos.entity.Citizen;
+import com.vgolos.VGolos.dto.CandidateAvg;
 import com.vgolos.VGolos.dto.CandidateRegion;
 import com.vgolos.VGolos.dto.CandidateResult;
 import com.vgolos.VGolos.dto.CandidateTop;
+import com.vgolos.VGolos.entity.Citizen;
+import com.vgolos.VGolos.repository.CitizenRepository;
 import com.vgolos.VGolos.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,32 +21,57 @@ import java.util.List;
 @CrossOrigin
 public class ResultController {
     private ResultRepository resultRepository;
+    private CitizenRepository citizenRepository;
 
     @Autowired
-    public ResultController(ResultRepository resultRepository) {
+    public ResultController(ResultRepository resultRepository,
+                            CitizenRepository citizenRepository) {
         this.resultRepository = resultRepository;
+        this.citizenRepository = citizenRepository;
     }
 
-    @GetMapping("elections/{electionId}/{minPercentage}")
+    @GetMapping("elections/winners/{electionId}/{minPercentage}")
     ResponseEntity<List<CandidateResult>> getResultsByElectionId(
             @PathVariable Long electionId, @PathVariable int minPercentage) {
         return new ResponseEntity<>(resultRepository
                 .getResultsByElectionIdAndMinPercentage(electionId, minPercentage),
                 HttpStatus.OK);
     }
-    @GetMapping("elections/{electionId}")
-    ResponseEntity<List<CandidateRegion>> getResultsByElectionId(
+
+    @GetMapping("elections/regionAndItsWinner/{electionId}")
+    ResponseEntity<List<CandidateRegion>> getWinnerResultsByElectionId(
             @PathVariable Long electionId) {
         return new ResponseEntity<>(resultRepository
-                .getResultsByElectionIdAndWinner(electionId),
+                .getWinnersInRegions(electionId),
                 HttpStatus.OK);
     }
 
-    @GetMapping("elections/{electionId}/{regionAmount}/{positionAmount}")
+    @GetMapping("elections/topResults/{electionId}/{regionAmount}/{positionAmount}")
     ResponseEntity<List<CandidateTop>> getResultsByElectionId(
-            @PathVariable Long electionId, @PathVariable int regionAmount, @PathVariable int positionAmount ) {
+            @PathVariable Long electionId, @PathVariable int regionAmount, @PathVariable int positionAmount) {
         return new ResponseEntity<>(resultRepository
-                .getResultsByElectionIdAndAmounts(electionId,regionAmount, positionAmount),
+                .getNTopResultsInMRegions(electionId, regionAmount, positionAmount),
                 HttpStatus.OK);
+    }
+
+    @GetMapping("elections/averageAge/{electionId}")
+    ResponseEntity<List<CandidateAvg>>
+    getResultsByElection2Id(@PathVariable Long electionId) {
+        return new ResponseEntity<>(resultRepository
+                .getVotersAvgAge(electionId),
+                HttpStatus.OK);
+    }
+    @GetMapping("elections/citizensAndCandidates/{electionId}")
+    ResponseEntity<List<CandidateCitizen>>
+    getResultsByElectionId4(@PathVariable Long electionId) {
+        return new ResponseEntity<>(resultRepository
+                .getCitizenAndTheCandidateHeVotedFor(electionId),
+                HttpStatus.OK);
+    }
+
+
+    @GetMapping("citizens/vote/{electionId}")
+    ResponseEntity<List<Citizen>> getCitizensVotedInElectionById(@PathVariable Long electionId) {
+        return new ResponseEntity<>(citizenRepository.findByVoteInElection(electionId), HttpStatus.OK);
     }
 }
