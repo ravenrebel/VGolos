@@ -56,7 +56,7 @@ public class ResultRepositoryImpl implements ResultRepository {
     }
 
     @Override
-    public List<CandidateRegion> getResultsByElectionIdAndWinner(Long electionId) {
+    public List<CandidateRegion> getWinnersInRegions(Long electionId) {
         String queryString = " with all_votes as (select count(votes.id) as general_count, candidates.id as candidate from votes\n" +
                 "       join candidates on candidates.id = votes.candidate_id\n" +
         " group by candidate),\n" +
@@ -96,7 +96,7 @@ public class ResultRepositoryImpl implements ResultRepository {
     }
 
     @Override
-    public List<CandidateTop> getResultsByElectionIdAndAmounts(Long electionId, int regionAmount, int positionAmount)
+    public List<CandidateTop> getNTopResultsInMRegions(Long electionId, int regionAmount, int positionAmount)
     {
         String queryString ="\n" +
                 "with all_votes as (select count(votes.id) as general_count, elections.id as election from votes\n" +
@@ -145,7 +145,7 @@ public class ResultRepositoryImpl implements ResultRepository {
     }
 
     @Override
-    public  List<CandidateAvg> getResultsByElection2IdForAvgAge(Long electionId)
+    public  List<CandidateAvg> getVotersAvgAge(Long electionId)
     {
         String queryString ="\n" +
                 "with  needed as (select   candidate_id,  \n" +
@@ -164,14 +164,14 @@ public class ResultRepositoryImpl implements ResultRepository {
         List<CandidateAvg> result = new ArrayList<>();
         resultList.forEach(object -> {
             CandidateAvg candidateAvg = new CandidateAvg();
-            candidateAvg.setName(String.valueOf(object[0]));
+            candidateAvg.setCandidateName(String.valueOf(object[0]));
             candidateAvg.setAvgAge(String.valueOf(object[1]));
             result.add(candidateAvg);
         });
         return result;
     }
     @Override
-    public List<CandidateCitizen> getResultsByElectionIdForCandidatesAndCitizens(Long electionId)
+    public List<CandidateCitizen> getCitizenAndTheCandidateHeVotedFor(Long electionId)
     {
         String queryString = " \n" +
                 "with\n" +
@@ -219,9 +219,9 @@ public class ResultRepositoryImpl implements ResultRepository {
         List<CandidateCitizen> result = new ArrayList<>();
         resultList.forEach(object -> {
             CandidateCitizen candidateCitizen = new CandidateCitizen();
-            candidateCitizen.setNameCz(String.valueOf(object[0].toString()));
+            candidateCitizen.setCitizenName(String.valueOf(object[0].toString()));
             candidateCitizen.setRegion(String.valueOf(object[1].toString()));
-            candidateCitizen.setNameCt(String.valueOf(object[2].toString()));
+            candidateCitizen.setCandidateName(String.valueOf(object[2].toString()));
 
             result.add(candidateCitizen);
         });

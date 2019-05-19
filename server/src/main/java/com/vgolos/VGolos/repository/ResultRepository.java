@@ -31,10 +31,10 @@ public interface ResultRepository {
             nativeQuery = true
     )*/
     List<CandidateResult> getResultsByElectionIdAndMinPercentage(Long electionId, int minPercentage);
-    List<CandidateRegion> getResultsByElectionIdAndWinner(Long electionId);
-    List<CandidateTop> getResultsByElectionIdAndAmounts(Long electionId, int regionAmount, int positionAmount);
-    List<CandidateAvg> getResultsByElection2IdForAvgAge(Long electionId);
-    List<CandidateCitizen> getResultsByElectionIdForCandidatesAndCitizens(Long electionId);
+    List<CandidateRegion> getWinnersInRegions(Long electionId);
+    List<CandidateTop> getNTopResultsInMRegions(Long electionId, int regionAmount, int positionAmount);
+    List<CandidateAvg> getVotersAvgAge(Long electionId);
+    List<CandidateCitizen> getCitizenAndTheCandidateHeVotedFor(Long electionId);
 
 
 

@@ -1,17 +1,17 @@
 package com.vgolos.VGolos.dto;
 
 public class CandidateAvg {
-    private String name;
+    private String candidateName;
     private String avgAge;
 
 
 
-    public String getName() {
-        return name;
+    public String getCandidateName() {
+        return candidateName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCandidateName(String name) {
+        this.candidateName = candidateName;
     }
 
     public String getAvgAge(){return avgAge;}

@@ -2,24 +2,24 @@ package com.vgolos.VGolos.dto;
 
 public class CandidateCitizen {
 
-    private String nameCz;
+    private String citizenName;
     private String region;
-    private String nameCt;
+    private String candidateName;
 
 
-    public String getNameCt() {
-        return nameCt;
+    public String getCandidateName() {
+        return candidateName;
     }
 
-    public void setNameCt(String nameCt) {
-        this.nameCt = nameCt;
+    public void setCandidateName(String candidateName) {
+        this.candidateName = candidateName;
     }
-    public String getNameCz() {
-        return nameCz;
+    public String getCitizenName() {
+        return citizenName;
     }
 
-    public void setNameCz(String nameCz) {
-        this.nameCz = nameCz;
+    public void setCitizenName(String citizenName) {
+        this.citizenName = citizenName;
     }
 
     public void setRegion(String region) {

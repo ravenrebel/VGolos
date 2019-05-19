@@ -30,7 +30,7 @@ public class ResultController {
         this.citizenRepository = citizenRepository;
     }
 
-    @GetMapping("elections/{electionId}/{minPercentage}")
+    @GetMapping("elections/winners/{electionId}/{minPercentage}")
     ResponseEntity<List<CandidateResult>> getResultsByElectionId(
             @PathVariable Long electionId, @PathVariable int minPercentage) {
         return new ResponseEntity<>(resultRepository
@@ -38,34 +38,34 @@ public class ResultController {
                 HttpStatus.OK);
     }
 
-    @GetMapping("elections/{electionId}")
+    @GetMapping("elections/regionAndItsWinner/{electionId}")
     ResponseEntity<List<CandidateRegion>> getWinnerResultsByElectionId(
             @PathVariable Long electionId) {
         return new ResponseEntity<>(resultRepository
-                .getResultsByElectionIdAndWinner(electionId),
+                .getWinnersInRegions(electionId),
                 HttpStatus.OK);
     }
 
-    @GetMapping("elections/{electionId}/{regionAmount}/{positionAmount}")
+    @GetMapping("elections/topResults/{electionId}/{regionAmount}/{positionAmount}")
     ResponseEntity<List<CandidateTop>> getResultsByElectionId(
             @PathVariable Long electionId, @PathVariable int regionAmount, @PathVariable int positionAmount) {
         return new ResponseEntity<>(resultRepository
-                .getResultsByElectionIdAndAmounts(electionId, regionAmount, positionAmount),
+                .getNTopResultsInMRegions(electionId, regionAmount, positionAmount),
                 HttpStatus.OK);
     }
 
-    @GetMapping("elections/avg/{electionId}")
+    @GetMapping("elections/averageAge/{electionId}")
     ResponseEntity<List<CandidateAvg>>
     getResultsByElection2Id(@PathVariable Long electionId) {
         return new ResponseEntity<>(resultRepository
-                .getResultsByElection2IdForAvgAge(electionId),
+                .getVotersAvgAge(electionId),
                 HttpStatus.OK);
     }
-    @GetMapping("elections/candidates/{electionId}")
+    @GetMapping("elections/citizensAndCandidates/{electionId}")
     ResponseEntity<List<CandidateCitizen>>
     getResultsByElectionId4(@PathVariable Long electionId) {
         return new ResponseEntity<>(resultRepository
-                .getResultsByElectionIdForCandidatesAndCitizens(electionId),
+                .getCitizenAndTheCandidateHeVotedFor(electionId),
                 HttpStatus.OK);
     }
 
