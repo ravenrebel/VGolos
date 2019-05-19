@@ -1,13 +1,33 @@
 <button *ngIf="signedIn" (click)="logout()">Log Out</button>
 <button *ngIf="!signedIn" (click)="signIn()">Sign In</button>
 <a [routerLink]="['accounts']">accounts</a>
-<div class="headerBar">
-    <ul>
-        <div class="homePage">V-Golos</div>
-        <li>Elections</li>
-        <li>Voters</li>
-        <li>Create</li>
-        <div class="singIn">Sign in</div>
-        <div class="signOut">Sign Out</div>
-    </ul>
+<div class="container-fluid block">
+    <div class="row">
+        <div class="offset-1 offset-md-1 col-10 col-md-10 menuNavigation">
+            <div class="row text-center h-100">
+                <div class="col-3 col-md-3 my-auto">
+                    <span class="largeWord"><a href="">V-Golos</a></span>
+                </div>
+                <div class="col-1 col-md-1 my-auto "><span class="italics"><a href="">Elections</a></span></div>
+                <div class="col-1 col-md-1 my-auto"><span class="italics"><a href="">Voters</a></span></div>
+                <div class="col-1 col-md-1 my-auto"><span class="italics"><a href="">Create</a></span></div>
+                <div class="offset-4 offset-md-4 col-2 col-md-2 my-auto">
+                    <div class="row ">
+                        <!-- LogOut <img src="https://img.icons8.com/metro/26/000000/export.png"> -->
+                        <div class="col-1 col-md-1 ">
+                            <button *ngIf="signedIn" (click)="logout()"><img class="invert" src="https://img.icons8.com/metro/26/000000/export.png"></button>
+                        </div>
+                        <!-- Sign In <img src="https://img.icons8.com/metro/26/000000/import.png"> -->
+                        <div class="col-1 col-md-1 ">
+                                <button *ngIf="!signedIn" (click)="signIn()"><img class="invert" src="https://img.icons8.com/metro/26/000000/import.png"></button>
+                        </div>
+                        <div class="col-4 col-md-4 ">
+                            <button *ngIf="signedIn" (click)="logout()"><span class="italics">Log&nbsp;Out</span></button>
+                            <button *ngIf="!signedIn" (click)="signIn()"><span class="italics">Sign&nbsp;In</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
