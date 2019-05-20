@@ -1,6 +1,15 @@
 .body{
+    margin: auto !important;
+    min-height: 100vh;
+    width:80% !important;
+    background: #FFFFFF;
+    position:relative
+}
+.mainPage{
+    width: 100% !important;
+    margin: auto !important;
+    width: 100% !important;
     background: #eeeeee !important;
-    font-family:"verdana" !important;
-    width: 100%;
-    height: 100vh;
+    height: 100% !important;
+
 }
