@@ -27,4 +27,7 @@ export class VoteService {
   findbylogin(id:number): Observable<Vote>{
     return this.http.get<Vote>(this.baseUrl+ "id/"+id);
       }
+      isExisting(electionId:number,citizenId:number): Observable<Boolean>{
+        return this.http.get<Boolean>(this.baseUrl+ "isExisting/"+electionId+citizenId);
+          }
 }
