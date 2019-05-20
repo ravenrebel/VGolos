@@ -1,5 +1,7 @@
 package com.vgolos.VGolos.controller;
 
+import com.vgolos.VGolos.dto.VoteDTO;
+import com.vgolos.VGolos.dto.converter.VoteConverter;
 import com.vgolos.VGolos.entity.Vote;
 import com.vgolos.VGolos.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,28 +17,31 @@ import java.util.List;
 @RequestMapping("/votes")
 public class VoteController {
     private VoteService voteService;
+    private VoteConverter voteConverter;
 
     @Autowired
-    public VoteController(VoteService voteService) {
+    public VoteController(VoteService voteService, VoteConverter voteConverter) {
         this.voteService = voteService;
+        this.voteConverter = voteConverter;
     }
 
     @GetMapping
-    public ResponseEntity<List<Vote>> findAll() {
+    public ResponseEntity<List<VoteDTO>> findAll() {
         List<Vote> votes = voteService.findAll();
-        return new ResponseEntity<>(votes, HttpStatus.OK);
+        return new ResponseEntity<>(voteConverter.convertToDTO(votes), HttpStatus.OK);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Vote> create(@RequestBody Vote vote) {
-        Vote createdVote = voteService.createVote(vote);
-        return new ResponseEntity<>(createdVote, HttpStatus.CREATED);
+    public ResponseEntity<VoteDTO> create(@RequestBody VoteDTO voteDTO) {
+        Vote createdVote = voteService.createVote(voteConverter.convertToEntity(voteDTO));
+        return new ResponseEntity<>(voteConverter.convertToDTO(createdVote), HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Vote> update(@RequestBody Vote vote) {
-        return new ResponseEntity<>(voteService.update(vote),
-                HttpStatus.OK);
+    public ResponseEntity<VoteDTO> update(@RequestBody VoteDTO voteDTO) {
+        Vote vote = voteService.update(voteConverter.convertToEntity(voteDTO));
+        return new ResponseEntity<>(voteConverter
+                .convertToDTO(vote), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -46,9 +51,14 @@ public class VoteController {
 
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Vote> findByLogin(@PathVariable Long id) {
-        return new ResponseEntity<>(voteService.findById(id),
+    public ResponseEntity<VoteDTO> findByLogin(@PathVariable Long id) {
+        return new ResponseEntity<>(voteConverter.convertToDTO(voteService.findById(id)),
                 HttpStatus.OK);
     }
 
+    @GetMapping("/isExisting/{electionId}/{citizenId}")
+    public ResponseEntity<Boolean> isExisting(@PathVariable Long electionId, @PathVariable Long citizenId) {
+        return new ResponseEntity<>((voteService.isExisting(electionId, citizenId)),
+                HttpStatus.OK);
+    }
 }

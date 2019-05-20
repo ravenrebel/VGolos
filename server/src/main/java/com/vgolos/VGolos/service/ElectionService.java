@@ -38,14 +38,13 @@ public class ElectionService {
         election.setCandidates(new LinkedList<>());
         election.setVotes(new LinkedList<>());
         Election createdElection = electionRepository.save(election);
-
         return createdElection;
     }
 
     public Election update(Election election) {
         Election existingElection = electionRepository.findById(election.getId()).get();
         existingElection.setCandidates(election.getCandidates());
-        existingElection.setVotes(election.getVotes());
+        //existingElection.setVotes(election.getVotes());
         Date currentDate = new Date();
         if (election.getBeginningOfVoting().before(currentDate)){ existingElection.setBeginningOfVoting(election.getBeginningOfVoting()); }
         if (election.getEndOfVoting().before(currentDate)){ existingElection.setEndOfVoting(election.getEndOfVoting()); }

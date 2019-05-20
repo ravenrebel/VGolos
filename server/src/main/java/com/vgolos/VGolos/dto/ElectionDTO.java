@@ -10,8 +10,8 @@ public class ElectionDTO {
     private int tour;
     private Date beginningOfVoting;
     private Date endOfVoting;
-    private List<Long> candidatIds;
-    private List<Long> voteIds;
+    private List<CandidateDTO> candidates;
+    private List<VoteDTO> votes;
 
     public Long getId() {
         return id;
@@ -61,19 +61,19 @@ public class ElectionDTO {
         this.endOfVoting = endOfVoting;
     }
 
-    public List<Long> getCandidatIds() {
-        return candidatIds;
+    public List<CandidateDTO> getCandidates() {
+        return candidates;
     }
 
-    public void setCandidatIds(List<Long> candidatIds) {
-        this.candidatIds = candidatIds;
+    public void setCandidates(List<CandidateDTO> candidatIds) {
+        this.candidates = candidatIds;
     }
 
-    public List<Long> getVoteIds() {
-        return voteIds;
+    public List<VoteDTO> getVotes() {
+        return votes;
     }
 
-    public void setVoteIds(List<Long> voteIds) {
-        this.voteIds = voteIds;
+    public void setVotes(List<VoteDTO> voteIds) {
+        this.votes = voteIds;
     }
 }

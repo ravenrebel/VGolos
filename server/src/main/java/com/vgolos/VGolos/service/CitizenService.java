@@ -45,13 +45,7 @@ public class CitizenService {
     }
 
     public List<Citizen> search(String name) {
-        String[] names = name.split("");
-        List<Citizen> result;
-        if (names.length > 1) {
-            result = citizenRepository.findByFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCase(names[1], names[0]);
-        }
-        else result = citizenRepository.findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(names[0], names[0]);
-        return result;
+       return citizenRepository.findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(name, name);
     }
 
     public Citizen createCitizen(Citizen citizen) {
