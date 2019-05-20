@@ -1,5 +1,6 @@
 *{
     font-family: "Times New Roman", Times, serif;
+    
 }
 a{
     text-decoration: none !important;
@@ -14,17 +15,16 @@ button{
     color: #AAAAAA !important;
     padding: 0 !important;
     margin: 0 !important;
-
 }
 .menuNavigation{
     box-shadow:0 5px 5px 0 rgba(0,0,0,0.5); 
     background: #000000 !important;
     color:#AAAAAA !important;
-
+    margin:0px !important;
     width: 80% !important;
     height: 100px !important;
     position: fixed !important;
-    top:10px;
+    /* top:10px; */
 }
 .largeWord{
     font-size:30px;
@@ -33,4 +33,10 @@ button{
 .italics{
     font-style: italic;
     font-size: 18px;
+}
+.btmDropDown{
+    background: #ffffff;
+}
+.textInput{
+    color:rgba(0,0,0,0) !important;
 }
