@@ -74,4 +74,10 @@ public class CitizenController {
         List<Citizen> citizens = citizenService.search(name);
         return new ResponseEntity<>(citizens, HttpStatus.OK);
     }
+
+    @GetMapping("/isAdult/{id}")
+    public ResponseEntity<Boolean> isAdult(@PathVariable Long id) {
+        return new ResponseEntity<>(citizenService.isAdult(id),
+                HttpStatus.OK);
+    }
 }

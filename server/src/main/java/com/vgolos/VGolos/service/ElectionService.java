@@ -61,4 +61,11 @@ public class ElectionService {
         if (election.getEndOfVoting().before(currentDate) || election.getEndOfVoting().equals(currentDate)) return true;
         else return false;
     }
+
+    public boolean isStarted(Long id){
+        Election election = electionRepository.findById(id).get();
+        Date currentDate = new Date();
+        if (election.getBeginningOfVoting().before(currentDate) || election.getEndOfVoting().equals(currentDate)) return true;
+        else return false;
+    }
 }

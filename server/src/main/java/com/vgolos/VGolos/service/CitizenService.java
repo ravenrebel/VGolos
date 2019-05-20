@@ -64,4 +64,11 @@ public class CitizenService {
     public void deleteById(Long id) {
         citizenRepository.deleteById(id);
     }
+
+    public boolean isAdult(Long id){
+        if (getAgeInDays(id) >= 6553){
+            return true;
+        }
+        else return false;
+    }
 }
