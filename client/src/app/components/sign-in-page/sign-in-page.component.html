@@ -1,9 +1,37 @@
+<form (ngSubmit)="onSubmit()" class="signInPage">
+  <div class="container-fluid block boxShadow">
+    <div class="row">
+      <div class=" col-12 col-md-12 text-center signIpText"><span class="textSignIp">Sign In</span></div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-12 text-center"><input name="login" [(ngModel)]="creds.login" placeholder="login"></div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-12 text-center"><input name="password" type="password" [(ngModel)]="creds.password"
+          placeholder="password"></div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-12 text-center"><button type="submit" value="submit" class="submit">Submit</button></div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-12 text-center"><a [routerLink]="['/signup/citizen']">Have not got an account?</a></div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-12 text-center">
+        <div class="offset-9 offset-md-9 col-3 col-md-3 text-center"><button class="cancel"
+            (click)="goBack()">Cancel</button></div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- 
 <form (ngSubmit)="onSubmit()">
   Login <input name="login" [(ngModel)]="creds.login" placeholder="login" ><br>
   Password <input name="password" type="password" [(ngModel)]="creds.password" placeholder="password"><br>
   <input type="submit" value="submit">
-</form>
+  <button  class="cancel" (click)="goBack()">Cancel</button>
+</form> -->
 <a [routerLink]="['/signup']">Sign Up as User</a>
 <a [routerLink]="['/signup/citizen']">Sign Up as Citizen</a>
-<div>login {{creds.login}}</div>
-<div>{{creds.password}}</div>
+<!-- <div>login {{creds.login}}</div>
+<div>{{creds.password}}</div> -->

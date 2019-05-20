@@ -1,10 +1,10 @@
-<form class="pageSignUp ">
+<form (ngSubmit)="onSubmit()" class="pageSignUp">
   <div class="container-fluid block boxShadow  ">
     <div class="signUpText"><span class="textSignUp">SignUp</span></div>
     <div class="row text-center  ">
       <div class="col-4 col-md-4"><input name="firstName" [(ngModel)]="creds.firstName" placeholder="First Name"></div>
       <div class="col-4 col-md-4">
-        <input name="region" autocomplete="off" list="listOfRegion" [(ngModel)]="creds.region" placeholder="Region">
+        <input name="region" list="listOfRegion" [(ngModel)]="creds.region" placeholder="Region">
         <datalist  id="listOfRegion">
           <option value="Cherkasy"></option>
           <option value="Chernihiv"></option>
@@ -54,8 +54,8 @@
       <div class="co l-8 col-md-8  ">
         <a class="vidstypPerfectForNastya" [routerLink]="['/signin']">Already have an account?</a>
       </div>
-      <div class="col-2 col-md-2"><button class="submit">Submit</button></div>
-      <div class="col-2 col-md-2"><button class="cancel">Cancel</button></div>
+      <div class="col-2 col-md-2"><button type="submit" value="submit" class="submit">Submit</button></div>
+      <div class="col-2 col-md-2"><button  class="cancel" (click)="goBack()">Cancel</button></div>
     </div>
     <!-- <a href="">Already have an account?</a>
     <a [routerLink]="['/signin']">Sign In</a>
