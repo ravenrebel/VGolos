@@ -4,6 +4,8 @@ import { CustomeAuthService } from 'src/app/service/custome-auth.service';
 import { SignInForm } from 'src/app/model/authentication/signin-form.model';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-sign-in-page',
@@ -17,7 +19,8 @@ export class SignInPageComponent implements OnInit {
   constructor(
     private authService: CustomeAuthService,
     private tokenStorage: TokenStorageService,
-    private router: Router
+    private router: Router,
+    private location:Location
   ) { }
 
   ngOnInit() {
@@ -26,6 +29,9 @@ export class SignInPageComponent implements OnInit {
     }
   }
 
+  goBack(): void{
+    this.location.back();
+  }
   onSubmit(): void {
     this.authService.attemptAuth(this.creds).subscribe(
       data => {

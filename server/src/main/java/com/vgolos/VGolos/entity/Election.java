@@ -20,10 +20,10 @@ public class Election {
     @Column(nullable = false)
     private int tour;
     @Column
-    @Temporal(TemporalType.TIME)
+    //@Temporal(TemporalType.TIME)
     private Date beginningOfVoting;
     @Column
-    @Temporal(TemporalType.TIME)
+    //@Temporal(TemporalType.TIME)
     private Date endOfVoting;
     @OneToMany(mappedBy = "election")
     @OnDelete(action = OnDeleteAction.CASCADE)

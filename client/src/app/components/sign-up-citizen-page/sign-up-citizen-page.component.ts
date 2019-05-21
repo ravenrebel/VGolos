@@ -3,6 +3,7 @@ import { SignupCitizenForm } from 'src/app/model/authentication/signup-citizen-f
 import { CustomeAuthService } from 'src/app/service/custome-auth.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-sign-up-citizen-page',
@@ -16,7 +17,8 @@ export class SignUpCitizenPageComponent implements OnInit {
   constructor(
     private authService: CustomeAuthService,
     private tokenStorage: TokenStorageService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -24,7 +26,9 @@ export class SignUpCitizenPageComponent implements OnInit {
       this.router.navigate(['']);
     }
   }
-
+  goBack(): void{
+    this.location.back();
+  }
   onSubmit(): void {
     this.authService.signUpCitizen(this.creds).subscribe(
       data => {
