@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CandidateControllerService } from './candidate-controller.service';
+import { CandidateControllerService } from './candidate.service';
 
 describe('CandidateControllerService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
