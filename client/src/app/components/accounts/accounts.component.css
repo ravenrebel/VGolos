@@ -85,3 +85,20 @@ body{
 .btm-light-grey:hover{
     background: var(--color-fon-btn-hover);
 }
+.btm-nav-collapse-deploy:hover{
+    transform: var(--transform-increase);
+    box-shadow: var(--box-shadow);
+
+}.btm-exit:hover{
+    transform: var(--transform-increase);
+    box-shadow: var(--box-shadow);
+}
+.btm-light-grey, .btm-grey{
+    font-weight: var(--b);
+    font-size: 24px !important;
+    padding-top: 5px !important;
+}
+
+.btm-menu:hover{
+    background: var(--color-fon-btn-hover);
+}
