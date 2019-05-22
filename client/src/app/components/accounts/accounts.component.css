@@ -69,3 +69,19 @@ body{
     font-size: 14px !important;
     opacity: 0.75 !important;
 }
+
+.btm-grey{
+    background: var(--color-fon-btn);
+    transform:var(--transform-min);
+}
+.btm-light-grey{
+    background: var(--color-fon-btn-light);
+    transform:var(--transform-min);
+}
+
+.btm-grey:hover{
+    background: var(--color-fon-btn-hover);
+}
+.btm-light-grey:hover{
+    background: var(--color-fon-btn-hover);
+}
