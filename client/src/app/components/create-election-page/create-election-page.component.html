@@ -1,3 +1,37 @@
-<p>
-  create-election-page works!
-</p>
+<form class="pageCreate">
+    <div class="container-fluid block">
+        <div class="row">
+            <div class="col-3 col-md-3">create</div>
+        </div>
+        <div class="row">
+            <div class="col-4 col-md-4"><input name="name" type="string" [(ngModel)]="creds.name" placeholder="Name">
+            </div>
+            <div class="col-4 col-md-4"><input name="beginningOfVoting" type="date"
+                    [(ngModel)]="creds.beginningOfVoting" placeholder="Start Date">
+                </div>
+            <!-- <div class="col-4 col-md-4">start time</div> -->
+        </div>
+        <div class="row">
+            <div class="col-4 col-md-4"><input name="tour" type="number" [(ngModel)]="creds.tour" placeholder="Tour">
+            </div>
+            <div class="col-4 col-md-4"><input name="endOfVoting" type="date" [(ngModel)]="creds.endOfVoting"
+                    placeholder="End Date"></div>
+            <!-- <div class="col-4 col-md-4">end time</div> -->
+
+        </div>
+        <div class="row">
+            <div class="col-4 col-md-4"><input name="year" type="number" [(ngModel)]="creds.year" placeholder="Year">
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-8 offset-md-8 col-2 col-md-2"><button type="submit" value="submit"
+                    class="submit">Submit</button></div>
+            <div class="col-2 col-md-2"><button class="cancel" (click)="goBack()">Cancel</button></div>
+        </div>
+    </div>
+    
+<a [routerLink]="['/signup']">create</a>
+<a [routerLink]="['elections/active']">Active</a>
+</form>
+<a [routerLink]="['/signup']">create</a>
+<a [routerLink]="['elections/active']">Active</a>

@@ -5,7 +5,7 @@
       <div class="col-4 col-md-4"><input name="firstName" [(ngModel)]="creds.firstName" placeholder="First Name"></div>
       <div class="col-4 col-md-4">
         <input name="region" list="listOfRegion" [(ngModel)]="creds.region" placeholder="Region">
-        <datalist  id="listOfRegion">
+        <datalist id="listOfRegion">
           <option value="Cherkasy"></option>
           <option value="Chernihiv"></option>
           <option value="Chernivtsi"></option>
@@ -55,13 +55,10 @@
         <a class="vidstypPerfectForNastya" [routerLink]="['/signin']">Already have an account?</a>
       </div>
       <div class="col-2 col-md-2"><button type="submit" value="submit" class="submit">Submit</button></div>
-      <div class="col-2 col-md-2"><button  class="cancel" (click)="goBack()">Cancel</button></div>
+      <div class="col-2 col-md-2"><button class="cancel" (click)="goBack()">Cancel</button></div>
     </div>
     <!-- <a href="">Already have an account?</a>
-    <a [routerLink]="['/signin']">Sign In</a>
-
-    <a [routerLink]="['/signin']">Already have an account?</a>
-    <a [routerLink]="['/signup']">Sign Up as User</a> -->
+  <a [routerLink]="['/signin']">Sign In</a> -->
   </div>
   <!-- <form (ngSubmit)="onSubmit()">
     First Name <input name="firstName" [(ngModel)]="creds.firstName" placeholder="First Name"><br>
