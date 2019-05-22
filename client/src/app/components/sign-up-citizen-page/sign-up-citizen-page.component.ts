@@ -30,8 +30,7 @@ export class SignUpCitizenPageComponent implements OnInit {
     this.location.back();
   }
   onSubmit(): void {
-    this.authService.signUpCitizen(this.creds).subscribe(
-      data => {
+    this.authService.signUpCitizen(this.creds).subscribe( data => {
         this.tokenStorage.saveToken(data);
         this.authService.getCurrentUser().subscribe(
           user => this.tokenStorage.saveAuthorities(user.role));

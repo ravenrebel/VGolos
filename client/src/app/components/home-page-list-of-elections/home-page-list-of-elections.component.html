@@ -1,3 +1,24 @@
-<p>
-  home-page-list-of-elections works!
-</p>
+<div class="container-fluid block">
+    <div class="row">
+      <div class="col-12 col-md-12 text-center">List of elections</div>
+    </div>
+    <div class="row">
+      <div class="offset-8 offset-md-8 col-4 col-md-4">search</div>
+    </div>
+    <div class="row">
+        <div class="col-1 col-md-1">All</div>
+        <div class="col-1 col-md-1"><a [routerLink]="['elections/active']">Active</a></div>
+        <div class="col-1 col-md-1"><a [routerLink]="['elections/completed']">Complete</a></div>
+    </div>
+    <div class="elementOfElection">
+      <div class="row">
+        <div class="col-12 col-md-12">Name of elections, tour, year</div>
+      </div>
+      <div class="row">
+        <div class="offset-6 offset-md-6 col-1 col-md-1">Candidates</div>
+        <div class="col-1 col-md-1">Edit</div>
+        <div class="col-1 col-md-1">Delete</div>
+        <div class="col-3 col-md-3 text-cener">Button to Vote</div>
+      </div>
+    </div>
+  </div>
