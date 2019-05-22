@@ -28,14 +28,6 @@ export class VoteService {
   delete(id: number): Observable<Empty> {
     return this.http.delete<Empty>(this.baseUrl + "delete/" + id);
   }
-<<<<<<< HEAD
-  findbylogin(id:number): Observable<Vote>{
-    return this.http.get<Vote>(this.baseUrl+ "id/"+id);
-      }
-      isExisting(electionId:number,citizenId:number): Observable<Boolean>{
-        return this.http.get<Boolean>(this.baseUrl+ "isExisting/"+electionId+citizenId);
-          }
-=======
 
   findbylogin(id:number): Observable<VoteDTO>{
     return this.http.get<VoteDTO>(this.baseUrl + "id/" + id);
@@ -44,5 +36,4 @@ export class VoteService {
   isExisting(electionId:number, citizenId:number): Observable<Boolean>{
     return this.http.get<Boolean>(this.baseUrl + "isExisting" + electionId + citizenId);
   }
->>>>>>> 11a286280680f3ed8c98fe75c58c110bd00ce5cc
 }
