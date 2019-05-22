@@ -6,13 +6,27 @@
     padding-right: 10px !important;
     padding-left: 10px !important;
 } 
+
 .col-md-five {
     width: 20% !important;
     float: left !important;
 }
+
 @media (min-width: 992px) {
     .col-md-five {
         width: 20% !important;
         float: left !important;
     }
 }
+
+:root{
+    --color-fon: #BDBEBF;
+    --color-fon-btn: #D7D8D9;
+    --color-fon-btn-light: #F2F2F2;
+    --color-fon-btn-hover: #979798;
+    --b: bold !important;
+    --transform-increase: scale(1.1);
+    --transform-min:scale(0.99, 0.93) !important;
+    --box-shadow: 0px 0px 5px 3px rgba(255,255,255,0.5) !important;
+    }
+    
