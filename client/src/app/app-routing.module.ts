@@ -8,6 +8,10 @@ import { CreateElectionPageComponent } from './components/create-election-page/c
 import { HomePageListOfElectionsComponent } from './components/home-page-list-of-elections/home-page-list-of-elections.component';
 import { ListOfElectionsActiveComponent } from './components/list-of-elections-active/list-of-elections-active.component';
 import { ListOfElectionsCompletedComponent } from './components/list-of-elections-completed/list-of-elections-completed.component';
+import { ResultCitizenPageComponent } from './components/result-citizen-page/result-citizen-page.component';
+import { ResultAdminPageComponent } from './components/result-admin-page/result-admin-page.component';
+import { ResultStatisticsAverageAgePageComponent } from './components/result-statistics-average-age-page/result-statistics-average-age-page.component';
+import { ResultVotersInTheirCityPageComponent } from './components/result-voters-in-their-city-page/result-voters-in-their-city-page.component';
 
 const routes: Routes = [
   { path: 'signin', component: SignInPageComponent },
@@ -17,7 +21,11 @@ const routes: Routes = [
   { path: 'create', component: CreateElectionPageComponent },
   { path: 'elections', component: HomePageListOfElectionsComponent},
   { path: 'elections/active', component:ListOfElectionsActiveComponent},
-  { path: 'elections/completed', component:ListOfElectionsCompletedComponent}
+  { path: 'elections/completed', component:ListOfElectionsCompletedComponent},
+  { path: 'result', component:ResultCitizenPageComponent},
+  { path: 'result/admin', component:ResultAdminPageComponent},
+  { path: 'result/statis', component:ResultStatisticsAverageAgePageComponent},
+  { path: 'result/voters', component:ResultVotersInTheirCityPageComponent}
 ];
 
 @NgModule({
