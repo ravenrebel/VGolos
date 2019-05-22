@@ -10,13 +10,13 @@ import { ElectionDTO } from '../model/election-dto';
 })
 export class ElectionService {
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'http://localhost:8080/election/';
+  baseUrl: string = 'http://localhost:8080/elections/';
 
   findAll(): Observable<ElectionDTO[]> {
     return this.http.get<ElectionDTO[]>(this.baseUrl);
   }
 
-  create(election:Election):Observable<ElectionDTO> {
+  create(election:ElectionDTO):Observable<ElectionDTO> {
     return this.http.post<ElectionDTO>(this.baseUrl + "create", election);
   }
 

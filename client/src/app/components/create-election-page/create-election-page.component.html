@@ -1,26 +1,26 @@
-<form class="pageCreate">
+<form (ngSubmit)="create()" class="pageCreate">
     <div class="container-fluid block">
         <div class="row">
             <div class="col-3 col-md-3">create</div>
         </div>
         <div class="row">
-            <div class="col-4 col-md-4"><input name="name" type="string" [(ngModel)]="creds.name" placeholder="Name">
+            <div class="col-4 col-md-4"><input name="name" type="string" [(ngModel)]="election.name" placeholder="Name">
             </div>
             <div class="col-4 col-md-4"><input name="beginningOfVoting" type="date"
-                    [(ngModel)]="creds.beginningOfVoting" placeholder="Start Date">
+                    [(ngModel)]="election.beginningOfVoting" placeholder="Start Date">
                 </div>
             <!-- <div class="col-4 col-md-4">start time</div> -->
         </div>
         <div class="row">
-            <div class="col-4 col-md-4"><input name="tour" type="number" [(ngModel)]="creds.tour" placeholder="Tour">
+            <div class="col-4 col-md-4"><input name="tour" type="number" [(ngModel)]="election.tour" placeholder="Tour">
             </div>
-            <div class="col-4 col-md-4"><input name="endOfVoting" type="date" [(ngModel)]="creds.endOfVoting"
+            <div class="col-4 col-md-4"><input name="endOfVoting" type="date" [(ngModel)]="election.endOfVoting"
                     placeholder="End Date"></div>
             <!-- <div class="col-4 col-md-4">end time</div> -->
 
         </div>
         <div class="row">
-            <div class="col-4 col-md-4"><input name="year" type="number" [(ngModel)]="creds.year" placeholder="Year">
+            <div class="col-4 col-md-4"><input name="year" type="number" [(ngModel)]="election.year" placeholder="Year">
             </div>
         </div>
         <div class="row">
@@ -29,9 +29,8 @@
             <div class="col-2 col-md-2"><button class="cancel" (click)="goBack()">Cancel</button></div>
         </div>
     </div>
-    
-<a [routerLink]="['/signup']">create</a>
-<a [routerLink]="['elections/active']">Active</a>
+
 </form>
-<a [routerLink]="['/signup']">create</a>
+<a [routerLink]="['/create']">create</a><br>
 <a [routerLink]="['elections/active']">Active</a>
+  <a [routerLink]="['/signin']">Sign In</a>
