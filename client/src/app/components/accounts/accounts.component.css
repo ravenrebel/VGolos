@@ -114,3 +114,21 @@ a.menuBtn {
     color:rgba(0,0,0,0.6);
     position: relative;
 }
+
+a.menu-btn-sidebar::after{
+    content:"";
+    display:block;
+    position:absolute;
+    left:0;
+    bottom:10px;
+    height:3px;
+    width:0;
+    background:linear-gradient(to right,#6372ff 0% ,#5ca9fb 100%);
+    transition: width 0.2s;
+}
+a.menu-btn-sidebar:hover:after {
+    width:100%;
+}
+/* *{
+    font-size: 5px;
+} */
