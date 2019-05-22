@@ -109,3 +109,8 @@ body{
 .btm-nav-m:hover{
     font-weight: var(--b);
 } 
+a.menuBtn {
+    padding:10px 0;
+    color:rgba(0,0,0,0.6);
+    position: relative;
+}
