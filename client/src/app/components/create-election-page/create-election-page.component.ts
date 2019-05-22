@@ -5,11 +5,13 @@ import { ElectionDTO } from 'src/app/model/election-dto';
 import { ElectionService } from 'src/app/service/election.service';
 
 
-@Component({
+@Component(
+  {
   selector: 'app-create-election-page',
   templateUrl: './create-election-page.component.html',
   styleUrls: ['./create-election-page.component.css']
-})
+}
+)
 export class CreateElectionPageComponent implements OnInit {
 
 election: ElectionDTO = new ElectionDTO();
@@ -25,8 +27,8 @@ election: ElectionDTO = new ElectionDTO();
   }
 
   ngOnInit() {
-    // const id = Number(this.ngRoute.snapshot.paramMap.get('id'));
-    // this.electionService.findbyid(id).subscribe
+    // const id = Number(this.ngRoute.snapshot.paramMap.get('id'));-
+    // this.electionService.findbyid(id).subscribe...
   }
   
   create(): void {
