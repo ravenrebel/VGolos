@@ -34,7 +34,7 @@ public interface ResultRepository {
     List<CandidateRegion> getWinnersInRegions(Long electionId);
     List<CandidateTop> getNTopResultsInMRegions(Long electionId, int regionAmount, int positionAmount);
     List<CandidateAvg> getVotersAvgAge(Long electionId);
-    List<CandidateCitizen> getCitizenAndTheCandidateHeVotedFor(Long electionId);
+    List<CandidateCitizen> getCitizenAndTheCandidateHeVotedForWinners(Long electionId);
 
 
 
