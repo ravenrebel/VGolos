@@ -10,3 +10,9 @@
     width: 20% !important;
     float: left !important;
 }
+@media (min-width: 992px) {
+    .col-md-five {
+        width: 20% !important;
+        float: left !important;
+    }
+}
