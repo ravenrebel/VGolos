@@ -11,6 +11,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.component';
 import { SignUpCitizenPageComponent } from './components/sign-up-citizen-page/sign-up-citizen-page.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CreateElectionPageComponent } from './components/create-election-page/create-election-page.component';
+import { HomePageListOfElectionsComponent } from './components/home-page-list-of-elections/home-page-list-of-elections.component';
+import { VoteOfElectionPageComponent } from './components/vote-of-election-page/vote-of-election-page.component';
+import { ListOfElectionsActiveComponent } from './components/list-of-elections-active/list-of-elections-active.component';
+import { ListOfElectionsCompletedComponent } from './components/list-of-elections-completed/list-of-elections-completed.component';
+import { ResultCitizenPageComponent } from './components/result-citizen-page/result-citizen-page.component';
+import { ResultAdminPageComponent } from './components/result-admin-page/result-admin-page.component';
+import { ResultStatisticsAverageAgePageComponent } from './components/result-statistics-average-age-page/result-statistics-average-age-page.component';
+import { ResultVotersInTheirCityPageComponent } from './components/result-voters-in-their-city-page/result-voters-in-their-city-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +29,16 @@ import { FooterComponent } from './components/footer/footer.component';
     HeaderComponent,
     SignUpPageComponent,
     SignUpCitizenPageComponent,
-    FooterComponent
+    FooterComponent,
+    CreateElectionPageComponent,
+    HomePageListOfElectionsComponent,
+    VoteOfElectionPageComponent,
+    ListOfElectionsActiveComponent,
+    ListOfElectionsCompletedComponent,
+    ResultCitizenPageComponent,
+    ResultAdminPageComponent,
+    ResultStatisticsAverageAgePageComponent,
+    ResultVotersInTheirCityPageComponent
   ],
   imports: [
     BrowserModule,

@@ -47,7 +47,7 @@ public class ResultController {
     }
 
     @GetMapping("elections/topResults/{electionId}/{regionAmount}/{positionAmount}")
-    ResponseEntity<List<CandidateTop>> getResultsByElectionId(
+    ResponseEntity<List<CandidateTop>> getTopResultsByElectionId(
             @PathVariable Long electionId, @PathVariable int regionAmount, @PathVariable int positionAmount) {
         return new ResponseEntity<>(resultRepository
                 .getNTopResultsInMRegions(electionId, regionAmount, positionAmount),
@@ -56,16 +56,16 @@ public class ResultController {
 
     @GetMapping("elections/averageAge/{electionId}")
     ResponseEntity<List<CandidateAvg>>
-    getResultsByElection2Id(@PathVariable Long electionId) {
+    getAvgAgeResultsByElectionId(@PathVariable Long electionId) {
         return new ResponseEntity<>(resultRepository
                 .getVotersAvgAge(electionId),
                 HttpStatus.OK);
     }
     @GetMapping("elections/citizensAndCandidates/{electionId}")
     ResponseEntity<List<CandidateCitizen>>
-    getResultsByElectionId4(@PathVariable Long electionId) {
+    getResultsByElectionIdVotedForWinners(@PathVariable Long electionId) {
         return new ResponseEntity<>(resultRepository
-                .getCitizenAndTheCandidateHeVotedFor(electionId),
+                .getCitizenAndTheCandidateHeVotedForWinners(electionId),
                 HttpStatus.OK);
     }
 

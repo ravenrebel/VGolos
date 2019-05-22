@@ -171,7 +171,7 @@ public class ResultRepositoryImpl implements ResultRepository {
         return result;
     }
     @Override
-    public List<CandidateCitizen> getCitizenAndTheCandidateHeVotedFor(Long electionId)
+    public List<CandidateCitizen> getCitizenAndTheCandidateHeVotedForWinners(Long electionId)
     {
         String queryString = " \n" +
                 "with\n" +

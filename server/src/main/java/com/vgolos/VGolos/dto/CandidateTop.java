@@ -16,11 +16,11 @@ public class CandidateTop {
             this.name = name;
         }
 
-    public int getVotesCount() {
+        public int getVotesCount() {
         return votesCount;
     }
 
-    public void setVotesCount(int votesCount) {
+        public void setVotesCount(int votesCount) {
         this.votesCount = votesCount;
     }
 

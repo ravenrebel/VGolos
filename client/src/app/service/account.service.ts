@@ -29,6 +29,6 @@ export class AccountService {
   }
 
   update(account:Account): Observable<Account>{
-    return this.http.put<Account>(this.baseUrl + "update",account);
+    return this.http.put<Account>(this.baseUrl + "update", account);
   }
 }
