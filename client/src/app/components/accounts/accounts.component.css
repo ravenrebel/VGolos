@@ -1,0 +1,8 @@
+/* FOR FIVE COL*/
+.col-md-five
+{
+    position: relative !important;
+    min-height: 1px !important;
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+} 
