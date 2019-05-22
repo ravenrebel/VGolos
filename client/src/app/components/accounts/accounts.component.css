@@ -1,4 +1,4 @@
-/* FOR FIVE COL*/
+/* FOR FIVE COL
 .col-md-five
 {
     position: relative !important;
@@ -129,6 +129,6 @@ a.menu-btn-sidebar::after{
 a.menu-btn-sidebar:hover:after {
     width:100%;
 }
-/* *{
+{
     font-size: 5px;
 } */
