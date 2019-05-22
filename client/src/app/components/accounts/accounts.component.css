@@ -63,3 +63,9 @@ body{
     height: 35px !important;
     font-size: 14px !important;
 }
+
+.over-calc{
+    height: 35px !important;
+    font-size: 14px !important;
+    opacity: 0.75 !important;
+}
