@@ -23,10 +23,15 @@ export class HeaderComponent implements OnInit {
     this.route.params.forEach(params => {
       this.signedIn = this.authService.checkLoggedUser();
       this.authService.signedIn.subscribe(signedIn => this.signedIn = signedIn);
+      
       this.tokenStorage.signedIn.subscribe(signedIn => this.signedIn = signedIn);
+  
+    });
+    this.authService.getCurrentUser().subscribe(user => {
+      this.isAdmin = user.role == "ADMIN";
     });
   }
-
+  isAdmin: boolean = false;
   logout(): void {
     this.authService.logout();
     this.signedIn = false;
