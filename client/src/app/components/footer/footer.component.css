@@ -5,6 +5,10 @@
 img{
   height: 30px;
 }
+a{
+  text-decoration: none !important;
+  color: #000000;
+}
 .pageFooter{
   background: #F7F6F6;
   height: 100px;
