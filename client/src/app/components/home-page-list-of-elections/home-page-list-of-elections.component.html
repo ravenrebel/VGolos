@@ -1,28 +1,36 @@
-<div class="container-fluid block">
-    <div class="row">
-      <div class="col-12 col-md-12 text-center">List of elections</div>
+<div class="container-fluid block mainPage">
+  <div class="row">
+    <div class="col-12 col-md-12 text-center bigText">List of Elections</div>
+  </div>
+  <div class="row ">
+    <!-- <div class="offset-8 offset-md-8 col-4 col-md-4">search</div> -->
+  </div>
+  <div class="row zero">
+    <div class="col-1 col-md-1 text-center btmNavOnPageMain">All</div>
+    <div class="col-1 col-md-1 text-center btmNavOnPageNoMain"><a [routerLink]="['elections/active']">Active</a></div>
+    <div class="col-1 col-md-1 text-center btmNavOnPageNoMain"><a [routerLink]="['elections/completed']">Complete</a>
     </div>
-    <div class="row">
-      <div class="offset-8 offset-md-8 col-4 col-md-4">search</div>
-    </div>
-    <div class="row">
-        <div class="col-1 col-md-1">All</div>
-        <div class="col-1 col-md-1"><a [routerLink]="['elections/active']">Active</a></div>
-        <div class="col-1 col-md-1"><a [routerLink]="['elections/completed']">Complete</a></div>
-    </div>
-    <div *ngFor = "let election of elections" class="elementOfElection">
-      <div class="row">
-        <div class="col-12 col-md-12">{{election.name}}, {{election.tour}}, {{election.year}}</div>
-      </div>
-      <div class="row">
-        <div class="offset-6 offset-md-6 col-1 col-md-1">Candidates</div>
-        <div class="col-1 col-md-1">Edit</div>
-        <div class="col-1 col-md-1">Delete</div>
-        <div class="col-3 col-md-3 text-cener"><button type="vote" value="vote" class="vote">Vote</button></div>
-      </div>
-      <div class="row">
-        <div class="col-3 col-md-3">Start {{election.beginningOfVoting}}</div>
-        <div class="col-3 col-md-3">Finish {{election.endOfVoting}}</div>
+  </div>
+  <div class="row zero">
+    <div class="col-12 col-md-12 page100">
+      <div *ngFor="let election of elections" class="elementOfElection">
+        <div class="row ">
+          <div class="offset-1 offset-md-1 col-11 col-md-11">{{election.name}} Tour {{election.tour}}, {{election.year}}</div>
+        </div>
+        <div class="row">
+          <div *ngIf="signedIn" class="offset-9 offset-md-9"></div>
+          <div *ngIf="!signedIn"  class="offset-6 offset-md-6 col-1 col-md-1 btnService">Candidates</div>
+          <div *ngIf="!signedIn"  class="col-1 col-md-1 btnService">Edit</div>
+
+          <div *ngIf="!signedIn"  class="col-1 col-md-1 btnService">Delete</div>
+          <div class="col-3 col-md-3 text-center"><button type="vote" value="vote" class="vote">Vote</button></div>
+        </div>
+        <div class="row">
+          <div class="offset-1 offset-md-1 col-3 col-md-3">Start {{election.beginningOfVoting}}</div>
+          <div class="col-3 col-md-3">Finish {{election.endOfVoting}}</div>
+        </div>
       </div>
     </div>
   </div>
+
+</div>

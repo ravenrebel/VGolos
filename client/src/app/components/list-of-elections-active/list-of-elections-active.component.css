@@ -1,0 +1,64 @@
+
+.mainPage{
+    padding-top: 125px;
+}
+.btmNavOnPageMain{
+    border:1px solid #bbbbbb !important;
+
+    background: #000000;
+    color: #ffffff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 30px;
+    box-shadow:0 1px 4px 0 rgba(0,0,0,0.5); 
+
+}
+.btmNavOnPageNoMain{
+    border:1px solid #bbbbbb !important;
+    color: #000000;
+    background: #ffffff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 30px;
+    box-shadow:0 1px 4px 0 rgba(0,0,0,0.5); 
+
+}
+.elementOfElection{
+    /* padding: 0px; */
+    /* margin: 0px; */
+    box-shadow:0 1px 4px 0 rgba(0,0,0,0.5); 
+    /* width: 100%; */
+}
+.page100{
+    width: 100%;
+    padding: 0px;
+    /* margin: 0px; */
+
+}
+.row{
+    padding: 5px 0px;
+}
+.zero{
+    padding: 0px;
+}
+.bigText{
+  font-size: 26px; 
+  font-family: 'Times New Roman', Times, serif;
+   font-weight: bold;
+}
+.vote{
+    border:0px;
+    border-radius: 5px;
+    background: #000000;
+    color:#ffffff;
+    width: 110px;
+    height: 30px;
+    font-size:16px;
+    font-weight: bold;
+    letter-spacing:2px;
+
+}
+.btnService{
+    font-style: italic;
+    text-decoration-line: underline;
+}

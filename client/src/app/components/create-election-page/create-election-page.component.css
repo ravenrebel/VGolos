@@ -1,3 +1,6 @@
+.pageCreate{
+    padding-top: 200px;
+}
 .submit{
     border:0px;
     border-radius: 5px;
@@ -20,4 +23,17 @@
     font-size:16px;
     font-weight: bold;
     letter-spacing:2px;
+}
+.row{
+    padding: 10px 0px;
+}
+.bigText{
+    font-size: 26px;
+    font-weight: bold;
+}
+.mainContainerBoxShadow{
+    border:1px solid #E0E0E0;
+    width: 100%;
+    box-shadow:0 5px 5px 0 rgba(0,0,0,0.5); 
+    padding-left: 40px;
 }

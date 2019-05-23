@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'signup', component: SignUpPageComponent },
   { path: 'signup/citizen', component: SignUpCitizenPageComponent },
   { path: 'create', component: CreateElectionPageComponent },
-  { path: 'elections', component: HomePageListOfElectionsComponent},
+  { path: '', component: HomePageListOfElectionsComponent},
   { path: 'elections/active', component:ListOfElectionsActiveComponent},
   { path: 'elections/completed', component:ListOfElectionsCompletedComponent},
   { path: 'result', component:ResultCitizenPageComponent},
