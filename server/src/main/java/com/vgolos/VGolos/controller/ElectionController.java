@@ -41,6 +41,8 @@ public class ElectionController {
 
     @PostMapping("/create")
     public ResponseEntity<ElectionDTO> create(@RequestBody ElectionDTO electionDTO) {
+        electionDTO.setCandidates(new LinkedList<>());
+        electionDTO.setVotes(new LinkedList<>());
         Election createdElection = electionService.createElection(electionConverter.convertToEntity(electionDTO));
         return new ResponseEntity<>(electionConverter
                 .convertToDTO(createdElection), HttpStatus.CREATED);
@@ -67,6 +69,10 @@ public class ElectionController {
 
     @PutMapping("/update")
     public ResponseEntity<ElectionDTO> update(@RequestBody ElectionDTO electionDTO) {
+        ElectionDTO existingElection = electionConverter
+                .convertToDTO(electionService.findById(electionDTO.getId()));
+        electionDTO.setCandidates(existingElection.getCandidates());
+        electionDTO.setVotes(existingElection.getVotes());
         Election election = electionService.update(electionConverter.convertToEntity(electionDTO));
         return new ResponseEntity<>(electionConverter
                 .convertToDTO(election), HttpStatus.OK);
