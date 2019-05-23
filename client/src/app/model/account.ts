@@ -3,4 +3,5 @@ export class Account {
     login: string;
     password: string;
     role: string;
+    citizen: boolean;
 }

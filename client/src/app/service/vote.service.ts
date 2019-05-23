@@ -11,13 +11,13 @@ import { VoteDTO } from '../model/vote-dto';
 })
 export class VoteService {
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'http://localhost:8080/vote/';
+  baseUrl: string = 'http://localhost:8080/votes/';
 
   findAll(): Observable<VoteDTO[]> {
     return this.http.get<VoteDTO[]>(this.baseUrl);
   }
 
-  create(vote:Vote):Observable<VoteDTO> {
+  create(vote:VoteDTO):Observable<VoteDTO> {
     return this.http.post<VoteDTO>(this.baseUrl+ "create", vote);
   }
 
@@ -34,6 +34,6 @@ export class VoteService {
   }
 
   isExisting(electionId:number, citizenId:number): Observable<Boolean>{
-    return this.http.get<Boolean>(this.baseUrl + "isExisting" + electionId + citizenId);
+    return this.http.get<Boolean>(this.baseUrl + "isExisting/" + electionId + "/" + citizenId);
   }
 }

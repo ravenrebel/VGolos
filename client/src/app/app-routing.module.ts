@@ -12,6 +12,7 @@ import { ResultCitizenPageComponent } from './components/result-citizen-page/res
 import { ResultAdminPageComponent } from './components/result-admin-page/result-admin-page.component';
 import { ResultStatisticsAverageAgePageComponent } from './components/result-statistics-average-age-page/result-statistics-average-age-page.component';
 import { ResultVotersInTheirCityPageComponent } from './components/result-voters-in-their-city-page/result-voters-in-their-city-page.component';
+import { VotePageComponent } from './components/vote-page/vote-page.component';
 
 const routes: Routes = [
   { path: 'signin', component: SignInPageComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'result', component:ResultCitizenPageComponent},
   { path: 'result/admin', component:ResultAdminPageComponent},
   { path: 'result/statis', component:ResultStatisticsAverageAgePageComponent},
-  { path: 'result/voters', component:ResultVotersInTheirCityPageComponent}
+  { path: 'result/voters', component:ResultVotersInTheirCityPageComponent},
+  { path: 'elections/:id/vote', component:VotePageComponent }
 ];
 
 @NgModule({

@@ -1,3 +1,8 @@
-<p>
-  vote-page works!
-</p>
+<div style="height: 200px;"></div>
+<form (ngSubmit)="vote()">
+  <div *ngFor="let candidate of election?.candidates">
+    <label>{{candidate.citizen.lastName}} {{candidate.citizen.firstName}}</label>
+    <input type="radio" value="candidate.id" (change)="onRadioChange(candidate)" name="candidate.name">
+  </div>
+  <button type="submit">Vote</button>
+</form>
