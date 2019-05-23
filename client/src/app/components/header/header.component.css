@@ -17,7 +17,6 @@ button{
     margin: 0 !important;
 }
 .menuNavigation{
-    position: relative;
     box-shadow:0 5px 5px 0 rgba(0,0,0,0.5); 
     background: #000000 !important;
     color:#AAAAAA !important;
@@ -26,6 +25,7 @@ button{
     height: 100px !important;
     position: fixed !important;
     top:0px;
+    z-index: 100;
 }
 .largeWord{
     font-size:30px;
