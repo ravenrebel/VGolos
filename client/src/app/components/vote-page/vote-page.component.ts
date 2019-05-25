@@ -8,6 +8,7 @@ import { Account } from 'src/app/model/account';
 import { VoteService } from 'src/app/service/vote.service';
 import { VoteDTO } from 'src/app/model/vote-dto';
 import { Citizen } from 'src/app/model/citizen';
+import { inspectNativeElement } from '@angular/platform-browser/src/dom/debug/ng_probe';
 
 @Component({
   selector: 'app-vote-page',
@@ -53,7 +54,7 @@ export class VotePageComponent implements OnInit {
   }
 
   vote(): void {
-    if (this.selectedCandidate != null && this.currAccount.citizen && this.canVote) {
+    if (this.selectedCandidate != null && this.currAccount.citizen && this.canVote && this.electionService.isStarted(this.election.id) && !this.electionService.isFinished(this.election.id)) {
       let citizen: Citizen = new Citizen();
       citizen.id = this.currAccount.id;
 
