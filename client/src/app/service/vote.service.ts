@@ -22,10 +22,10 @@ export class VoteService {
   }
 
   update(vote:VoteDTO): Observable<VoteDTO>{
-    return this.http.put<VoteDTO>(this.baseUrl + "update",vote);
+    return this.http.put<VoteDTO>(this.baseUrl + "update", vote);
   }
 
-  delete(id: number): Observable<Empty> {
+  delete(id:number): Observable<Empty> {
     return this.http.delete<Empty>(this.baseUrl + "delete/" + id);
   }
 

@@ -62,7 +62,7 @@ export class VotePageComponent implements OnInit {
       vote.citizen = citizen;
       vote.electionId = this.election.id;
       this.voteService.create(vote).subscribe(vote => {
-        this.router.navigate(['']);
+      this.router.navigate(['']);
       });
     }
   }

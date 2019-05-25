@@ -16,6 +16,7 @@ export class HomePageListOfElectionsComponent implements OnInit {
 
   elections: ElectionDTO[];
   signedIn: boolean = false;
+  selectedElection: ElectionDTO = null;
 
 
   constructor(
@@ -48,8 +49,8 @@ export class HomePageListOfElectionsComponent implements OnInit {
     this.router.navigate(['signin']);
   }
 
-  vote(): void {
-    // гребу
-    // this.router.navigate(['elections//vote']);
+  vote(election: ElectionDTO): void {
+    this.selectedElection = election;
+    this.router.navigate(['elections/' + this.selectedElection.id + '/vote']);
   }
 }
