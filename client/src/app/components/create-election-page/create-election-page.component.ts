@@ -32,6 +32,8 @@ election: ElectionDTO = new ElectionDTO();
   }
   
   create(): void {
+    this.election.candidates=[];
+    this.election.votes=[];
           console.log(this.election);
     this.electionService.create(this.election).subscribe( date =>
       {

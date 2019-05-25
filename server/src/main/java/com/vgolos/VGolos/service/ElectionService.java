@@ -64,4 +64,28 @@ public class ElectionService {
         if (election.getBeginningOfVoting().before(currentDate) || election.getEndOfVoting().equals(currentDate)) return true;
         else return false;
     }
+
+    public List<Election> findStarted() {
+
+        List<Election> elections = new LinkedList<>();
+        for (Election election:electionRepository.findAll()
+             ) {
+            if (isStarted(election.getId())){
+                elections.add(election);
+            }
+        }
+        return elections;
+    }
+
+    public List<Election> findFinished() {
+
+        List<Election> elections = new LinkedList<>();
+        for (Election election:electionRepository.findAll()
+        ) {
+            if (isFinished(election.getId())){
+                elections.add(election);
+            }
+        }
+        return elections;
+    }
 }
