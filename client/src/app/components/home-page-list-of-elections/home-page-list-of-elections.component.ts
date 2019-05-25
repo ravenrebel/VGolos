@@ -25,7 +25,7 @@ export class HomePageListOfElectionsComponent implements OnInit {
     private authService: CustomeAuthService,
 
     private route: ActivatedRoute,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService,
    ) 
    {
 
@@ -37,13 +37,19 @@ export class HomePageListOfElectionsComponent implements OnInit {
         this.elections = data;
       });
   }
+
   logout(): void {
     this.authService.logout();
     this.signedIn = false;
-    this.router.navigate(['signin']);
+    this.router.navigate(['']);
   }
 
   signIn(): void {
     this.router.navigate(['signin']);
+  }
+
+  vote(): void {
+    // гребу
+    // this.router.navigate(['elections//vote']);
   }
 }

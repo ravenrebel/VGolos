@@ -50,4 +50,8 @@ export class ElectionService {
   findFinished(): Observable<ElectionDTO[]> {
     return this.http.get<ElectionDTO[]>(this.baseUrl + "finished");
   }
+
+  findActive(): Observable<ElectionDTO[]> {
+    return this.http.get<ElectionDTO[]>(this.baseUrl + "active");
+  }
 }

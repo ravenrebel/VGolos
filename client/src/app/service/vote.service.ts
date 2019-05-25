@@ -21,7 +21,7 @@ export class VoteService {
     return this.http.post<VoteDTO>(this.baseUrl+ "create", vote);
   }
 
-  update(vote:Vote): Observable<VoteDTO>{
+  update(vote:VoteDTO): Observable<VoteDTO>{
     return this.http.put<VoteDTO>(this.baseUrl + "update",vote);
   }
 

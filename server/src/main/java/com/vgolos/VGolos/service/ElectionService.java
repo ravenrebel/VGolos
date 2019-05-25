@@ -88,4 +88,16 @@ public class ElectionService {
         }
         return elections;
     }
+
+    public List<Election> findActive() {
+
+        List<Election> elections = new LinkedList<>();
+        for (Election election:electionRepository.findAll()
+        ) {
+            if (isStarted(election.getId()) && !isFinished(election.getId())){
+                elections.add(election);
+            }
+        }
+        return elections;
+    }
 }

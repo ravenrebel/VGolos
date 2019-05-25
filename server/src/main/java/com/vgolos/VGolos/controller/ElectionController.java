@@ -92,5 +92,10 @@ public class ElectionController {
     public ResponseEntity<List<ElectionDTO>> findFinished() {
         return new ResponseEntity<>(electionConverter.convertToDTO(electionService.findFinished()), HttpStatus.OK);
     }
+
+    @GetMapping("active")
+    public ResponseEntity<List<ElectionDTO>> findActive() {
+        return new ResponseEntity<>(electionConverter.convertToDTO(electionService.findActive()), HttpStatus.OK);
+    }
 }
 
