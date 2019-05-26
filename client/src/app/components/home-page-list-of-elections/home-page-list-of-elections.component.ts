@@ -7,6 +7,7 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-home-page-list-of-elections',
   templateUrl: './home-page-list-of-elections.component.html',
@@ -45,5 +46,8 @@ export class HomePageListOfElectionsComponent implements OnInit {
 
   signIn(): void {
     this.router.navigate(['signin']);
+  }
+  goVote():void{
+    this.router.navigate(['elections/:id/vote'])
   }
 }
