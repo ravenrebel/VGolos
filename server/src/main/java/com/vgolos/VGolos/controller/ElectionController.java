@@ -83,6 +83,12 @@ public class ElectionController {
                 HttpStatus.OK);
     }
 
+    @GetMapping("/isActive/{id}")
+    public ResponseEntity<Boolean> isActive(@PathVariable Long id) {
+        return new ResponseEntity<>(electionService.isActive(id),
+                HttpStatus.OK);
+    }
+
     @GetMapping("/started")
     public ResponseEntity<List<ElectionDTO>> findStarted() {
         return new ResponseEntity<>(electionConverter.convertToDTO(electionService.findStarted()), HttpStatus.OK);

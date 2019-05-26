@@ -54,4 +54,8 @@ export class ElectionService {
   findActive(): Observable<ElectionDTO[]> {
     return this.http.get<ElectionDTO[]>(this.baseUrl + "active");
   }
+
+  isActive(id:number): Observable<ElectionDTO>{
+    return this.http.get<ElectionDTO>(this.baseUrl + "isActive/" + id);
+  }
 }

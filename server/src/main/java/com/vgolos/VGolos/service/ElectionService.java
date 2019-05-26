@@ -65,6 +65,12 @@ public class ElectionService {
         else return false;
     }
 
+    public boolean isActive(Long id){
+        Election election = electionRepository.findById(id).get();
+        if (isStarted(election.getId()) && !isFinished(election.getId())) return true;
+        else return false;
+    }
+
     public List<Election> findStarted() {
 
         List<Election> elections = new LinkedList<>();
