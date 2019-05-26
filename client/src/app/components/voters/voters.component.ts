@@ -31,6 +31,9 @@ export class VotersComponent implements OnInit {
     this.citizensService.findAll().subscribe(data => {
       this.citizens = data;
     });
+    if (!this.authService.checkLoggedUser()) {
+      this.router.navigate(['/signin']);
+    }
   }
 
 }
