@@ -33,10 +33,10 @@ export class ResultCitizenPageComponent implements OnInit {
 
   }
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.resultService.getWinnerResultsByElectionId(id).subscribe(result =>
-      {
-      this.candidateTop[id] = result;
-      });
+    // const id = Number(this.route.snapshot.paramMap.get('id'));
+    // this.resultService.getWinnerResultsByElectionId(id).subscribe(result =>
+    //   {
+    //   this.candidateTop[id] = result;
+    //   });
 
 }}
