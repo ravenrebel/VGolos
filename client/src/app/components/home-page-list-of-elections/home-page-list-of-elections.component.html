@@ -5,10 +5,10 @@
   <div class="row ">
     <!-- <div class="offset-8 offset-md-8 col-4 col-md-4">search</div> -->
   </div>
-  <div class="row zero">
-    <div class="col-1 col-md-1 text-center btmNavOnPageMain">All</div>
-    <div class="col-1 col-md-1 text-center btmNavOnPageNoMain"><a [routerLink]="['elections/active']">Active</a></div>
-    <div class="col-1 col-md-1 text-center btmNavOnPageNoMain"><a [routerLink]="['elections/completed']">Complete</a>
+  <div class="row zero text-center">
+    <div class="col-1 col-md-1 btmNavOnPageMain">All</div>
+    <div class="col-1 col-md-1 btmNavOnPageNoMain"><a [routerLink]="['elections/active']">Active</a></div>
+    <div class="col-1 col-md-1 btmNavOnPageNoMain" id="btmComplete"><a [routerLink]="['elections/completed']">Complete</a>
     </div>
   </div>
   <div class="row zero">
@@ -19,18 +19,11 @@
         </div>
         <div class="row">
           <div *ngIf="signedIn" class="offset-9 offset-md-9"></div>
-<<<<<<< HEAD
           <div *ngIf="!signedIn"  class="offset-6 offset-md-6 col-1 col-md-1 btnService text-center">Candidates</div>
           <div *ngIf="!signedIn"  class="col-1 col-md-1 btnService text-center">Edit</div>
-
           <div *ngIf="!signedIn"  class="col-1 col-md-1 btnService text-center">Delete</div>
-          <div class="col-3 col-md-3 text-center"><button type="vote" value="vote" class="vote" (click)="goVote()">Vote</button></div>
-=======
-          <div *ngIf="!signedIn"  class="offset-6 offset-md-6 col-1 col-md-1 btnService">Candidates</div>
-          <div *ngIf="!signedIn"  class="col-1 col-md-1 btnService">Edit</div>
-          <div *ngIf="!signedIn"  class="col-1 col-md-1 btnService">Delete</div>
+          <!-- <div *ngIf="activeElection" class="col-3 col-md-3 text-center"><button type="vote" value="election.id" class="vote" (click)="vote(election)">Vote</button></div> -->
           <div class="col-3 col-md-3 text-center"><button type="vote" value="election.id" class="vote" (click)="vote(election)">Vote</button></div>
->>>>>>> 6b469a60e96962b4661dc7b1b9f1571654edf8b5
         </div>
         <div class="row">
           <div class="offset-1 offset-md-1 col-3 col-md-3"><b>Start:</b> {{election.beginningOfVoting | date:'dd-MM-yyyy hh:mm:ss a':'-0000'}}</div>

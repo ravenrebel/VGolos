@@ -19,6 +19,10 @@ a{
     color: #000000;
 }
 
+#btmComplete{
+    padding: 0px;
+}
+
 .btmNavOnPageNoMain{
     border:0.5px solid #bbbbbb !important;
     color: #000000;
@@ -26,11 +30,7 @@ a{
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     height: 30px;
-<<<<<<< HEAD
-    box-shadow:0 1px 2px 0 rgba(0,0,0,0.5); 
-=======
     /* box-shadow:0 1px 4px 0 rgba(0,0,0,0.5);  */
->>>>>>> 6b469a60e96962b4661dc7b1b9f1571654edf8b5
 
 }
 

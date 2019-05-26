@@ -12,6 +12,7 @@ import { ElectionDTO } from 'src/app/model/election-dto';
 export class ListOfElectionsActiveComponent implements OnInit {
 
   elections: ElectionDTO[];
+  selectedElection: ElectionDTO = null;
 
   constructor(
     private electionService: ElectionService,
@@ -24,6 +25,10 @@ export class ListOfElectionsActiveComponent implements OnInit {
       {
         this.elections = data;
       });
+  }
+  vote(election: ElectionDTO): void {
+    this.selectedElection = election;
+    this.router.navigate(['elections/' + this.selectedElection.id + '/vote']);
   }
 
 }
