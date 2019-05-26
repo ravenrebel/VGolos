@@ -22,6 +22,7 @@ import { ResultStatisticsAverageAgePageComponent } from './components/result-sta
 import { ResultVotersInTheirCityPageComponent } from './components/result-voters-in-their-city-page/result-voters-in-their-city-page.component';
 import { VotePageComponent } from './components/vote-page/vote-page.component';
 import { CandidatesComponent } from './components/candidates/candidates.component';
+import { VotersComponent } from './components/voters/voters.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CandidatesComponent } from './components/candidates/candidates.componen
     ResultStatisticsAverageAgePageComponent,
     ResultVotersInTheirCityPageComponent,
     VotePageComponent,
-    CandidatesComponent
+    CandidatesComponent,
+    VotersComponent
   ],
   imports: [
     BrowserModule,

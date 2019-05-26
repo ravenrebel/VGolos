@@ -13,7 +13,7 @@
                 <div *ngIf="signedIn" class="col-1 col-md-1 my-auto "><span class="italics"><a
                             [routerLink]="['/']">Elections</a><br>
                     </span></div>
-                <div *ngIf="signedIn" class="col-1 col-md-1 my-auto"><span class="italics"><a href="">Voters</a></span>
+                <div *ngIf="signedIn" class="col-1 col-md-1 my-auto"><span class="italics"><a [routerLink]="['/voters']">Voters</a></span>
                 </div>
                 <div *ngIf="signedIn" class="col-1 col-md-1 my-auto "><span class="italics"><a
                             [routerLink]="['/create']">Create</a>

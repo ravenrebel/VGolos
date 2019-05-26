@@ -11,7 +11,7 @@ import { Empty } from '../model/empty';
 })
 export class CitizenService {
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'http://localhost:8080/citizen/';
+  baseUrl: string = 'http://localhost:8080/citizens/';
 
   findAll(): Observable<Citizen[]> {
     return this.http.get<Citizen[]>(this.baseUrl);

@@ -20,7 +20,7 @@
         <div class="row">
           <div *ngIf="signedIn; else unset" class="offset-9 offset-md-9"></div>
           <div *ngIf="!signedIn; else unset"  class="offset-6 offset-md-6 col-1 col-md-1 btnService text-center">
-              <a [routerLink]="['/elections/', election.id]">Candidates</a></div>
+              <a [routerLink]="['/elections/' + election.id + '/candidates']">Candidates</a></div>
           <div *ngIf="!signedIn; else unset"  class="col-1 col-md-1 btnService text-center">Edit</div>
           <div *ngIf="!signedIn; else unset"  class="col-1 col-md-1 btnService text-center">Delete</div>
           <div *ngIf="active; else elseBlock" class="col-3 col-md-3 text-center"><button type="vote" value="election.id" class="vote" (click)="vote(election)">Vote</button></div>
