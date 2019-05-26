@@ -20,7 +20,7 @@ export class ListOfElectionsActiveComponent implements OnInit {
      { }
 
   ngOnInit() {
-    this.electionService.findAll().subscribe(data =>
+    this.electionService.findActive().subscribe(data =>
       {
         this.elections = data;
       });

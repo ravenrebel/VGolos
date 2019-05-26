@@ -40,4 +40,8 @@ election: ElectionDTO = new ElectionDTO();
       );
   }
 
+  goBack(): void{
+    this.location.back();
+  }
+
 }

@@ -29,14 +29,7 @@ public class ElectionController {
 
     @GetMapping
     public ResponseEntity<List<ElectionDTO>> findAll() {
-        List<Election> elections = electionService.findAll();
-        List<ElectionDTO> electionDTOs = new LinkedList<>();
-        for (Election election:elections
-        ) {
-            electionDTOs.add(electionConverter
-                    .convertToDTO(election));
-        }
-        return new ResponseEntity<>(electionDTOs, HttpStatus.OK);
+        return new ResponseEntity<>(electionConverter.convertToDTO(electionService.findAll()), HttpStatus.OK);
     }
 
     @PostMapping("/create")
@@ -88,6 +81,21 @@ public class ElectionController {
     public ResponseEntity<Boolean> isStarted(@PathVariable Long id) {
         return new ResponseEntity<>(electionService.isStarted(id),
                 HttpStatus.OK);
+    }
+
+    @GetMapping("/started")
+    public ResponseEntity<List<ElectionDTO>> findStarted() {
+        return new ResponseEntity<>(electionConverter.convertToDTO(electionService.findStarted()), HttpStatus.OK);
+    }
+
+    @GetMapping("finished")
+    public ResponseEntity<List<ElectionDTO>> findFinished() {
+        return new ResponseEntity<>(electionConverter.convertToDTO(electionService.findFinished()), HttpStatus.OK);
+    }
+
+    @GetMapping("active")
+    public ResponseEntity<List<ElectionDTO>> findActive() {
+        return new ResponseEntity<>(electionConverter.convertToDTO(electionService.findActive()), HttpStatus.OK);
     }
 }
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginCred } from 'src/app/model/login-cred';
 import { CustomeAuthService } from 'src/app/service/custome-auth.service';
 import { SignInForm } from 'src/app/model/authentication/signin-form.model';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
@@ -32,6 +31,7 @@ export class SignInPageComponent implements OnInit {
   goBack(): void{
     this.location.back();
   }
+
   onSubmit(): void {
     this.authService.attemptAuth(this.creds).subscribe(
       data => {

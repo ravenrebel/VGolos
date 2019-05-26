@@ -32,10 +32,11 @@ export class HeaderComponent implements OnInit {
     });
   }
   isAdmin: boolean = false;
+  
   logout(): void {
     this.authService.logout();
     this.signedIn = false;
-    this.router.navigate(['signin']);
+    this.router.navigate(['']);
   }
 
   signIn(): void {

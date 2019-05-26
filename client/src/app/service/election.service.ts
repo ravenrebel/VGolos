@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Election } from '../model/election';
 import { Observable } from 'rxjs';
 import { Empty } from '../model/empty';
 import { ElectionDTO } from '../model/election-dto';
@@ -32,7 +31,7 @@ export class ElectionService {
     return this.http.get<ElectionDTO[]>(this.baseUrl +"search/" + name);
   }
 
-  update(election:Election): Observable<ElectionDTO>{
+  update(election:ElectionDTO): Observable<ElectionDTO>{
     return this.http.put<ElectionDTO>(this.baseUrl + "update", election);
   }
 
@@ -42,8 +41,17 @@ export class ElectionService {
 
   isStarted(id:number): Observable<ElectionDTO>{
     return this.http.get<ElectionDTO>(this.baseUrl + "isStarted/" + id);
-    }
-    // isStarted(id:number): Observable<ElectionDTO>{
-    //   return this.http.get<ElectionDTO>(this.baseUrl + "isFinished" + id);
-  // }
+  }
+    
+  findStarted(): Observable<ElectionDTO[]> {
+    return this.http.get<ElectionDTO[]>(this.baseUrl + "started");
+  }
+
+  findFinished(): Observable<ElectionDTO[]> {
+    return this.http.get<ElectionDTO[]>(this.baseUrl + "finished");
+  }
+
+  findActive(): Observable<ElectionDTO[]> {
+    return this.http.get<ElectionDTO[]>(this.baseUrl + "active");
+  }
 }

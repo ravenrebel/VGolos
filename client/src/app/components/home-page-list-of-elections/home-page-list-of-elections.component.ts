@@ -17,6 +17,7 @@ export class HomePageListOfElectionsComponent implements OnInit {
 
   elections: ElectionDTO[];
   signedIn: boolean = false;
+  selectedElection: ElectionDTO = null;
 
 
   constructor(
@@ -26,7 +27,7 @@ export class HomePageListOfElectionsComponent implements OnInit {
     private authService: CustomeAuthService,
 
     private route: ActivatedRoute,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService,
    ) 
    {
 
@@ -38,16 +39,24 @@ export class HomePageListOfElectionsComponent implements OnInit {
         this.elections = data;
       });
   }
+
   logout(): void {
     this.authService.logout();
     this.signedIn = false;
-    this.router.navigate(['signin']);
+    this.router.navigate(['']);
   }
 
   signIn(): void {
     this.router.navigate(['signin']);
   }
+<<<<<<< HEAD
   goVote():void{
     this.router.navigate(['elections/:id/vote'])
+=======
+
+  vote(election: ElectionDTO): void {
+    this.selectedElection = election;
+    this.router.navigate(['elections/' + this.selectedElection.id + '/vote']);
+>>>>>>> 6b469a60e96962b4661dc7b1b9f1571654edf8b5
   }
 }

@@ -26,8 +26,8 @@
             <div class="col-3 col-md-3 text-center"><button type="vote" value="vote" class="vote">Vote</button></div>
           </div>
           <div class="row">
-            <div class="offset-1 offset-md-1 col-3 col-md-3">Start {{election.beginningOfVoting}}</div>
-            <div class="col-3 col-md-3">Finish {{election.endOfVoting}}</div>
+            <div class="offset-1 offset-md-1 col-3 col-md-3"><b>Start:</b> {{election.beginningOfVoting | date:'dd-MM-yyyy hh:mm:ss a':'+0000'}}</div>
+            <div class="col-3 col-md-3"><b>Finish:</b> {{election.endOfVoting | date:'dd-MM-yyyy hh:mm:ss a':'+0000'}}</div>
           </div>
         </div>
       </div>

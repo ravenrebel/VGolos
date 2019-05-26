@@ -20,7 +20,7 @@ export class ListOfElectionsCompletedComponent implements OnInit {
      { }
 
   ngOnInit() {
-    this.electionService.findAll().subscribe(data =>
+    this.electionService.findFinished().subscribe(data =>
       {
         this.elections = data;
       });
