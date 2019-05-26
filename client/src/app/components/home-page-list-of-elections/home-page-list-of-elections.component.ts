@@ -18,6 +18,7 @@ export class HomePageListOfElectionsComponent implements OnInit {
   elections: ElectionDTO[];
   signedIn: boolean = false;
   selectedElection: ElectionDTO = null;
+  active: boolean = true;
   
 
   constructor(
@@ -39,6 +40,8 @@ export class HomePageListOfElectionsComponent implements OnInit {
         this.elections = data;
       });
 
+    this.electionService.isActive(4).subscribe(data => { this.active = data; console.log(this.active);});
+    
   }
 
   logout(): void {
@@ -47,12 +50,6 @@ export class HomePageListOfElectionsComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  // finishedElection(): void{
-  //   this.electionService.findFinished().subscribe(finished =>
-  //     {
-  //       this.elections = finished;
-  //     })
-  // }
   signIn(): void {
     this.router.navigate(['signin']);
   }
@@ -61,4 +58,10 @@ export class HomePageListOfElectionsComponent implements OnInit {
     this.selectedElection = election;
     this.router.navigate(['elections/' + this.selectedElection.id + '/vote']);
   }
+
+  result(election: ElectionDTO): void {
+    this.selectedElection = election;
+    this.router.navigate(['elections/' + this.selectedElection.id + '/result']);
+  }
+
 }

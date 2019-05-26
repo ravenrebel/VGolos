@@ -49,8 +49,8 @@ export class CitizenService {
     return this.http.get<Citizen[]>(this.baseUrl+"search/" + name);
   }
 
-  isAdult(id:number): Observable<Boolean>{
-    return this.http.get<Boolean>(this.baseUrl+"isAdult/" + id);
+  isAdult(id:number): Observable<boolean>{
+    return this.http.get<boolean>(this.baseUrl+"isAdult/" + id);
   }
   
 }

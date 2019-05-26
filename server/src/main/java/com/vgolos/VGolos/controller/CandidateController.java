@@ -3,6 +3,7 @@ package com.vgolos.VGolos.controller;
 import com.vgolos.VGolos.dto.CandidateDTO;
 import com.vgolos.VGolos.dto.converter.ElectionConverter;
 import com.vgolos.VGolos.entity.Candidate;
+import com.vgolos.VGolos.service.ElectionService;
 import com.vgolos.VGolos.service.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,12 +19,14 @@ import java.util.List;
 @RequestMapping("/candidates")
 public class CandidateController {
     private CandidateService candidateService;
+    private ElectionService electionService;
     private CandidateConverter candidateConverter;
 
     @Autowired
-    public CandidateController(CandidateService candidateService, CandidateConverter candidateConverter) {
+    public CandidateController(CandidateService candidateService, CandidateConverter candidateConverter,ElectionService electionService) {
         this.candidateService = candidateService;
         this.candidateConverter = candidateConverter;
+        this.electionService = electionService;
     }
 
     @GetMapping
@@ -57,5 +60,12 @@ public class CandidateController {
     public ResponseEntity<CandidateDTO> findById(@PathVariable Long id) {
         return new ResponseEntity<>(candidateConverter
                 .convertToDTO(candidateService.findById(id)), HttpStatus.OK);
+    }
+
+    @GetMapping("/findByElectionId/{ElectionId}")
+    public ResponseEntity<List<CandidateDTO>> findByElectionId(@PathVariable Long ElectionId) {
+        List<Candidate> candidates = candidateService.findByElection(electionService.findById(ElectionId));
+        return new ResponseEntity<>(candidateConverter
+                .convertToDTO(candidates), HttpStatus.OK);
     }
 }

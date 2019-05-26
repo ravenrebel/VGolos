@@ -1,0 +1,25 @@
+<div class="container-fluid block mainPage">
+  <div class="row">
+    <div class="col-12 col-md-12 text-center bigText">List of Candidates</div>
+    <div class="col-12 col-md-12 text-center bigText">{{election?.name}}</div>
+  </div>
+  <div class="row ">
+  </div>
+  <div class="row zero">
+    <div class="col-12 col-md-12 page100">
+      <div *ngFor="let candidate of election?.candidates" class="elementOfCandidates">
+        <div class="row"> 
+          <div class="offset-1 offset-md-1 col-11 col-md-11">{{candidate.citizen.LastName}} {{candidate.citizen.FirstName}} {{candidate.citizen.FathersName}}, {{candidate.citizen.region}}</div>
+        </div>
+        <div class="row">
+          <div *ngIf="signedIn; else unset" class="offset-9 offset-md-9"></div>
+          <div *ngIf="!signedIn; else unset"  class="col-1 col-md-1 btnService text-center">Edit</div>
+          <div *ngIf="!signedIn; else unset"  class="col-1 col-md-1 btnService text-center">Delete</div>
+        </div> 
+        <div class="row">
+          <div class="offset-1 offset-md-1 col-3 col-md-3"><b>Date of Birth:</b> {{candidate.citizen.dateOfBirth | date:'dd-MM-yyyy'}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -31,4 +31,8 @@ export class CandidateControllerService {
   findbyid(id:number): Observable<CandidateDTO>{
     return this.http.get<CandidateDTO>(this.baseUrl+ "id/" + id);
   }
+
+  findByElectionId(ElectionId:number): Observable<CandidateDTO[]> {
+    return this.http.get<CandidateDTO[]>(this.baseUrl + "findByElectionId/" + ElectionId);
+  }
 }

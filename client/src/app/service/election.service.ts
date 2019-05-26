@@ -35,12 +35,12 @@ export class ElectionService {
     return this.http.put<ElectionDTO>(this.baseUrl + "update", election);
   }
 
-  isFinished(id:number): Observable<ElectionDTO>{
-    return this.http.get<ElectionDTO>(this.baseUrl + "isFinished/" + id);
+  isFinished(id:number): Observable<boolean>{
+    return this.http.get<boolean>(this.baseUrl + "isFinished/" + id);
   }
 
-  isStarted(id:number): Observable<ElectionDTO>{
-    return this.http.get<ElectionDTO>(this.baseUrl + "isStarted/" + id);
+  isStarted(id:number): Observable<boolean>{
+    return this.http.get<boolean>(this.baseUrl + "isStarted/" + id);
   }
     
   findStarted(): Observable<ElectionDTO[]> {
@@ -55,7 +55,7 @@ export class ElectionService {
     return this.http.get<ElectionDTO[]>(this.baseUrl + "active");
   }
 
-  isActive(id:number): Observable<ElectionDTO>{
-    return this.http.get<ElectionDTO>(this.baseUrl + "isActive/" + id);
+  isActive(id:number): Observable<boolean>{
+    return this.http.get<boolean>(this.baseUrl + "isActive/" + id);
   }
 }

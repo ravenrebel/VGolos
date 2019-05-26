@@ -21,6 +21,7 @@ export class VotePageComponent implements OnInit {
   selectedCandidate: CandidateDTO = null;
   currAccount: Account;
   canVote: boolean = false;
+  isActive: boolean = false;
 
   constructor(
     private electionService: ElectionService,
@@ -46,6 +47,7 @@ export class VotePageComponent implements OnInit {
       }
     });
 
+    this.electionService.isActive(id).subscribe(active => {this.isActive = active;});
   }
 
   onRadioChange(candidate: CandidateDTO) {
@@ -53,7 +55,7 @@ export class VotePageComponent implements OnInit {
   }
 
   vote(): void {
-    if (this.selectedCandidate != null && this.currAccount.citizen && this.canVote && this.electionService.isActive(this.election.id)) {
+    if (this.selectedCandidate != null && this.currAccount.citizen && this.canVote && this.isActive) {
       let citizen: Citizen = new Citizen();
       citizen.id = this.currAccount.id;
       let vote: VoteDTO = new VoteDTO();

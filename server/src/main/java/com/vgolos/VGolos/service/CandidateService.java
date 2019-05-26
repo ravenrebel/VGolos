@@ -1,6 +1,7 @@
 package com.vgolos.VGolos.service;
 
 import com.vgolos.VGolos.entity.Candidate;
+import com.vgolos.VGolos.entity.Election;
 import com.vgolos.VGolos.repository.CandidateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,9 @@ public class CandidateService {
 
     public void deleteById(Long id) {
         candidateRepository.deleteById(id);
+    }
+
+    public List<Candidate> findByElection(Election election) {
+        return candidateRepository.findByElection(election);
     }
 }

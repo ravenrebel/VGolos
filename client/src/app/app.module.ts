@@ -21,6 +21,7 @@ import { ResultAdminPageComponent } from './components/result-admin-page/result-
 import { ResultStatisticsAverageAgePageComponent } from './components/result-statistics-average-age-page/result-statistics-average-age-page.component';
 import { ResultVotersInTheirCityPageComponent } from './components/result-voters-in-their-city-page/result-voters-in-their-city-page.component';
 import { VotePageComponent } from './components/vote-page/vote-page.component';
+import { CandidatesComponent } from './components/candidates/candidates.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { VotePageComponent } from './components/vote-page/vote-page.component';
     ResultAdminPageComponent,
     ResultStatisticsAverageAgePageComponent,
     ResultVotersInTheirCityPageComponent,
-    VotePageComponent
+    VotePageComponent,
+    CandidatesComponent
   ],
   imports: [
     BrowserModule,
