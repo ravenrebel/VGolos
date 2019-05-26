@@ -28,7 +28,7 @@ export class HomePageListOfElectionsComponent implements OnInit {
     private authService: CustomeAuthService,
 
     private route: ActivatedRoute,
-    private tokenStorage: TokenStorageService,
+    private tokenStorage: TokenStorageService
    ) 
    {
 

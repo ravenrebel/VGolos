@@ -32,7 +32,7 @@ export class VotePageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("ffqwwf");
+    // console.log("ffqwwf");
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (!this.authService.checkLoggedUser()) {
       this.router.navigate(['/signin']);
