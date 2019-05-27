@@ -22,7 +22,8 @@
           <div *ngIf="!signedIn; else unset"  class="offset-6 offset-md-6 col-1 col-md-1 btnService text-center">
               <a [routerLink]="['/elections/' + election.id + '/candidates']">Candidates</a></div>
           <div *ngIf="!signedIn; else unset"  class="col-1 col-md-1 btnService text-center">Edit</div>
-          <div *ngIf="!signedIn; else unset"  class="col-1 col-md-1 btnService text-center">Delete</div>
+          <div *ngIf="!signedIn; else unset"  class="col-1 col-md-1 btnService text-center">
+            <a [routerLink]="['/elections/' + election.id + '/delete']">Delete</a></div>
           <div *ngIf="active; else elseBlock" class="col-3 col-md-3 text-center"><button type="vote" value="election.id" class="vote" (click)="vote(election)">Vote</button></div>
           <ng-template #elseBlock class="col-3 col-md-3 text-center"><button type="vote" value="election.id" class="vote" (click)="result(election)">Result</button></ng-template>
           <!-- <div class="col-3 col-md-3 text-center"><button type="vote" value="election.id" class="vote" (click)="vote(election)">Vote</button></div> -->
