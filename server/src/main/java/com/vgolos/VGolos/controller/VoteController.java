@@ -32,6 +32,7 @@ public class VoteController {
     }
 
     @PostMapping("/create")
+    @PreAuthorize("hasRole('ROLE_CITIZEN')")
     public ResponseEntity<VoteDTO> create(@RequestBody VoteDTO voteDTO) {
         Vote createdVote = voteService.createVote(voteConverter.convertToEntity(voteDTO));
         return new ResponseEntity<>(voteConverter.convertToDTO(createdVote), HttpStatus.CREATED);
