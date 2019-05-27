@@ -17,7 +17,6 @@ import { Location } from '@angular/common';
 export class DeleteElectionComponent implements OnInit {
 
   election: ElectionDTO;
-  selectedCandidate: CandidateDTO = null;
   currAccount: Account;
  
   constructor(
@@ -38,12 +37,11 @@ export class DeleteElectionComponent implements OnInit {
     });
   }
 
-  onRadioChange(candidate: CandidateDTO) {
-    this.selectedCandidate = candidate;
-  }
+  
   goBack(): void{
     this.location.back();
   }
+
   delete(): void {
     this.electionService.delete(this.election.id).subscribe(element => {
       this.router.navigate(['']);

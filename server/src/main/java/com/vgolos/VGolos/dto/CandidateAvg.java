@@ -11,7 +11,7 @@ public class CandidateAvg {
     }
 
     public void setCandidateName(String name) {
-        this.candidateName = candidateName;
+        this.candidateName = name;
     }
 
     public String getAvgAge(){return avgAge;}
