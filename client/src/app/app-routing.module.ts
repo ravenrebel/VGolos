@@ -29,16 +29,20 @@ const routes: Routes = [
   { path: 'elections/active', component: ListOfElectionsActiveComponent },
   { path: 'elections/completed', component: ListOfElectionsCompletedComponent },
   { path: 'result', component: ResultCitizenPageComponent },
-  { path: 'result/admin', component: ResultAdminPageComponent },
-  { path: 'result/statis', component: ResultStatisticsAverageAgePageComponent },
-  { path: 'result/voters', component: ResultVotersInTheirCityPageComponent },
+  // { path: 'result/admin', component: ResultAdminPageComponent },
+  // { path: 'result/statis', component: ResultStatisticsAverageAgePageComponent },
+  // { path: 'result/voters', component: ResultVotersInTheirCityPageComponent },
   { path: 'elections/:id/vote', component: VotePageComponent },
   { path: 'elections/:id/candidates', component: CandidatesComponent },
   { path: 'voters', component: VotersComponent },
   { path: 'elections/:id/delete', component: DeleteElectionComponent },
   { path: 'elections/:id/edit', component: EditElectionComponent },
   { path: 'elections/:id/results', component: ResultCitizenPageComponent },
+<<<<<<< HEAD
   { path: 'elections/:id/candidates/:id/create', component: CreateCadidateComponent },
+=======
+  { path: 'elections/:id/results/average', component:ResultStatisticsAverageAgePageComponent},
+>>>>>>> de1ea113e11371bb2025f4a9e3adb8ca20616a11
 ];
 
 @NgModule({

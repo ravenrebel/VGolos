@@ -25,14 +25,14 @@ export class ResultService {
   }
 
   getTopResultsByElectionId(electionId:number, regionAmount:number, positionAmount:number): Observable<CandidateTop[]>{
-    return this.http.get<CandidateTop[]>(this.baseUrl+"elections/topResults"+electionId+regionAmount+positionAmount);
+    return this.http.get<CandidateTop[]>(this.baseUrl+"elections/topResults/"+electionId+regionAmount+positionAmount);
   }
 
   getAvgAgeResultsByElectionId(electionId:number): Observable<CandidateAvg[]>{
-    return this.http.get<CandidateAvg[]>(this.baseUrl+"gelections/averageAge"+electionId);
+    return this.http.get<CandidateAvg[]>(this.baseUrl+"elections/averageAge/"+electionId);
   }
 
-  getAvgAgeResultsByElectionIdVotedForWinners(electionId:number): Observable<CandidateCitizen[]>{
+  getResultsByElectionIdVotedForWinners(electionId:number): Observable<CandidateCitizen[]>{
     return this.http.get<CandidateCitizen[]>(this.baseUrl+"elections/citizensAndCandidates/"+electionId);
   }
 

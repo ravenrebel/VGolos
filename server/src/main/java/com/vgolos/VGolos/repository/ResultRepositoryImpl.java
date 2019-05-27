@@ -99,33 +99,37 @@ public class ResultRepositoryImpl implements ResultRepository {
     public List<CandidateTop> getNTopResultsInMRegions(Long electionId, int regionAmount, int positionAmount)
     {
         String queryString ="\n" +
+                "\n" +
+                "\n" +
                 "with all_votes as (select count(votes.id) as general_count, elections.id as election from votes\n" +
-                "join elections on elections.id = votes.election_id group by election),\t\t  \n" +
+                "join elections on elections.id = votes.election_id \n" +
+                "where elections.id = :electionId group by election),\t\t  \n" +
                 "results_one as (select first_name || ' ' || last_name || ' ' ||   \n" +
                 "fathers_name as candidate_name, candidate_id as  new_candidate_id from candidates \n" +
                 "join citizens on citizens.id = candidates.citizen_id\n" +
                 "join votes on candidates.id = votes.candidate_id\n" +
                 "join elections on elections.id = votes.election_id\n" +
                 "join all_votes on all_votes.election = elections.id\n" +
-                "where elections.id = :electionId and candidates.id in\n" +
+                " and candidates.id in\n" +
                 "(select candidates.id from candidates\n" +
                 "join citizens on citizens.id = candidates.citizen_id\n" +
                 "join votes on votes.candidate_id = candidates.id\n" +
                 "join elections on elections.id = votes.election_id\n" +
                 "join all_votes on all_votes.election = elections.id\n" +
-                "where elections.id = :electionId group by candidates.id limit :positionAmount)\n" +
+                "group by candidates.id limit :positionAmount)\n" +
                 "group by candidate_name,candidate_id),\n" +
                 "results as (select region as region_new, count(votes.id) \n" +
-                "as votes_count , candidate_name , new_candidate_id from citizens  \n" +
+                "as votes_count , count(region) as d, candidate_name , new_candidate_id from citizens  \n" +
                 "join votes on citizens.id = votes.citizen_id   \n" +
                 "join results_one on votes.candidate_id = results_one.new_candidate_id  \n" +
-                "where citizens.region in ( select region from citizens\n" +
+                "where  citizens.region in ( select  region  from citizens\n" +
                 "join votes on citizens.id = votes.citizen_id \n" +
                 "join elections on elections.id = votes.election_id\n" +
-                " where elections.id = :electionId group by region limit :regionAmount)\n" +
+                "group by region,candidate_name) \n" +
                 "group by candidate_name, region_new,new_candidate_id)\n" +
-                "select candidate_name,votes_count, region_new  from results\n" +
-                "order by region_new";
+                "select candidate_name, votes_count, region_new  from results\n" +
+                "where d>=:regionAmount \n" +
+                "order by region_new, candidate_name";
         Query query = em.createNativeQuery(queryString);
         query.setParameter("electionId", electionId);
         query.setParameter("regionAmount", regionAmount);
