@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { ElectionDTO } from 'src/app/model/election-dto';
 import { ElectionService } from 'src/app/service/election.service';
+import { CustomeAuthService } from 'src/app/service/custome-auth.service';
 
 
 @Component(
@@ -19,16 +20,16 @@ election: ElectionDTO = new ElectionDTO();
   constructor(
     private router: Router,
     private location:Location,
-    private electionService:ElectionService
-
-
+    private electionService:ElectionService,
+    private authService: CustomeAuthService,
   ) { 
     
   }
 
   ngOnInit() {
-    // const id = Number(this.ngRoute.snapshot.paramMap.get('id'));-
-    // this.electionService.findbyid(id).subscribe...
+    if (!this.authService.checkLoggedUser()) {
+      this.router.navigate(['/signin']);
+    }
   }
   
   create(): void {

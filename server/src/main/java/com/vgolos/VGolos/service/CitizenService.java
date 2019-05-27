@@ -56,9 +56,12 @@ public class CitizenService {
     }
 
     public Citizen update(Citizen account) {
-        Citizen existingAccount = citizenRepository.findById(account.getId()).get();
-        existingAccount.setRole(account.getRole());
-        return citizenRepository.save(existingAccount);
+        Citizen citizen = citizenRepository.findById(account.getId()).get();
+        citizen.setRole(account.getRole());
+        citizen.setFirstName(account.getFirstName());
+        citizen.setLastName(account.getLastName());
+        citizen.setRegion(account.getRegion());
+        return citizenRepository.save(citizen);
     }
 
     public void deleteById(Long id) {

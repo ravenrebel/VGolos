@@ -41,6 +41,11 @@ public class ElectionService {
 
     public Election update(Election election) {
         Election existingElection = electionRepository.findById(election.getId()).get();
+        existingElection.setName(election.getName());
+        existingElection.setTour(election.getTour());
+        existingElection.setYear(election.getYear());
+        existingElection.setBeginningOfVoting(election.getBeginningOfVoting());
+        existingElection.setEndOfVoting(election.getEndOfVoting());
         Date currentDate = new Date();
         if (election.getBeginningOfVoting().before(currentDate)){ existingElection.setBeginningOfVoting(election.getBeginningOfVoting()); }
         if (election.getEndOfVoting().before(currentDate)){ existingElection.setEndOfVoting(election.getEndOfVoting()); }

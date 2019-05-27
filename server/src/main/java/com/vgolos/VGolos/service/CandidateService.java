@@ -1,6 +1,7 @@
 package com.vgolos.VGolos.service;
 
 import com.vgolos.VGolos.entity.Candidate;
+import com.vgolos.VGolos.entity.Citizen;
 import com.vgolos.VGolos.entity.Election;
 import com.vgolos.VGolos.repository.CandidateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,9 @@ public class CandidateService {
 
     public Candidate update(Candidate candidate) {
         Candidate existingCandidate = candidateRepository.findById(candidate.getId()).get();
+        existingCandidate.setCitizen(candidate.getCitizen());
         existingCandidate.getCitizen().setRole(candidate.getCitizen().getRole());
+
         return candidateRepository.save(existingCandidate);
     }
 
