@@ -164,7 +164,7 @@ public class ResultRepositoryImpl implements ResultRepository {
         List<CandidateAvg> result = new ArrayList<>();
         resultList.forEach(object -> {
             CandidateAvg candidateAvg = new CandidateAvg();
-            candidateAvg.setCandidateName(String.valueOf(object[0]));
+            candidateAvg.setCandidateName(object[0].toString());
             candidateAvg.setAvgAge(String.valueOf(object[1]));
             result.add(candidateAvg);
         });

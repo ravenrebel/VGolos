@@ -1,3 +1,12 @@
-<p>
-  create-cadidate works!
-</p>
+
+<div style="height: 110px;"></div>
+<form (ngSubmit)="create()" class="pageCreate">
+
+  <div><input name="name" type="string" [(ngModel)]="candidate.citizen.login" placeholder="IDN"></div>
+
+    <div><button type="submit" value="submit" class="submit">Submit</button>
+    </div>
+    <div><button class="cancel" (click)="goBack()">Cancel</button></div>
+
+
+</form>
