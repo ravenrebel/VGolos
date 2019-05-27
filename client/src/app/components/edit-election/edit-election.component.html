@@ -1,3 +1,36 @@
-<p>
-  edit-election works!
-</p>
+<form (ngSubmit)="create()" class="pageCreate">
+  <div class="container-fluid block mainContainerBoxShadow">
+      <div class="row">
+          <div class="col-3 col-md-3 bigText">Create</div>
+      </div>
+      <div class="row">
+          <div class="col-4 col-md-4"><input name="name" type="string" [(ngModel)]="election.name" placeholder="Name">
+          </div>
+          <div class="col-4 col-md-4">Start&nbsp;&nbsp;<input name="beginningOfVoting" type="datetime-local"
+                  [(ngModel)]="election.beginningOfVoting" placeholder="Start Date">
+              </div>
+          <!-- <div class="col-4 col-md-4">start time</div> -->
+      </div>
+      <div class="row">
+          <div class="col-4 col-md-4"><input name="tour" type="number" [(ngModel)]="election.tour" placeholder="Tour">
+          </div>
+          <div class="col-4 col-md-4">End&nbsp;&nbsp;&nbsp;&nbsp;<input name="endOfVoting" type="datetime-local" [(ngModel)]="election.endOfVoting"
+                  placeholder="End Date"></div>
+          <!-- <div class="col-4 col-md-4">end time</div> -->
+
+      </div>
+      <div class="row">
+          <div class="col-4 col-md-4"><input name="year" type="number" [(ngModel)]="election.year" placeholder="Year">
+          </div>
+      </div>
+      <div class="row">
+          <div class="offset-8 offset-md-8 col-2 col-md-2"><button type="submit" value="submit"
+                  class="submit">Submit</button></div>
+          <div class="col-2 col-md-2"><button class="cancel" (click)="goBack()">Cancel</button></div>
+      </div>
+</div>
+
+</form>
+<!-- <a [routerLink]="['ccreate']">create</a><br>
+<a [routerLink]="['/elections/active']">Active</a>
+<a [routerLink]="['/signin']">Sign In</a> -->

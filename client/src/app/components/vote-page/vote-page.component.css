@@ -1,0 +1,45 @@
+.bigText{
+    font-size: 26px; 
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+.nameOfElection{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size:20px;
+}
+.cancel{
+    border:0px;
+    border-radius: 5px;
+    background: #E6E6E6;
+    color:#000000;
+    width: 110px;
+    height: 30px;
+    font-size:16px;
+    font-weight: bold;
+    letter-spacing:2px;
+}
+.submit{
+    border:0px;
+    border-radius: 5px;
+    background: #000000;
+    color:#ffffff;
+    width: 110px;
+    height: 30px;
+    font-size:16px;
+    font-weight: bold;
+    letter-spacing:2px;
+
+}
+.mainContainerBoxShadow{
+    border:1px solid #E0E0E0;
+    width: 100%;
+    box-shadow:0 5px 5px 0 rgba(0,0,0,0.5); 
+    padding-left: 40px;
+}
+.row{
+    padding: 10px 0px;
+}
+.makeChoice{
+    font-weight: bold;
+}

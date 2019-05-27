@@ -8,6 +8,8 @@ import { Account } from 'src/app/model/account';
 import { VoteService } from 'src/app/service/vote.service';
 import { VoteDTO } from 'src/app/model/vote-dto';
 import { Citizen } from 'src/app/model/citizen';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-vote-page',
@@ -16,6 +18,7 @@ import { Citizen } from 'src/app/model/citizen';
 })
 export class VotePageComponent implements OnInit {
 
+  elections: ElectionDTO[];
 
   election: ElectionDTO;
   selectedCandidate: CandidateDTO = null;
@@ -28,7 +31,9 @@ export class VotePageComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private authService: CustomeAuthService,
-    private voteService: VoteService
+    private voteService: VoteService,
+    private location:Location
+
   ) { }
 
   ngOnInit() {
@@ -40,6 +45,8 @@ export class VotePageComponent implements OnInit {
     this.electionService.findbyid(id).subscribe(election => {
       this.election = election;
     });
+
+
     this.authService.getCurrentUser().subscribe(account => {
       this.currAccount = account;
       if (account.citizen) {
@@ -48,6 +55,10 @@ export class VotePageComponent implements OnInit {
     });
 
     this.electionService.isActive(id).subscribe(active => {this.isActive = active;});
+
+  }
+  goBack(): void{
+    this.location.back();
   }
 
   onRadioChange(candidate: CandidateDTO) {

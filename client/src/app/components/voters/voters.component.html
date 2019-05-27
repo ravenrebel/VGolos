@@ -1,20 +1,16 @@
+
 <div class="container-fluid block mainPage">
     <div class="row">
       <div class="col-12 col-md-12 text-center bigText">List of Voters</div>
     </div>
-    <div class="row ">
-    </div>
     <div class="row zero">
       <div class="col-12 col-md-12 page100">
-        <div *ngFor="let citizen of citizens" class="elementOfCandidates">
-          <div class="row"> 
-            <div class="offset-1 offset-md-1 col-11 col-md-11">{{citizen.LastName}} {{citizen.FirstName}} {{citizen.FathersName}}, {{citizen.region}}</div>
+        <div *ngFor="let citizen of citizens" class="elementOfCandidates mainContainerBoxShadow">
+          <div class="row "> 
+            <div class="offset-1 offset-md-1 col-6 col-md-6">{{citizen.lastName}}&nbsp;{{citizen.firstName}}&nbsp;{{citizen.fathersName}},&nbsp;{{citizen.region}}</div>
+            <div *ngIf="!signedIn; else unset" class="col-2 col-md-2 text-center">Edit</div>
+            <div *ngIf="!signedIn; else unset" class="col-2 col-md-2 text-center">Delete</div>
           </div>
-          <div class="row">
-            <div *ngIf="signedIn; else unset" class="offset-9 offset-md-9"></div>
-            <div *ngIf="!signedIn; else unset"  class="col-1 col-md-1 btnService text-center">Edit</div>
-            <div *ngIf="!signedIn; else unset"  class="col-1 col-md-1 btnService text-center">Delete</div>
-          </div> 
           <div class="row">
             <div class="offset-1 offset-md-1 col-3 col-md-3"><b>Date of Birth:</b> {{citizen.dateOfBirth | date:'dd-MM-yyyy'}}</div>
           </div>
@@ -22,4 +18,3 @@
       </div>
     </div>
   </div>
-  

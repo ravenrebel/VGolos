@@ -5,6 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CandidateDTO } from 'src/app/model/candidate-dto';
 import { CustomeAuthService } from 'src/app/service/custome-auth.service';
 import { Account } from 'src/app/model/account';
+import { Location } from '@angular/common';
+
 
 
 @Component({
@@ -23,6 +25,7 @@ export class DeleteElectionComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private authService: CustomeAuthService,
+    private location:Location
   ) { }
 
   ngOnInit() {
@@ -38,7 +41,9 @@ export class DeleteElectionComponent implements OnInit {
   onRadioChange(candidate: CandidateDTO) {
     this.selectedCandidate = candidate;
   }
-
+  goBack(): void{
+    this.location.back();
+  }
   delete(): void {
     this.electionService.delete(this.election.id).subscribe(element => {
       this.router.navigate(['']);

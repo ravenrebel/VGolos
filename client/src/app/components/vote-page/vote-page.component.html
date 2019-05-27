@@ -1,16 +1,16 @@
-<div style="height: 200px;"></div>
+<div style="height: 110px;"></div>
 <form (ngSubmit)="vote()">
   <div class="container-fluid block">
     <div class="row text-center">
-      <div class="col-12 col-md-12">Vote</div>
+      <div class="col-12 col-md-12 bigText">Vote</div>
     </div>
     <div class="row text-center">
-      <div class="col-12 col-md-12">Name of elections</div>
+      <div class="col-12 col-md-12 nameOfElection">{{election.name}}</div>
     </div>
     <div class="row">
-      <div class="col-12 col-md-12 voteElement">
+      <div class="col-12 col-md-12 mainContainerBoxShadow">
         <div class="row">
-          <div class="offset-1 offset-md-1 col-11 col-md-11 makeChoice">Choose your candidate:</div>
+          <div class="offset-1 offset-md-1 col-11 col-md-11 makeChoice" >Choose your candidate:</div>
         </div>
         <div *ngFor="let candidate of election?.candidates" class="row listCandidate">
           <div class="offset-1 offset-md-1 col-1 col-md-1 numberOfCandidate">{{candidate.citizen}}</div>
@@ -18,24 +18,26 @@
           <div class="col-9 col-md-9 nameCandidate">{{candidate.citizen.lastName}} {{candidate.citizen.firstName}}</div>
         </div>
         <div class="row">
-          <div class="offset-8 offset-md-4 col-4 col-md-4">
+          <div class="offset-8 offset-md-8 col-4 col-md-4">
             <div class="row text-center">
-              <div class="col-6 col-md-6"><button type="submit">Vote</button></div>
-              <div class="col-6 col-md-6"><button >Cancel</button></div>
+              <div class="col-6 col-md-6"><button type="submit" value="submit" class="submit">Submit</button></div>
+              <div class="col-6 col-md-6"><button  class="cancel" (click)="goBack()">Cancel</button></div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- <div *ngFor="let candidate of election?.candidates">
+  <!-- <form (ngSubmit)="vote()">
+
+  <div *ngFor="let candidate of election?.candidates">
 
     <label>{{candidate.citizen.lastName}} {{candidate.citizen.firstName}}</label>
     <input type="radio" value="candidate.id" (change)="onRadioChange(candidate)" name="candidate.name">
   </div>
-  <button type="submit">Vote</button> -->
-<!-- </form>
-<div *ngFor="let candidate of election?.candidates">
+  <button type="submit">Vote</button>
+</form> -->
+<!-- <div *ngFor="let candidate of election?.candidates">
 
   <label>{{candidate.id}}{{candidate.citizen.lastName}} {{candidate.citizen.firstName}}</label>
   <input type="radio" value="candidate.id" (change)="onRadioChange(candidate)" name="candidate.name">

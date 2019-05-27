@@ -1,0 +1,39 @@
+.row{
+    padding: 10px 0px;
+}
+.boxShadow{
+    border:1px solid #E0E0E0;
+    width: 100%;
+    box-shadow:0 5px 5px 0 rgba(0,0,0,0.5); 
+}
+button.delete{
+    border:0px;
+    border-radius: 5px;
+    background: red;
+    color:white;
+    width: 110px;
+    height: 30px;
+    font-size:16px;
+    font-weight: bold;
+    letter-spacing:2px;
+
+}
+.cancel{
+    border:0px;
+    border-radius: 5px;
+    background: #E6E6E6;
+    color:#000000;
+    width: 110px;
+    height: 30px;
+    font-size:16px;
+    font-weight: bold;
+    letter-spacing:2px;
+}
+.question{
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+span.delete{
+    color:red;
+}

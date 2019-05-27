@@ -17,12 +17,14 @@
             <div class="offset-1 offset-md-1 col-11 col-md-11">{{election.name}} Tour {{election.tour}}, {{election.year}}</div>
           </div>
           <div class="row">
-            <div *ngIf="signedIn" class="offset-9 offset-md-9"></div>
-            <div *ngIf="!signedIn"  class="offset-6 offset-md-6 col-1 col-md-1 btnService">Candidates</div>
-            <div *ngIf="!signedIn"  class="col-1 col-md-1 btnService">Edit</div>
-  
-            <div *ngIf="!signedIn"  class="col-1 col-md-1 btnService">Delete</div>
-            <div class="col-3 col-md-3 text-center"><button type="vote" value="vote" class="vote">Vote</button></div>
+            <div *ngIf="signedIn; else unset" class="offset-9 offset-md-9"></div>
+            <div *ngIf="!signedIn; else unset"  class="offset-6 offset-md-6 col-1 col-md-1 btnService text-center">
+                <a [routerLink]="['/elections/' + election.id + '/candidates']">Candidates</a></div>
+            <div *ngIf="!signedIn; else unset"  class="col-1 col-md-1 btnService text-center">
+                <a [routerLink]="['/elections/' + election.id + '/edit']">Edit</a></div>
+            <div *ngIf="!signedIn; else unset"  class="col-1 col-md-1 btnService text-center">
+              <a [routerLink]="['/elections/' + election.id + '/delete']">Delete</a></div>
+            <div class="col-3 col-md-3 text-center"><button type="vote" value="vote" class="vote" (click)="result(election)">Result</button></div>
           </div>
           <div class="row">
             <div class="offset-1 offset-md-1 col-3 col-md-3"><b>Start:</b> {{election.beginningOfVoting | date:'dd-MM-yyyy hh:mm:ss a':'+0000'}}</div>
