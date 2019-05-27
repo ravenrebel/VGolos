@@ -27,7 +27,7 @@ a{
 }
 
 .row{
-    padding: 5px 0px;
+    padding: 10px 0px;
 }
 
 .zero{
@@ -43,4 +43,14 @@ a{
 .btnService{
     font-style: italic;
     text-decoration-line: underline;
+}
+.mainContainerBoxShadow{
+    border:1px solid #E0E0E0;
+    width: 100%;
+    box-shadow:0 5px 5px 0 rgba(0,0,0,0.5); 
+}
+.nameOfElection{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size:20px;
 }
