@@ -3,8 +3,8 @@
 <div>Are You sure to delete this?</div>
 
 <label>
-  {{election.name}}, 
-  Tour {{election.tour}}, {{election.year}}</label>
+  {{election?.name}}, 
+  Tour {{election?.tour}}, {{election?.year}}</label>
 
 <div><button type="delete" value="election.id" class="delete" (click)="delete(election)">Delete</button></div>
 <div><button class="cancel" (click)="goBack()">Cancel</button></div>

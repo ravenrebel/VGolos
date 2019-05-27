@@ -24,6 +24,7 @@ import { VotePageComponent } from './components/vote-page/vote-page.component';
 import { CandidatesComponent } from './components/candidates/candidates.component';
 import { VotersComponent } from './components/voters/voters.component';
 import { DeleteElectionComponent } from './components/delete-election/delete-election.component';
+import { EditElectionComponent } from './components/edit-election/edit-election.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { DeleteElectionComponent } from './components/delete-election/delete-ele
     VotePageComponent,
     CandidatesComponent,
     VotersComponent,
-    DeleteElectionComponent
+    DeleteElectionComponent,
+    EditElectionComponent
   ],
   imports: [
     BrowserModule,
