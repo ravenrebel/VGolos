@@ -27,6 +27,7 @@ import { DeleteElectionComponent } from './components/delete-election/delete-ele
 import { EditElectionComponent } from './components/edit-election/edit-election.component';
 import { CreateCadidateComponent } from './components/create-cadidate/create-cadidate.component';
 import { ResultListVotersComponent } from './components/result-list-voters/result-list-voters.component';
+import { ResultVotedForWinnersComponent } from './components/result-voted-for-winners/result-voted-for-winners.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ResultListVotersComponent } from './components/result-list-voters/resul
     DeleteElectionComponent,
     EditElectionComponent,
     CreateCadidateComponent,
-    ResultListVotersComponent
+    ResultListVotersComponent,
+    ResultVotedForWinnersComponent
   ],
   imports: [
     BrowserModule,

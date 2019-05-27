@@ -19,6 +19,7 @@ import { DeleteElectionComponent } from './components/delete-election/delete-ele
 import { EditElectionComponent } from './components/edit-election/edit-election.component';
 import { ResultListVotersComponent } from './components/result-list-voters/result-list-voters.component';
 import { CreateCadidateComponent } from './components/create-cadidate/create-cadidate.component';
+import { ResultVotedForWinnersComponent } from './components/result-voted-for-winners/result-voted-for-winners.component';
 
 const routes: Routes = [
   { path: 'signin', component: SignInPageComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'elections/:id/results/average', component: ResultStatisticsAverageAgePageComponent },
   { path: 'elections/:id/results/citizen', component: ResultListVotersComponent },
   { path: 'elections/:id/candidates/:id/create', component: CreateCadidateComponent },
+  { path: 'elections/:id/results/winners', component: ResultVotedForWinnersComponent},
 ];
 
 @NgModule({
