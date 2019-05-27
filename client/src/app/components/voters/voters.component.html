@@ -7,9 +7,9 @@
       <div class="col-12 col-md-12 page100">
         <div *ngFor="let citizen of citizens" class="elementOfCandidates mainContainerBoxShadow">
           <div class="row "> 
-            <div class="offset-1 offset-md-1 col-6 col-md-6">{{citizen.lastName}}&nbsp;{{citizen.firstName}}&nbsp;{{citizen.fathersName}},&nbsp;{{citizen.region}}</div>
-            <div *ngIf="!signedIn; else unset" class="col-2 col-md-2 text-center">Edit</div>
-            <div *ngIf="!signedIn; else unset" class="col-2 col-md-2 text-center">Delete</div>
+            <div class="offset-1 offset-md-1 col-6 col-md-6 candidatesName" >{{citizen.lastName}}&nbsp;{{citizen.firstName}}&nbsp;{{citizen.fathersName}},&nbsp;{{citizen.region}}</div>
+            <div *ngIf="!signedIn; else unset" class="col-2 col-md-2 text-center"></div>
+            <div *ngIf="!signedIn; else unset" class="col-2 col-md-2 text-center"></div>
           </div>
           <div class="row">
             <div class="offset-1 offset-md-1 col-3 col-md-3"><b>Date of Birth:</b> {{citizen.dateOfBirth | date:'dd-MM-yyyy'}}</div>
