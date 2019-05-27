@@ -5,6 +5,7 @@ import { CustomeAuthService } from 'src/app/service/custome-auth.service';
 import { ResultService } from 'src/app/service/result.service';
 import { CandidateResult } from 'src/app/model/candidate-result';
 import { ElectionDTO } from 'src/app/model/election-dto';
+import { Citizen } from 'src/app/model/citizen';
 
 @Component({
   selector: 'app-result-list-voters',
@@ -13,13 +14,14 @@ import { ElectionDTO } from 'src/app/model/election-dto';
 })
 export class ResultListVotersComponent implements OnInit {
 
-  results: CandidateResult[] = [];
+  results: Citizen[] = [];
   electionId: number;
   minPercentage: number;
   elections: ElectionDTO[];
   selectedElection: ElectionDTO = null;
 
   constructor(
+
     private electionService: ElectionService,
     private router: Router,
     private authService: CustomeAuthService,
@@ -27,6 +29,10 @@ export class ResultListVotersComponent implements OnInit {
     private resultService: ResultService, ) { }
 
   ngOnInit() {
+        this.electionId = Number(this.route.snapshot.paramMap.get('id'));
+        this.resultService.getCitizensVotedInElectionById(this.electionId).subscribe(results => {
+          this.results = results;
+        });
   }
 
 }
