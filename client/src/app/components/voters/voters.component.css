@@ -45,7 +45,7 @@ a{
     text-decoration-line: underline;
 }
 .mainContainerBoxShadow{
-    border:1px solid #E0E0E0;
+    border:1px solid #bbbbbb !important;
     width: 100%;
-    box-shadow:0 5px 5px 0 rgba(0,0,0,0.5); 
+    box-shadow:0px 1px 4px 0 rgba(0,0,0,0.5); 
 }

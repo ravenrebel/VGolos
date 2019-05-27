@@ -13,9 +13,9 @@
           <div class="offset-1 offset-md-1 col-11 col-md-11 makeChoice" >Choose your candidate:</div>
         </div>
         <div *ngFor="let candidate of election?.candidates" class="row listCandidate">
-          <div class="offset-1 offset-md-1 col-1 col-md-1 numberOfCandidate">{{candidate.citizen}}</div>
+          <div class="offset-1 offset-md-1 col-1 col-md-1 numberOfCandidate"><b>{{election.candidates.indexOf(candidate)+1}}&nbsp;</b></div>
           <div class="col-1 col-md-1 voteCheck"><input type="radio" value="candidate.id" (change)="onRadioChange(candidate)" name="candidate.name"></div>
-          <div class="col-9 col-md-9 nameCandidate">{{candidate.citizen.lastName}} {{candidate.citizen.firstName}}</div>
+          <div class="col-9 col-md-9 nameCandidate">{{candidate.citizen.lastName}}&nbsp;{{candidate.citizen.firstName}},&nbsp;{{candidate.citizen.region}}</div>
         </div>
         <div class="row">
           <div class="offset-8 offset-md-8 col-4 col-md-4">

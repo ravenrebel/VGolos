@@ -1,6 +1,6 @@
 <div class="container-fluid block mainPage">
   <div class="row text-center">
-    <div class="col-12 col-md-12 text-center bigText">List of Voters</div>
+    <div class="col-12 col-md-12 text-center bigText">List of Candidates</div>
   </div>
   <div class="row text-center">
     <div class="col-12 col-md-12 nameOfElection">{{election?.name}}</div>
@@ -10,7 +10,7 @@
     <div class="col-12 col-md-12 page100">
       <div *ngFor="let candidate of election?.candidates" class="elementOfCandidates mainContainerBoxShadow">
         <div class="row ">
-          <div class="offset-1 offset-md-1 col-6 col-md-6">
+          <div class="offset-1 offset-md-1 col-6 col-md-6"><b>{{election.candidates.indexOf(candidate)+1}}</b>&nbsp;
             {{candidate.citizen.lastName}}&nbsp;{{candidate.citizen.firstName}}&nbsp;{{candidate.citizen.fathersName}},&nbsp;{{candidate.citizen.region}}
           </div>
           <div *ngIf="!signedIn; else unset" class="col-2 col-md-2 text-center">Edit</div>

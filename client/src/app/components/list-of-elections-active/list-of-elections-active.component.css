@@ -4,7 +4,7 @@
 }
 
 .btmNavOnPageMain{
-    border:0.5px solid #bbbbbb !important;
+    border:1px solid #bbbbbb !important;
     background: #000000;
     color: #ffffff;
     border-top-left-radius: 12px;
@@ -23,7 +23,7 @@ a{
     padding: 0px;
 }
 .btmNavOnPageNoMain{
-    border:0.5px solid #bbbbbb !important;
+    border:1px solid #bbbbbb !important;
     color: #000000;
     background: #ffffff;
     border-top-left-radius: 12px;
@@ -36,7 +36,7 @@ a{
 .elementOfElection{
     /* padding: 0px; */
     /* margin: 0px; */
-    border:0.5px solid #bbbbbb !important;
+    border:1px solid #bbbbbb !important;
     box-shadow:0 1px 4px 0 rgba(0,0,0,0.5); 
     /* width: 100%; */
 }
