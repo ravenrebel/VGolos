@@ -43,9 +43,6 @@ export class ResultCitizenPageComponent implements OnInit {
     });
 
     }
-  //   averageAge(election: ElectionDTO): void {
-  //     this.selectedElection = election;
-  //     this.router.navigate(['elections/' + this.selectedElection.id + '/results/average']);
-  // }
+
 
 }

@@ -13,6 +13,9 @@ import { ElectionService } from 'src/app/service/election.service';
 export class ResultStatisticsAverageAgePageComponent implements OnInit {
 
   results: CandidateAvg[] = [];
+  results1: CandidateResult[] = [];
+  minPercentage: number;
+
   electionId: number;
 
   constructor(
@@ -24,11 +27,16 @@ export class ResultStatisticsAverageAgePageComponent implements OnInit {
 
   ngOnInit() {
     this.electionId = Number(this.route.snapshot.paramMap.get('id'));
+    this.minPercentage = 0;
+    this.resultService.getResultsByElectionId(this.electionId, this.minPercentage).subscribe(results1 => {
+      this.results1 = results1;
+    }
+    );
+    
+    // this.electionId = Number(this.route.snapshot.paramMap.get('id'));
     this.resultService.getAvgAgeResultsByElectionId(this.electionId).subscribe(results => {
       this.results = results;
-    }
-
-    )
+    });
   }
 
 }
