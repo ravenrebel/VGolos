@@ -15,7 +15,7 @@
     <div class="col-12 col-md-12 page100">
       <div *ngFor="let election of elections" class="elementOfElection">
         <div class="row">
-          <div class="offset-1 offset-md-1 col-11 col-md-11">{{election.name}} Tour {{election.tour}}, {{election.year}}</div>
+          <div class="offset-1 offset-md-1 col-11 col-md-11" >{{election.name}} Tour {{election.tour}}, {{election.year}}</div>
         </div>
         <div class="row">
           <div *ngIf="signedIn; else unset" class="offset-9 offset-md-9"></div>

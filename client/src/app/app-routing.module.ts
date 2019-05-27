@@ -28,15 +28,16 @@ const routes: Routes = [
   { path: 'elections/active', component: ListOfElectionsActiveComponent },
   { path: 'elections/completed', component: ListOfElectionsCompletedComponent },
   { path: 'result', component: ResultCitizenPageComponent },
-  { path: 'result/admin', component: ResultAdminPageComponent },
-  { path: 'result/statis', component: ResultStatisticsAverageAgePageComponent },
-  { path: 'result/voters', component: ResultVotersInTheirCityPageComponent },
+  // { path: 'result/admin', component: ResultAdminPageComponent },
+  // { path: 'result/statis', component: ResultStatisticsAverageAgePageComponent },
+  // { path: 'result/voters', component: ResultVotersInTheirCityPageComponent },
   { path: 'elections/:id/vote', component: VotePageComponent },
   { path: 'elections/:id/candidates', component: CandidatesComponent },
   { path: 'voters', component: VotersComponent },
   { path: 'elections/:id/delete', component: DeleteElectionComponent },
   { path: 'elections/:id/edit', component: EditElectionComponent },
-  { path: 'elections/:id/results', component: ResultCitizenPageComponent }
+  { path: 'elections/:id/results', component: ResultCitizenPageComponent },
+  { path: 'elections/:id/results/average', component:ResultStatisticsAverageAgePageComponent},
 ];
 
 @NgModule({

@@ -1,16 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ElectionDTO } from 'src/app/model/election-dto';
 import { ElectionService } from 'src/app/service/election.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CandidateDTO } from 'src/app/model/candidate-dto';
 import { CustomeAuthService } from 'src/app/service/custome-auth.service';
-import { Account } from 'src/app/model/account';
-import { VoteService } from 'src/app/service/vote.service';
-import { VoteDTO } from 'src/app/model/vote-dto';
-import { Citizen } from 'src/app/model/citizen';
 import { ResultService } from 'src/app/service/result.service';
-import { CandidateTop } from 'src/app/model/candidate-top';
 import { CandidateResult } from 'src/app/model/candidate-result';
+import { ElectionDTO } from 'src/app/model/election-dto';
+
 
 
 @Component({
@@ -23,6 +18,8 @@ export class ResultCitizenPageComponent implements OnInit {
   results: CandidateResult[] = [];
   electionId: number;
   minPercentage: number;
+  elections: ElectionDTO[];
+  selectedElection: ElectionDTO = null;
 
   constructor(
     private electionService: ElectionService,
@@ -30,6 +27,7 @@ export class ResultCitizenPageComponent implements OnInit {
     private authService: CustomeAuthService,
     private route: ActivatedRoute,
     private resultService: ResultService,
+    
 
   ) {}
   ngOnInit() {
@@ -43,9 +41,11 @@ export class ResultCitizenPageComponent implements OnInit {
       this.results = results;
       console.log("changed");
     });
-  }
 
-
-
+    }
+  //   averageAge(election: ElectionDTO): void {
+  //     this.selectedElection = election;
+  //     this.router.navigate(['elections/' + this.selectedElection.id + '/results/average']);
+  // }
 
 }

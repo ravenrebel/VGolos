@@ -24,7 +24,7 @@
                 <a [routerLink]="['/elections/' + election.id + '/edit']">Edit</a></div>
             <div *ngIf="!signedIn; else unset"  class="col-1 col-md-1 btnService text-center">
               <a [routerLink]="['/elections/' + election.id + '/delete']">Delete</a></div>
-            <div class="col-3 col-md-3 text-center"><button type="vote" value="vote" class="vote" (click)="result(election)">Result</button></div>
+            <div class="col-3 col-md-3 text-center"><button type="vote" value="election.id" class="vote" (click)="result(election)">Result</button></div>
           </div>
           <div class="row">
             <div class="offset-1 offset-md-1 col-3 col-md-3"><b>Start:</b> {{election.beginningOfVoting | date:'dd-MM-yyyy hh:mm:ss a':'+0000'}}</div>
