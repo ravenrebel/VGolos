@@ -14,10 +14,10 @@ import { Citizen } from '../model/citizen';
 export class ResultService {
 
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'http://localhost:8080/vote/';
+  baseUrl: string = 'http://localhost:8080/';
   
   getResultsByElectionId(electionId:number, minPercentege:number): Observable<CandidateResult[]>{
-    return this.http.get<CandidateResult[]>(this.baseUrl+"elections/winners/"+electionId+minPercentege);
+    return this.http.get<CandidateResult[]>(this.baseUrl+"elections/winners/"+electionId + '/' + minPercentege);
   }
 
   getWinnerResultsByElectionId(electionId:number): Observable<CandidateRegion[]>{

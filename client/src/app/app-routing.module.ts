@@ -1,4 +1,4 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignInPageComponent } from './components/sign-in-page/sign-in-page.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
@@ -24,22 +24,23 @@ const routes: Routes = [
   { path: 'signup', component: SignUpPageComponent },
   { path: 'signup/citizen', component: SignUpCitizenPageComponent },
   { path: 'create', component: CreateElectionPageComponent },
-  { path: '', component: HomePageListOfElectionsComponent},
-  { path: 'elections/active', component:ListOfElectionsActiveComponent},
-  { path: 'elections/completed', component:ListOfElectionsCompletedComponent},
-  { path: 'result', component:ResultCitizenPageComponent},
-  { path: 'result/admin', component:ResultAdminPageComponent},
-  { path: 'result/statis', component:ResultStatisticsAverageAgePageComponent},
-  { path: 'result/voters', component:ResultVotersInTheirCityPageComponent},
-  { path: 'elections/:id/vote', component:VotePageComponent},
-  { path: 'elections/:id/candidates', component:CandidatesComponent},
-  { path: 'voters', component:VotersComponent},
-  { path: 'elections/:id/delete', component:DeleteElectionComponent},
-  { path: 'elections/:id/edit', component:EditElectionComponent},
+  { path: '', component: HomePageListOfElectionsComponent },
+  { path: 'elections/active', component: ListOfElectionsActiveComponent },
+  { path: 'elections/completed', component: ListOfElectionsCompletedComponent },
+  { path: 'result', component: ResultCitizenPageComponent },
+  { path: 'result/admin', component: ResultAdminPageComponent },
+  { path: 'result/statis', component: ResultStatisticsAverageAgePageComponent },
+  { path: 'result/voters', component: ResultVotersInTheirCityPageComponent },
+  { path: 'elections/:id/vote', component: VotePageComponent },
+  { path: 'elections/:id/candidates', component: CandidatesComponent },
+  { path: 'voters', component: VotersComponent },
+  { path: 'elections/:id/delete', component: DeleteElectionComponent },
+  { path: 'elections/:id/edit', component: EditElectionComponent },
+  { path: 'elections/:id/results', component: ResultCitizenPageComponent }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

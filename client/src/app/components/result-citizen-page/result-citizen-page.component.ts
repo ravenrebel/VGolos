@@ -10,6 +10,7 @@ import { VoteDTO } from 'src/app/model/vote-dto';
 import { Citizen } from 'src/app/model/citizen';
 import { ResultService } from 'src/app/service/result.service';
 import { CandidateTop } from 'src/app/model/candidate-top';
+import { CandidateResult } from 'src/app/model/candidate-result';
 
 
 @Component({
@@ -19,24 +20,32 @@ import { CandidateTop } from 'src/app/model/candidate-top';
 })
 export class ResultCitizenPageComponent implements OnInit {
 
-  candidateTop: CandidateTop;
+  results: CandidateResult[] = [];
+  electionId: number;
+  minPercentage: number;
 
   constructor(
     private electionService: ElectionService,
     private router: Router,
     private authService: CustomeAuthService,
     private route: ActivatedRoute,
-    private resultService:ResultService,
+    private resultService: ResultService,
 
-   ) 
-   {
-
-  }
+  ) {}
   ngOnInit() {
-    // const id = Number(this.route.snapshot.paramMap.get('id'));
-    // this.resultService.getWinnerResultsByElectionId(id).subscribe(result =>
-    //   {
-    //   this.candidateTop[id] = result;
-    //   });
+    this.electionId = Number(this.route.snapshot.paramMap.get('id'));
+    this.minPercentage = 0;
+    this.refreshResults();
+  }
 
-}}
+  refreshResults(): void {
+    this.resultService.getResultsByElectionId(this.electionId, this.minPercentage).subscribe(results => {
+      this.results = results;
+      console.log("changed");
+    });
+  }
+
+
+
+
+}
