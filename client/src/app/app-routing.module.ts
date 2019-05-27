@@ -16,6 +16,7 @@ import { VotePageComponent } from './components/vote-page/vote-page.component';
 import { CandidatesComponent } from './components/candidates/candidates.component';
 import { VotersComponent } from './components/voters/voters.component';
 import { DeleteElectionComponent } from './components/delete-election/delete-election.component';
+import { EditElectionComponent } from './components/edit-election/edit-election.component';
 
 const routes: Routes = [
   { path: 'signin', component: SignInPageComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'elections/:id/vote', component:VotePageComponent},
   { path: 'elections/:id/candidates', component:CandidatesComponent},
   { path: 'voters', component:VotersComponent},
-  { path: 'elections/:id/delete', component:DeleteElectionComponent}
+  { path: 'elections/:id/delete', component:DeleteElectionComponent},
+  { path: 'elections/:id/edit', component:EditElectionComponent},
 ];
 
 @NgModule({
