@@ -26,6 +26,7 @@ export class ResultCitizenPageComponent implements OnInit {
     private router: Router,
     private authService: CustomeAuthService,
     private route: ActivatedRoute,
+    
     private resultService: ResultService,
     
 
@@ -42,6 +43,10 @@ export class ResultCitizenPageComponent implements OnInit {
       console.log("changed");
     });
 
+    }
+    theirCity(election: ElectionDTO): void {
+      this.selectedElection = election;
+      this.router.navigate(['/elections/' + this.selectedElection.id + '/results/their-city']);
     }
 
 

@@ -1,3 +1,33 @@
-<p>
-  result-admin-page works!
-</p>
+<div class="hundredPx" style="height: 120px"></div>
+<div class="container-fluid block">
+  <div class="row text-center">
+    <div class="offset-8 offset-md-8 col-2 col-md-2">
+      <input type="number" min="0" max="100" [(ngModel)]="regionAmount" class="mb-3" placeholder="1"
+        (change)="refreshResults()">
+    </div>
+    <div class="col-2 col-md-2">
+      <input type="number" min="0" max="100" [(ngModel)]="positionAmount" class="mb-3" placeholder="2"
+        (change)="refreshResults()">
+    </div>
+  </div>
+</div>
+
+<br>
+<table class="table table-striped text-center">
+  <thead>
+    <tr>
+      <th scope="row"></th>
+      <th scope="col">Region</th>
+      <th scope="col">Name</th>
+      <th scope="col">Count of votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let result of results">
+      <th scope="row">{{results.indexOf(result)+1}}</th>
+      <td>{{result.region}}</td>
+      <td>{{result.name}}</td>
+      <td>{{result.votesCount}}</td>
+    </tr>
+  </tbody>
+</table>

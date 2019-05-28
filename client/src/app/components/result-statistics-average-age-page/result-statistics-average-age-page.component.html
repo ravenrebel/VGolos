@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let result of results">
-      <th scope="row"></th>
+      <th scope="row">{{results.indexOf(result)+1}}</th>
       <td>{{result.candidateName}}</td>
       <td>{{result.avgAge}}</td>
     </tr>

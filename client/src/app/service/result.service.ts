@@ -15,11 +15,11 @@ export class ResultService {
 
   constructor(private http: HttpClient) { }
   baseUrl: string = 'http://localhost:8080/';
-  
+//
   getResultsByElectionId(electionId:number, minPercentege:number): Observable<CandidateResult[]>{
     return this.http.get<CandidateResult[]>(this.baseUrl+"elections/winners/"+electionId + '/' + minPercentege);
   }
-
+//
   getWinnerResultsByElectionId(electionId:number): Observable<CandidateRegion[]>{
     return this.http.get<CandidateRegion[]>(this.baseUrl+"elections/regionAndItsWinner/"+electionId);
   }
@@ -27,15 +27,15 @@ export class ResultService {
   getTopResultsByElectionId(electionId:number, regionAmount:number, positionAmount:number): Observable<CandidateTop[]>{
     return this.http.get<CandidateTop[]>(this.baseUrl+"elections/topResults/"+electionId+regionAmount+positionAmount);
   }
-
+//
   getAvgAgeResultsByElectionId(electionId:number): Observable<CandidateAvg[]>{
     return this.http.get<CandidateAvg[]>(this.baseUrl+"elections/averageAge/"+electionId);
   }
-
+//
   getResultsByElectionIdVotedForWinners(electionId:number): Observable<CandidateCitizen[]>{
     return this.http.get<CandidateCitizen[]>(this.baseUrl+"elections/citizensAndCandidates/"+electionId);
   }
-
+//
   getCitizensVotedInElectionById(electionId:number): Observable<Citizen[]>{
     return this.http.get<Citizen[]>(this.baseUrl+"citizens/vote/"+electionId);
   }

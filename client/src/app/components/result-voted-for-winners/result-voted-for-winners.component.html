@@ -1,23 +1,19 @@
 <div class="hundredPx" style="height: 100px"></div>
-
 <table class="table table-striped text-center">
   <thead>
     <tr>
       <th scope="row"></th>
+      <th scope="col">Citizen Name</th>
       <th scope="col">Region</th>
-      <th scope="col">Number Of Votes</th>
-      <th scope="col">Name</th>
-      <th scope="col">All Votes</th>
+      <th scope="col">Name Candidate</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let result of results">
       <th scope="row">{{results.indexOf(result)+1}}</th>
+      <td>{{result.citizenName}}</td>
       <td>{{result.region}}</td>
-      <td>{{result.ammountOfVotes}}</td>
-      <td>{{result.name}}</td>
-      <td>{{result.allVotes}}</td>
-
+      <td>{{result.candidateName}}</td>
     </tr>
   </tbody>
 </table>

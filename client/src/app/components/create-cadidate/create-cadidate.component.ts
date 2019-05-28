@@ -19,7 +19,7 @@ export class CreateCadidateComponent implements OnInit {
 
   currAccount: Account;
   candidate: CandidateDTO = new CandidateDTO();
-  citizen: Citizen = new Citizen();
+  idn: string;
 
   constructor(
     private candidateService: CandidateControllerService,
@@ -31,16 +31,14 @@ export class CreateCadidateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.candidate.electionId=id;
-    console.log(this.citizen.idn);
+     this.candidate.electionId = Number(this.route.snapshot.paramMap.get('id'));
     
     if (!this.authService.checkLoggedUser()) {
       this.router.navigate(['/signin']);
     }
-    this.citizenService.findByLogin(this.citizen.idn).subscribe(citizen => {
-      this.citizen = citizen;
-      console.log(this.citizen);
+    console.log(this.idn);
+    this.citizenService.findByLogin(this.idn).subscribe(citizen => {
+      this.candidate.citizen = citizen;
     });
   }
 

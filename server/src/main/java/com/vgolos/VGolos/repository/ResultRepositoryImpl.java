@@ -33,7 +33,7 @@ public class ResultRepositoryImpl implements ResultRepository {
                 "                 from candidates\n" +
                 "                          join citizens on citizens.id = candidates.citizen_id\n" +
                 "                          join votes on votes.candidate_id = candidates.id\n" +
-                "                          join elections on elections.id = votes.election_id\n" +
+                "                          join elections on elections.id = votes.election_id and elections.id = candidates.election_id\n" +
                 "                          join all_votes on all_votes.election = elections.id\n" +
                 "                 group by candidate_name, general_count)\n" +
                 "select candidate_name, votes_count, percents\n" +
@@ -64,7 +64,7 @@ public class ResultRepositoryImpl implements ResultRepository {
         " fathers_name as candidate_name, candidate_id as  new_candidate_id\n" +
         " from candidates join citizens on citizens.id = candidates.citizen_id \n" +
                         " join votes on candidates.id = votes.candidate_id \n" +
-                        " join elections on elections.id = votes.election_id \n" +
+                        " join elections on elections.id = votes.election_id and elections.id = candidates.election_id\n" +
                         " where elections.id = :electionId \n" +
                         " group by candidate_name,candidate_id), \n" +
                         "results as (select region as region_new, count(votes.id) \n" +
@@ -108,13 +108,13 @@ public class ResultRepositoryImpl implements ResultRepository {
                 "fathers_name as candidate_name, candidate_id as  new_candidate_id from candidates \n" +
                 "join citizens on citizens.id = candidates.citizen_id\n" +
                 "join votes on candidates.id = votes.candidate_id\n" +
-                "join elections on elections.id = votes.election_id\n" +
+                "join elections on elections.id = votes.election_id and elections.id = candidates.election_id\n" +
                 "join all_votes on all_votes.election = elections.id\n" +
                 " and candidates.id in\n" +
                 "(select candidates.id from candidates\n" +
                 "join citizens on citizens.id = candidates.citizen_id\n" +
                 "join votes on votes.candidate_id = candidates.id\n" +
-                "join elections on elections.id = votes.election_id\n" +
+                "join elections on elections.id = votes.election_id and elections.id = candidates.election_id\n" +
                 "join all_votes on all_votes.election = elections.id\n" +
                 "group by candidates.id limit :positionAmount)\n" +
                 "group by candidate_name,candidate_id),\n" +
@@ -181,6 +181,7 @@ public class ResultRepositoryImpl implements ResultRepository {
                 "with\n" +
                 " all_votes as (select count(votes.id) as general_count, candidates.id as candidate from votes\n" +
                 "   join candidates on candidates.id = votes.candidate_id\n" +
+                "join elections on elections.id = votes.election_id and elections.id = candidates.election_id\n" +
                 "where votes.election_id = :electionId\n" +
                 "          group by candidate),\n" +
                 "\t\t  \n" +
@@ -188,14 +189,14 @@ public class ResultRepositoryImpl implements ResultRepository {
                 "\tfathers_name as candidate_name, candidate_id as  new_candidate_id    \n" +
                 "from candidates join citizens on citizens.id = candidates.citizen_id\n" +
                 "\t\t\t\t\tjoin votes on candidates.id = votes.candidate_id\n" +
-                "\t\t\t\t\tjoin elections on elections.id = votes.election_id\n" +
+                "\t\t\t\t\tjoin elections on elections.id = votes.election_id and elections.id = candidates.election_id where votes.election_id = :electionId\n" +
                 "\t\t\t\t\tgroup by candidate_name,candidate_id),\n" +
                 "\t\t\t\t\t\n" +
                 "\tresults as (select region as region_new, count(votes.id) \n" +
                 "\t\t\t\t\t\t\t\tas votes_count , candidate_name , new_candidate_id    \n" +
                 "\t\t\t\t\t\t\t\tfrom citizens  \n" +
-                "\t\t\t\t\t\t\t\tjoin votes on citizens.id = votes.citizen_id   \n" +
-                "\t\t\t\t\t\t\t\tjoin results_one on votes.candidate_id = results_one.new_candidate_id  \n" +
+                "\t\t\t\t\t\t\t\tjoin votes on citizens.id = votes.citizen_id \n" +
+                "\t\t\t\t\t\t\t\tjoin results_one on votes.candidate_id = results_one.new_candidate_id   where votes.election_id = :electionId \n" +
                 "\t\t\t\t\t\t\t\tgroup by candidate_name, region_new,new_candidate_id),  \n" +
                 " \n" +
                 "\n" +
@@ -208,14 +209,15 @@ public class ResultRepositoryImpl implements ResultRepository {
                 "FROM results GROUP BY region_new,new_candidate_id\n" +
                 "order by all_votes desc)\n" +
                 "\n" +
-                "select first_name || ' ' || last_name \n" +
+                "select distinct first_name || ' ' || last_name \n" +
                 "as citizen_name, region_new, candidate_name\n" +
                 "from citizens\n" +
                 "join votes on citizens.id = votes.citizen_id\n" +
+                "\t\t\t\t\tjoin elections on elections.id = votes.election_id \n"+
                 "join region_candidate on \n" +
-                "region_candidate.new_candidate_id = votes.candidate_id\n" +
+                "region_candidate.new_candidate_id = votes.candidate_id where votes.election_id = :electionId\n" +
                 "GROUP BY citizen_name,region_new,candidate_name\n" +
-                ";\n";
+                "limit 4;\n";
 
         Query query = em.createNativeQuery(queryString);
         query.setParameter("electionId", electionId);
