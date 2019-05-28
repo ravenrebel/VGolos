@@ -44,6 +44,7 @@ const routes: Routes = [
   { path: 'elections/:id/results/citizen', component: ResultListVotersComponent },
   { path: 'elections/:id/candidates/:id/create', component: CreateCadidateComponent },
   { path: 'elections/:id/results/winners', component: ResultVotedForWinnersComponent},
+  { path: 'elections/:id/results/mn', component: ResultAdminPageComponent}
 ];
 
 @NgModule({

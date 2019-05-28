@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let result of results">
-      <th scope="row"></th>
+      <th scope="row">{{results.indexOf(result)+1}}</th>
       <td>{{result.citizenName}}</td>
       <td>{{result.region}}</td>
       <td>{{result.candidateName}}</td>

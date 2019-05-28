@@ -19,15 +19,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let result of results">
-      <th scope="row"></th>
+      <th scope="row">{{results.indexOf(result)+1}}</th>
       <td>{{result.name}}</td>
       <td>{{result.votesCount}}</td>
       <td>{{result.percents}}</td>
     </tr>
   </tbody>
 </table>
-<!-- <a [routerLink]="['elections/' + election.id + '/results/their-city']">Their city---</a> -->
-<!-- <button type="theirCity" value="election.id" class="nextResult" (click)="theirCity()">Their city</button> -->
-<!-- <button type="vote" value="election.id" class="vote" (click)="vote(election)">Vote</button> -->
-<!-- <a [routerLink]="['/elections/' + election.id + '/edit']">Edit</a> -->
-<!-- <div class="col-3 col-md-3 text-center"><button type="vote" value="election.id" class="vote" (click)="averageAge()">Result</button></div> -->
+

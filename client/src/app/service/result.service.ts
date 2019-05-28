@@ -19,7 +19,7 @@ export class ResultService {
   getResultsByElectionId(electionId:number, minPercentege:number): Observable<CandidateResult[]>{
     return this.http.get<CandidateResult[]>(this.baseUrl+"elections/winners/"+electionId + '/' + minPercentege);
   }
-
+//
   getWinnerResultsByElectionId(electionId:number): Observable<CandidateRegion[]>{
     return this.http.get<CandidateRegion[]>(this.baseUrl+"elections/regionAndItsWinner/"+electionId);
   }
