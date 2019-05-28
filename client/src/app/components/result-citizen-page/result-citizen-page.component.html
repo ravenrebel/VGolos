@@ -1,6 +1,13 @@
-<div class="hundredPx" style="height: 100px"></div>
-<input type="number" min="0" max="100" [(ngModel)]="minPercentage" class="mb-3" placeholder="%"
-  (change)="refreshResults()"><br>
+<div class="hundredPx" style="height: 120px"></div>
+<div class="container-fluid block">
+  <div class="row">
+    <div class="offset-10 offset-md-10 col-2 col-md-2">
+      <input type="number" min="0" max="100" [(ngModel)]="minPercentage" class="mb-3" placeholder="%"
+      (change)="refreshResults()">
+    </div>
+  </div>
+</div>
+<br>
 <table class="table table-striped text-center">
   <thead>
     <tr>
@@ -19,4 +26,8 @@
     </tr>
   </tbody>
 </table>
+<!-- <a [routerLink]="['elections/' + election.id + '/results/their-city']">Their city---</a> -->
+<!-- <button type="theirCity" value="election.id" class="nextResult" (click)="theirCity()">Their city</button> -->
+<!-- <button type="vote" value="election.id" class="vote" (click)="vote(election)">Vote</button> -->
+<!-- <a [routerLink]="['/elections/' + election.id + '/edit']">Edit</a> -->
 <!-- <div class="col-3 col-md-3 text-center"><button type="vote" value="election.id" class="vote" (click)="averageAge()">Result</button></div> -->

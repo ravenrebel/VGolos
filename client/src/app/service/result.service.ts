@@ -31,7 +31,7 @@ export class ResultService {
   getAvgAgeResultsByElectionId(electionId:number): Observable<CandidateAvg[]>{
     return this.http.get<CandidateAvg[]>(this.baseUrl+"elections/averageAge/"+electionId);
   }
-
+//
   getResultsByElectionIdVotedForWinners(electionId:number): Observable<CandidateCitizen[]>{
     return this.http.get<CandidateCitizen[]>(this.baseUrl+"elections/citizensAndCandidates/"+electionId);
   }

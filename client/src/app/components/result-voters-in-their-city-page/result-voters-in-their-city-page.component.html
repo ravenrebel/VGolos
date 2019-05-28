@@ -1,3 +1,24 @@
-<p>
-  result-voters-in-their-city-page works!
-</p>
+<div class="hundredPx" style="height: 100px"></div>
+
+<table class="table table-striped text-center">
+  <thead>
+    <tr>
+      <th scope="row"></th>
+      <th scope="col">Region</th>
+      <th scope="col">Number Of Votes</th>
+      <th scope="col">Name</th>
+      <th scope="col">Count Votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let result of results">
+      <th scope="row"></th>
+      <td>{{result.region}}</td>
+      <td>{{result.ammountOfVotes}}</td>
+      <td>{{result.name}}</td>
+      <td>{{result.allVotes}}</td>
+
+    </tr>
+  </tbody>
+</table>
+<!-- <div class="col-3 col-md-3 text-center"><button type="vote" value="election.id" class="vote" (click)="averageAge()">Result</button></div> -->

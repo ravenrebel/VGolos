@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'result', component: ResultCitizenPageComponent },
   // { path: 'result/admin', component: ResultAdminPageComponent },
   // { path: 'result/statis', component: ResultStatisticsAverageAgePageComponent },
-  // { path: 'result/voters', component: ResultVotersInTheirCityPageComponent },
+  { path: 'elections/:id/results/their-city', component: ResultVotersInTheirCityPageComponent },
   { path: 'elections/:id/vote', component: VotePageComponent },
   { path: 'elections/:id/candidates', component: CandidatesComponent },
   { path: 'voters', component: VotersComponent },
