@@ -28,6 +28,10 @@ public class CitizenService {
         return citizenRepository.findByLogin(login).get();
     }
 
+    public Citizen findByIdn(String idn) {
+        return citizenRepository.findByIdn(idn).get();
+    }
+
     public Citizen findById(Long id) {
         return citizenRepository.findById(id).get();
     }

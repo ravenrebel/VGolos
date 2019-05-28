@@ -21,6 +21,10 @@ export class CitizenService {
     return this.http.get<Citizen>(this.baseUrl+"login/" + login);
   }
 
+  findByIdn(idn:string):Observable<Citizen> {
+    return this.http.get<Citizen>(this.baseUrl + "idn/" + idn);
+  }
+
   create(citizen:Citizen):Observable<Citizen> {
     return this.http.post<Citizen>(this.baseUrl+ "create", citizen);
   }

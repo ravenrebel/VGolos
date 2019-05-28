@@ -34,6 +34,12 @@ public class CitizenController {
                 HttpStatus.OK);
     }
 
+    @GetMapping("/idn/{idn}")
+    public ResponseEntity<Citizen> findByIdn(@PathVariable String idn) {
+        return new ResponseEntity<>(citizenService.findByIdn(idn),
+                HttpStatus.OK);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<Citizen> create(@RequestBody Citizen citizen) {
         Citizen createdCitizen = citizenService.createCitizen(citizen);

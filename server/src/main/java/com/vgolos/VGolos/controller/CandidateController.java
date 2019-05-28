@@ -38,7 +38,7 @@ public class CandidateController {
     }
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<CandidateDTO> create(@RequestBody CandidateDTO candidateDTO) {
         Candidate createdCandidate = candidateService.createCandidate(candidateConverter.convertToEntity(candidateDTO));
         return new ResponseEntity<>(candidateConverter

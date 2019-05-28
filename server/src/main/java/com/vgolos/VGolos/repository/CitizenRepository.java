@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface CitizenRepository extends JpaRepository<Citizen, Long> {
     Optional<Citizen> findByLogin(String login);
+    Optional<Citizen> findByIdn(String idn);
     List<Citizen> findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(String firstName, String lastName);
     List<Citizen> findByFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCase(String firstName, String lastName);
 
