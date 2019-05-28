@@ -30,6 +30,7 @@ public class CandidateController {
     }
 
     @GetMapping
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<CandidateDTO>> findAll() {
         List<Candidate> candidates = candidateService.findAll();
         return new ResponseEntity<>(candidateConverter
@@ -37,6 +38,7 @@ public class CandidateController {
     }
 
     @PostMapping("/create")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<CandidateDTO> create(@RequestBody CandidateDTO candidateDTO) {
         Candidate createdCandidate = candidateService.createCandidate(candidateConverter.convertToEntity(candidateDTO));
         return new ResponseEntity<>(candidateConverter
@@ -44,6 +46,7 @@ public class CandidateController {
     }
 
     @PutMapping("/update")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<CandidateDTO> update(@RequestBody CandidateDTO candidateDTO) {
         Candidate candidate = candidateService.update(candidateConverter.convertToEntity(candidateDTO));
         return new ResponseEntity<>(candidateConverter
@@ -51,6 +54,7 @@ public class CandidateController {
     }
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteById(@PathVariable Long id) {
         candidateService.deleteById(id);
     }

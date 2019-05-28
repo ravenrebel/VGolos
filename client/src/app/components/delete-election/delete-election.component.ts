@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ElectionDTO } from 'src/app/model/election-dto';
 import { ElectionService } from 'src/app/service/election.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CandidateDTO } from 'src/app/model/candidate-dto';
 import { CustomeAuthService } from 'src/app/service/custome-auth.service';
 import { Account } from 'src/app/model/account';
 import { Location } from '@angular/common';

@@ -22,6 +22,7 @@ public class CitizenController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<Citizen>> findAll() {
         List<Citizen> citizens = citizenService.findAll();
         return new ResponseEntity<>(citizens, HttpStatus.OK);
@@ -40,12 +41,14 @@ public class CitizenController {
     }
 
     @PutMapping("/update")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Citizen> update(@RequestBody Citizen citizen) {
         return new ResponseEntity<>(citizenService.update(citizen),
                 HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteById(@PathVariable Long id) {
         citizenService.deleteById(id);
     }

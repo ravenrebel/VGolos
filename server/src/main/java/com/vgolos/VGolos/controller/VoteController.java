@@ -26,6 +26,7 @@ public class VoteController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<VoteDTO>> findAll() {
         List<Vote> votes = voteService.findAll();
         return new ResponseEntity<>(voteConverter.convertToDTO(votes), HttpStatus.OK);
@@ -38,26 +39,31 @@ public class VoteController {
         return new ResponseEntity<>(voteConverter.convertToDTO(createdVote), HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<VoteDTO> update(@RequestBody VoteDTO voteDTO) {
-        Vote vote = voteService.update(voteConverter.convertToEntity(voteDTO));
-        return new ResponseEntity<>(voteConverter
-                .convertToDTO(vote), HttpStatus.OK);
-    }
+//    @PutMapping("/update")
+//
+//    public ResponseEntity<VoteDTO> update(@RequestBody VoteDTO voteDTO) {
+//        Vote vote = voteService.update(voteConverter.convertToEntity(voteDTO));
+//        return new ResponseEntity<>(voteConverter
+//                .convertToDTO(vote), HttpStatus.OK);
+//    }
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteById(@PathVariable Long id) {
         voteService.deleteById(id);
     }
 
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<VoteDTO> findByLogin(@PathVariable Long id) {
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ResponseEntity<VoteDTO> findById(@PathVariable Long id) {
         return new ResponseEntity<>(voteConverter.convertToDTO(voteService.findById(id)),
                 HttpStatus.OK);
     }
 
+
     @GetMapping("/isExisting/{electionId}/{citizenId}")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<Boolean> isExisting(@PathVariable Long electionId, @PathVariable Long citizenId) {
         return new ResponseEntity<>((voteService.isExisting(electionId, citizenId)),
                 HttpStatus.OK);

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -55,6 +56,7 @@ public class ResultController {
     }
 
     @GetMapping("elections/averageAge/{electionId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     ResponseEntity<List<CandidateAvg>>
     getAvgAgeResultsByElectionId(@PathVariable Long electionId) {
         return new ResponseEntity<>(resultRepository
@@ -62,6 +64,7 @@ public class ResultController {
                 HttpStatus.OK);
     }
     @GetMapping("elections/citizensAndCandidates/{electionId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     ResponseEntity<List<CandidateCitizen>>
     getResultsByElectionIdVotedForWinners(@PathVariable Long electionId) {
         return new ResponseEntity<>(resultRepository
@@ -71,6 +74,7 @@ public class ResultController {
 
 
     @GetMapping("citizens/vote/{electionId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     ResponseEntity<List<Citizen>> getCitizensVotedInElectionById(@PathVariable Long electionId) {
         return new ResponseEntity<>(citizenRepository.findByVoteInElection(electionId), HttpStatus.OK);
     }

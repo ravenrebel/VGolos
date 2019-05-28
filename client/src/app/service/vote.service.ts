@@ -21,15 +21,15 @@ export class VoteService {
     return this.http.post<VoteDTO>(this.baseUrl+ "create", vote);
   }
 
-  update(vote:VoteDTO): Observable<VoteDTO>{
-    return this.http.put<VoteDTO>(this.baseUrl + "update", vote);
-  }
+  // update(vote:VoteDTO): Observable<VoteDTO>{
+  //   return this.http.put<VoteDTO>(this.baseUrl + "update", vote);
+  // }
 
   delete(id:number): Observable<Empty> {
     return this.http.delete<Empty>(this.baseUrl + "delete/" + id);
   }
 
-  findbylogin(id:number): Observable<VoteDTO>{
+  findbyid(id:number): Observable<VoteDTO>{
     return this.http.get<VoteDTO>(this.baseUrl + "id/" + id);
   }
 

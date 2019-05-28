@@ -38,11 +38,8 @@ const routes: Routes = [
   { path: 'elections/:id/delete', component: DeleteElectionComponent },
   { path: 'elections/:id/edit', component: EditElectionComponent },
   { path: 'elections/:id/results', component: ResultCitizenPageComponent },
-<<<<<<< HEAD
-  { path: 'elections/:id/candidates/:id/create', component: CreateCadidateComponent },
-=======
+  { path: 'elections/:id/create', component: CreateCadidateComponent },
   { path: 'elections/:id/results/average', component:ResultStatisticsAverageAgePageComponent},
->>>>>>> de1ea113e11371bb2025f4a9e3adb8ca20616a11
 ];
 
 @NgModule({

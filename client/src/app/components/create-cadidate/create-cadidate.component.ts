@@ -7,6 +7,7 @@ import { Account } from 'src/app/model/account';
 import { Location } from '@angular/common';
 import { CandidateControllerService } from 'src/app/service/candidate.service';
 import { CitizenService } from 'src/app/service/citizen.service';
+import { Citizen } from 'src/app/model/citizen';
 
 
 @Component({
@@ -17,37 +18,41 @@ import { CitizenService } from 'src/app/service/citizen.service';
 export class CreateCadidateComponent implements OnInit {
 
   currAccount: Account;
-  candidate: CandidateDTO = new CandidateDTO;
-  
+  candidate: CandidateDTO = new CandidateDTO();
+  citizen: Citizen = new Citizen();
+
   constructor(
     private candidateService: CandidateControllerService,
     private citizenService: CitizenService,
     private router: Router,
     private route: ActivatedRoute,
     private authService: CustomeAuthService,
-    private location:Location
+    private location:Location,
   ) { }
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.candidate.electionId=id;
-
+    console.log(this.citizen.idn);
+    
     if (!this.authService.checkLoggedUser()) {
       this.router.navigate(['/signin']);
     }
-    
-    this.citizenService.findByLogin(this.candidate.citizen.login).subscribe(citizen => {
-      this.candidate.citizen = citizen;
+    this.citizenService.findByLogin(this.citizen.idn).subscribe(citizen => {
+      this.citizen = citizen;
+      console.log(this.citizen);
     });
   }
 
   create(): void {
-    
-    console.log(this.candidate.citizen);
-
+    console.log(this.candidate);
     this.candidateService.create(this.candidate).subscribe(date => {
-      //this.router.navigate(['elections/' + this.candidate.electionId + '/candidates']);
+      this.router.navigate(['elections/' + this.candidate.electionId + '/candidates']);
     }
     );
+  }
+
+  goBack(): void{
+    this.location.back();
   }
 }

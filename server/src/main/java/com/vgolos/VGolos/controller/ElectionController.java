@@ -34,6 +34,7 @@ public class ElectionController {
     }
 
     @PostMapping("/create")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<ElectionDTO> create(@RequestBody ElectionDTO electionDTO) {
         electionDTO.setCandidates(new LinkedList<>());
         electionDTO.setVotes(new LinkedList<>());
@@ -43,6 +44,7 @@ public class ElectionController {
     }
 
     @DeleteMapping("/delete/{id}")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteById(@PathVariable Long id) {
         electionService.deleteById(id);
     }
@@ -62,6 +64,7 @@ public class ElectionController {
     }
 
     @PutMapping("/update")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<ElectionDTO> update(@RequestBody ElectionDTO electionDTO) {
         ElectionDTO existingElection = electionConverter
                 .convertToDTO(electionService.findById(electionDTO.getId()));
