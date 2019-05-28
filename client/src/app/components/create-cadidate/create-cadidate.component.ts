@@ -37,17 +37,18 @@ export class CreateCadidateComponent implements OnInit {
       this.router.navigate(['/signin']);
     }
     console.log(this.idn);
-    this.citizenService.findByLogin(this.idn).subscribe(citizen => {
-      this.candidate.citizen = citizen;
-    });
   }
 
   create(): void {
     console.log(this.candidate);
-    this.candidateService.create(this.candidate).subscribe(date => {
-      this.router.navigate(['elections/' + this.candidate.electionId + '/candidates']);
-    }
-    );
+    this.citizenService.findByIdn(this.idn).subscribe(citizen => {
+      this.candidate.citizen = citizen;
+      console.log(citizen);
+      this.candidateService.create(this.candidate).subscribe(date => {
+        this.router.navigate(['elections/' + this.candidate.electionId + '/candidates']);
+      }
+      );
+    });
   }
 
   goBack(): void{

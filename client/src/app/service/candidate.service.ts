@@ -12,7 +12,7 @@ export class CandidateControllerService {
 
   constructor(private http: HttpClient) { }
   
-  baseUrl: string = 'http://localhost:8080/candidate/';
+  baseUrl: string = 'http://localhost:8080/candidates/';
 
   findAll(): Observable<CandidateDTO[]> {
     return this.http.get<CandidateDTO[]>(this.baseUrl);
