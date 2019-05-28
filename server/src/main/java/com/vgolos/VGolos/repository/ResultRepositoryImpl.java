@@ -177,47 +177,43 @@ public class ResultRepositoryImpl implements ResultRepository {
     @Override
     public List<CandidateCitizen> getCitizenAndTheCandidateHeVotedForWinners(Long electionId)
     {
-        String queryString = " \n" +
-                "with\n" +
-                " all_votes as (select count(votes.id) as general_count, candidates.id as candidate from votes\n" +
-                "   join candidates on candidates.id = votes.candidate_id\n" +
-                "join elections on elections.id = votes.election_id and elections.id = candidates.election_id\n" +
+        String queryString = "with \n" +
+                " all_votes as (select count(votes.id) as general_count, candidates.id as candidate from votes \n" +
+                "   join candidates on candidates.id = votes.candidate_id \n" +
                 "where votes.election_id = :electionId\n" +
-                "          group by candidate),\n" +
-                "\t\t  \n" +
-                "    results_one as (select first_name || ' ' || last_name || ' ' ||   \n" +
-                "\tfathers_name as candidate_name, candidate_id as  new_candidate_id    \n" +
-                "from candidates join citizens on citizens.id = candidates.citizen_id\n" +
-                "\t\t\t\t\tjoin votes on candidates.id = votes.candidate_id\n" +
-                "\t\t\t\t\tjoin elections on elections.id = votes.election_id and elections.id = candidates.election_id where votes.election_id = :electionId\n" +
-                "\t\t\t\t\tgroup by candidate_name,candidate_id),\n" +
-                "\t\t\t\t\t\n" +
-                "\tresults as (select region as region_new, count(votes.id) \n" +
-                "\t\t\t\t\t\t\t\tas votes_count , candidate_name , new_candidate_id    \n" +
-                "\t\t\t\t\t\t\t\tfrom citizens  \n" +
-                "\t\t\t\t\t\t\t\tjoin votes on citizens.id = votes.citizen_id \n" +
-                "\t\t\t\t\t\t\t\tjoin results_one on votes.candidate_id = results_one.new_candidate_id   where votes.election_id = :electionId \n" +
-                "\t\t\t\t\t\t\t\tgroup by candidate_name, region_new,new_candidate_id),  \n" +
+                "          group by candidate), \n" +
+                "     \n" +
+                "    results_one as (select first_name || ' ' || last_name || ' ' ||    \n" +
+                " fathers_name as candidate_name, candidate_id as  new_candidate_id     \n" +
+                "from candidates join citizens on citizens.id = candidates.citizen_id \n" +
+                "     join votes on candidates.id = votes.candidate_id \n" +
+                "     join elections on elections.id = votes.election_id \n" +
+                "     where votes.election_id= :electionId group by candidate_name,candidate_id), \n" +
+                "      \n" +
+                " results as (select region as region_new, count(votes.id)  \n" +
+                "        as votes_count , candidate_name , new_candidate_id     \n" +
+                "        from citizens   \n" +
+                "        join votes on citizens.id = votes.citizen_id    \n" +
+                "        join results_one on votes.candidate_id = results_one.new_candidate_id   \n" +
+                "        group by candidate_name, region_new,new_candidate_id),   \n" +
+                "  \n" +
                 " \n" +
-                "\n" +
-                "region_candidate as( select\n" +
-                "region_new,\n" +
-                "max(votes_count) as amount_of_votes, \n" +
-                "max(candidate_name) as candidate_name ,\n" +
-                "new_candidate_id,\n" +
-                "sum(votes_count) as all_votes\n" +
-                "FROM results GROUP BY region_new,new_candidate_id\n" +
-                "order by all_votes desc)\n" +
-                "\n" +
-                "select distinct first_name || ' ' || last_name \n" +
-                "as citizen_name, region_new, candidate_name\n" +
-                "from citizens\n" +
-                "join votes on citizens.id = votes.citizen_id\n" +
-                "\t\t\t\t\tjoin elections on elections.id = votes.election_id \n"+
-                "join region_candidate on \n" +
-                "region_candidate.new_candidate_id = votes.candidate_id where votes.election_id = :electionId\n" +
-                "GROUP BY citizen_name,region_new,candidate_name\n" +
-                "limit 4;\n";
+                "region_candidate as( select \n" +
+                "region_new, \n" +
+                "max(votes_count) as amount_of_votes,  \n" +
+                "max(candidate_name) as candidate_name , \n" +
+                "new_candidate_id, \n" +
+                "sum(votes_count) as all_votes \n" +
+                "FROM results GROUP BY region_new,new_candidate_id \n" +
+                "order by all_votes limit 1)   \n" +
+                " \n" +
+                "select first_name || ' ' || last_name  \n" +
+                "as citizen_name, region_new, candidate_name \n" +
+                "from citizens \n" +
+                "join votes on citizens.id = votes.citizen_id \n" +
+                "join region_candidate on  \n" +
+                "region_candidate.new_candidate_id = votes.candidate_id \n" +
+                "GROUP BY citizen_name,region_new,candidate_name";
 
         Query query = em.createNativeQuery(queryString);
         query.setParameter("electionId", electionId);
