@@ -25,7 +25,7 @@ export class ResultService {
   }
 
   getTopResultsByElectionId(electionId:number, regionAmount:number, positionAmount:number): Observable<CandidateTop[]>{
-    return this.http.get<CandidateTop[]>(this.baseUrl+"elections/topResults/"+electionId+regionAmount+positionAmount);
+    return this.http.get<CandidateTop[]>(this.baseUrl+"elections/topResults/"+electionId + '/' + regionAmount+ '/' + positionAmount);
   }
 //
   getAvgAgeResultsByElectionId(electionId:number): Observable<CandidateAvg[]>{
