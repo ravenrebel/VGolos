@@ -31,17 +31,17 @@ export class ResultAdminPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  //   this.electionId = Number(this.route.snapshot.paramMap.get('id'));
-  //   this.positionAmount = 1;
-  //   this.regionAmount = 0;
-  //   this.refreshResults();
-  // }
+    this.electionId = Number(this.route.snapshot.paramMap.get('id'));
+    this.positionAmount = 1;
+    this.regionAmount = 0;
+    this.refreshResults();
+  }
 
-  // refreshResults(): void {
-  //   this.resultService.getTopResultsByElectionId(this.electionId, this.regionAmount, this.positionAmount).subscribe(results => {
-  //     this.results = results;
-  //     console.log("changed");
-  //   });
+  refreshResults(): void {
+    this.resultService.getTopResultsByElectionId(this.electionId, this.regionAmount, this.positionAmount).subscribe(results => {
+      this.results = results;
+      console.log("changed");
+    });
 
-  // }
-}}
+  }
+}
